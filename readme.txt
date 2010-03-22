@@ -10,6 +10,7 @@ User Role Editor WordPress plugin makes the role capabilities changing easy. You
 
 == Description ==
 
+User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator) with a few clicks.
 Just turn on check boxes of capabilities you wish to add to the selected role and click "Update" button to save your changes. That's done. In case you made some unneccessary change you always have the "Reset" button to return to the default state of WordPress user roles.
 To read more about 'User Role Editor' visit this link http://www.shinephp.com/user-role-editor-wordpress-plugin/
 
