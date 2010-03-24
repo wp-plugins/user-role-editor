@@ -25,19 +25,26 @@ if (isset($_GET['action']) && $_GET['action']=='reset') {
     ure_logEvent($wpdb->last_error, true);
     return;
   }
-  $query = "update $ure_OptionsTable
-                set option_value='$option_value'
-                where option_name='$option_name'
-                limit 1";
-  $record = $wpdb->query($query);
-  if ($wpdb->last_error) {
-    ure_logEvent($wpdb->last_error, true);
-    return;
+  if ($option_value) {
+    $query = "update $ure_OptionsTable
+                    set option_value='$option_value'
+                    where option_name='$option_name'
+                    limit 1";
+    $record = $wpdb->query($query);
+    if ($wpdb->last_error) {
+        ure_logEvent($wpdb->last_error, true);
+        return;
+    }
+    if ($mess) {
+        $mess .= '<br/';
+    }
+    $mess = __('Roles capabilities are restored from the backup data', 'ure');
+  } else {
+    if ($mess) {
+      $mess .= '<br/';
+    }
+    $mess = __('No backup data. It is created automatically before the first role data update.', 'ure');
   }
-  if ($mess) {
-    $mess .= '<br/';
-  }
-  $mess = 'Roles capabilities are restored from the backup data';
   if (isset($_REQUEST['user_role'])) {
     $_REQUEST['user_role'] = null;
   }
@@ -111,7 +118,7 @@ if (isset($_POST['action']) && $_POST['action']=='update' && isset($_POST['user_
         ure_logEvent($wpdb->last_error, true);
         return;
       }
-      $mess .= __('Backup record is created for the current role capabilities');
+      $mess .= __('Backup record is created for the current role capabilities', 'ure');
     }
     // save role changes into the database
     $roles[$currentRole]['capabilities'] = $capabilityToSave;
@@ -128,7 +135,7 @@ if (isset($_POST['action']) && $_POST['action']=='update' && isset($_POST['user_
     if ($mess) {
       $mess .= '<br/';
     }
-    $mess = __('Role ').$roles[$currentRole]['name'].__(' is updated successfully');
+    $mess = __('Role ', 'ure').$roles[$currentRole]['name'].__(' is updated successfully', 'ure');
   }
 }
 
@@ -182,7 +189,7 @@ ure_showMessage($mess);
     if (action=='cancel') {
       document.location = '<?php echo URE_WP_ADMIN_URL; ?>/options-general.php?page=user-role-editor.php';
     } else {
-      if (action!='role-change' && !confirm(action +'<?php _e(': Please confirm to continue'); ?>')) {
+      if (action!='role-change' && !confirm(action +'<?php _e(': Please confirm to continue', 'ure'); ?>')) {
         return false;
       }
       if (action!='update') {
@@ -198,7 +205,7 @@ ure_showMessage($mess);
   }
 
   function ure_onSubmit() {
-    if (!confirm('<?php echo sprintf(__('Role "%s" update: please confirm to continue'), $roles[$currentRole]['name']); ?>')) {
+    if (!confirm('<?php echo sprintf(__('Role "%s" update: please confirm to continue', 'ure'), $roles[$currentRole]['name']); ?>')) {
       return false;
     }
   }
@@ -210,7 +217,7 @@ ure_showMessage($mess);
         <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">          
           <tr>
             <td style="vertical-align:top;width:200px;" colspan="3">
-              Select Role: <?php echo $roleSelectHTML; ?>
+              <?php echo __('Select Role:', 'ure').' '.$roleSelectHTML; ?>
             </td>
           </tr>
           <tr>
