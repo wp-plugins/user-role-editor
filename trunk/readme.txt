@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 2.8.
 Tested up to: 2.9.2
-Stable tag: 1.0
+Stable tag: 1.1
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator) with a few clicks.
 
@@ -30,15 +30,25 @@ Installation procedure:
 1. screenshot-1.png User Role Editor main form
 
 == Translations ==
+* German: [Peter](http://www.red-socks-reinbek.de)
 * Russian: [ShinePHP](http://shinephp.com)
+* Spanish: Dario
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, plugin settings page and in this readme.txt file.
 
 == Special Thanks to ==
+* [Peter](http://www.red-socks-reinbek.de) - for the help with German translation.
+* Dario - for the help with the Spanish translation.
+
 You are welcome! Help me with plugin translation, share with me new ideas about it further development and link to your site will appear here.
 
 == Changelog ==
+= 1.1 = 24.03.2010
+- Critical bug is fixed. If you click 'Reset' button before any changes to the role data saved (that is click Update button) at least one time, you met with all roles data lost problem. Backup data created automatically before the 1st role data update. If no update - no backup. Special checking for that was added.
+- German translation is added.
+- Spanish translation is added.
+
 = 1.0 = 22.03.2010
 - 1st release.
 
