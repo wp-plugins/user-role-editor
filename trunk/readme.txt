@@ -41,6 +41,7 @@ To update selected role globally for the Network you should turn on the "Apply t
 2. screenshot-2.png Add/Remove roles or capabilities
 3. screenshot-3.png User Capabilities link
 4. screenshot-4.png User Capabilities Editor
+
 To read more about 'User Role Editor' visit this link at <a href="http://www.shinephp.com/user-role-editor-wordpress-plugin/" >shinephp.com</a>
 
 
