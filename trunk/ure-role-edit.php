@@ -222,11 +222,13 @@ if (is_multisite()) {
   if ($input_type=='checkbox') {
     if ($ure_caps_readable) {
       $capInd = 'human';
+      $capIndAlt = 'inner';
     } else {
       $capInd = 'inner';
+      $capIndAlt = 'human';
     }
 ?>
-   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capInd]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
+   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capIndAlt]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
 <?php   
     $quantInCell++;
    }
