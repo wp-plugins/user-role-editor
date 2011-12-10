@@ -16,6 +16,8 @@ Add new roles and customize its capabilities according to your needs, from scrat
 Unnecessary self-made role can be deleted if there are no users whome such role is assigned.
 Role assigned every new created user by default may be changed too.
 Capabilities could be assigned on per user basis. You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
+Multi-site support is provided.
+
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
 Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
