@@ -10,6 +10,9 @@ if (!defined('URE_PLUGIN_URL')) {
   die;  // Silence is golden, direct call is prohibited
 }
 
+// create roles backup if it's not created yet
+ure_makeRolesBackup();
+
 if (!isset($ure_currentRole) || !$ure_currentRole) {
   if (isset($_REQUEST['user_role']) && $_REQUEST['user_role']) {
     $ure_currentRole = $_REQUEST['user_role'];
@@ -20,17 +23,21 @@ if (!isset($ure_currentRole) || !$ure_currentRole) {
 }
 
 $roleDefaultHTML = '<select id="default_user_role" name="default_user_role" width="200" style="width: 200px">';
+$roleToCopyHTML = '<select id="copy_from_user_role" name="copy_from_user_role" width="200" style="width: 200px">
+  <option value="none" selected="selected">'.__('None', 'ure').'</option>';
 $roleSelectHTML = '<select id="user_role" name="user_role" onchange="ure_Actions(\'role-change\', this.value);">';
 foreach ($ure_roles as $key=>$value) {
   $selected1 = ure_optionSelected($key, $ure_currentRole);
   $selected2 = ure_optionSelected($key, $defaultRole);
   if ($key!='administrator') {
-    $roleSelectHTML .= '<option value="'.$key.'" '.$selected1.'>'.__($value['name'], 'ure').'</option>';
+    $roleSelectHTML .= '<option value="'.$key.'" '.$selected1.'>'.__($value['name'], 'ure').'</option>';    
     $roleDefaultHTML .= '<option value="'.$key.'" '.$selected2.'>'.__($value['name'], 'ure').'</option>';
+    $roleToCopyHTML .= '<option value="'.$key.'" >'.__($value['name'], 'ure').'</option>';
   }
 }
 $roleSelectHTML .= '</select>';
 $roleDefaultHTML .= '</select>';
+$roleToCopyHTML .= '</select>';
 
 $ure_rolesCanDelete = getRolesCanDelete($ure_roles);
 if ($ure_rolesCanDelete && count($ure_rolesCanDelete)>0) {
@@ -89,13 +96,13 @@ if (is_multisite()) {
         alert(elInMess +'<?php _e(' Name must contain latin characters and digits only!','ure');?>');
         return false;
       }
-    } else if (action!='role-change' && action!='capsreadable') {
+    } else if (action!='role-change' && action!='capsreadable' && action!='showdeprecatedcaps') {
       if (action=='delete') {
         actionText = '<?php _e('Delete Role', 'ure'); ?>';
       } else if (action=='default') {
         actionText = '<?php _e('Change Default Role', 'ure'); ?>';
       } else if (action=='reset') {
-        actionText = '<?php _e('Restore Roles from backup copy', 'ure'); ?>';
+        actionText = '<?php _e('Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost', 'ure'); ?>';
       } else if (action=='removeusercapability') {
         actionText = '<?php _e('Warning! Be careful - removing critical capability could crash some plugin or other custom code', 'ure'); ?>';
       }
@@ -121,6 +128,10 @@ if (is_multisite()) {
           url = url +'&'+ elId +'='+ escape(value);
         } else {
           url = url +'&user_role='+ escape(value);
+          if (action=='addnewrole') {
+            el = document.getElementById('copy_from_user_role');
+            url = url +'&copy_from_user_role='+ el.value;
+          }
         }
       }
       document.location = url;
@@ -150,8 +161,18 @@ if (is_multisite()) {
     $checked = '';
   }
 ?>
-              <div style="display:inline;float: right;"><input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" <?php echo $checked; ?> onclick="ure_Actions('capsreadable');"/>
-                <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure');?></label>
+              <div style="display:inline;float:right;">
+                <input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" <?php echo $checked; ?> onclick="ure_Actions('capsreadable');"/>
+                <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label><br />
+<?php
+    if ($ure_show_deprecated_caps) {
+      $checked = 'checked="checked"';
+    } else {
+      $checked = '';
+    }
+?>
+                <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" <?php echo $checked; ?> onclick="ure_Actions('showdeprecatedcaps');"/>
+                <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>
               </div>
 <?php
 if (is_multisite()) {
@@ -175,28 +196,40 @@ if (is_multisite()) {
           <tr>
             <td style="vertical-align:top;">
 <?php
+  $deprecatedCaps = get_deprecated_caps();
   $quant = count($ure_fullCapabilities);
   $quantInColumn = (int) $quant/3;
   $quantInCell = 0;
-  foreach( $ure_fullCapabilities as $capability) {
+  foreach( $ure_fullCapabilities as $capability) {    
+    if (!$ure_show_deprecated_caps && isset($deprecatedCaps[$capability['inner']])) {
+      $input_type = 'hidden';        
+    } else {
+      $input_type = 'checkbox';      
+    }
+    if (isset($deprecatedCaps[$capability['inner']])) {
+      $labelStyle = 'style="color:#BBBBBB;"';  
+    } else {
+      $labelStyle = '';
+    }
     $checked = '';
     if (isset($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']])) {
       $checked = 'checked="checked"';
     }
-    $cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);
+    $cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);    
 ?>
-   <input type="checkbox" name="<?php echo $cap_id; ?>" id="<?php echo $cap_id; ?>" value="<?php echo $capability['inner']; ?>" <?php echo $checked; ?>/>
+   <input type="<?php echo $input_type;?>" name="<?php echo $cap_id; ?>" id="<?php echo $cap_id; ?>" value="<?php echo $capability['inner']; ?>" <?php echo $checked; ?>/>
 <?php
-  if ($ure_caps_readable) {
+  if ($input_type=='checkbox') {
+    if ($ure_caps_readable) {
+      $capInd = 'human';
+    } else {
+      $capInd = 'inner';
+    }
 ?>
-   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability['inner']; ?>" ><?php echo $capability['human']; ?></label><br/>
-<?php
-  } else {
-?>
-   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability['human']; ?>" ><?php echo $capability['inner']; ?></label><br/>
-<?php
-  }
-   $quantInCell++;
+   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capInd]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
+<?php   
+    $quantInCell++;
+   }
    if ($quantInCell>=$quantInColumn) {
      $quantInCell = 0;
      echo '</td>
@@ -227,8 +260,12 @@ if (is_multisite()) {
   $boxStyle = 'width: 330px; min-width:240px;margin-right: 10px;';
   ure_displayBoxStart(__('Add New Role', 'ure'), $boxStyle); ?>
 <div class="ure-bottom-box-input">
+  <label for="new_user_role"><?php echo __('Name: ', 'ure'); ?></label>
   <input type="text" name="new_user_role" id="new_user_role" size="25"/>
 </div>
+<div class="ure-bottom-box-input">
+  <?php echo __('Make copy of: ', 'ure').$roleToCopyHTML; ?>
+</div>  
 <div class="submit" style="margin-left: 0; margin-right: 0; margin-bottom: 0; padding: 0; width: 100%; text-align: center;">
   <input type="button" name="addnewrole" value="<?php _e('Add', 'ure') ?>" title="<?php _e('Add New User Role','ure');?>" onclick="ure_Actions('addnewrole');" />
 </div>

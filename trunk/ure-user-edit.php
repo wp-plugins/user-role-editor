@@ -83,7 +83,16 @@ $roleSelectHTML .= '</select>';
   }
 ?>
   <div style="display:inline;float: right;"><input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" <?php echo $checked; ?> onclick="ure_Actions('capsreadable');"/>
-    <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label>
+    <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label><br/>
+<?php
+    if ($ure_show_deprecated_caps) {
+      $checked = 'checked="checked"';
+    } else {
+      $checked = '';
+    }
+?>
+                <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" <?php echo $checked; ?> onclick="ure_Actions('showdeprecatedcaps');"/>
+                <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>    
   </div>
 
   <br/><br/><hr/>  
@@ -91,11 +100,22 @@ $roleSelectHTML .= '</select>';
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align:top;">
-        <?php
+<?php
+        $deprecatedCaps = get_deprecated_caps();
         $quant = count($ure_fullCapabilities);
         $quantInColumn = (int) $quant / 3;
         $quantInCell = 0;
         foreach ($ure_fullCapabilities as $capability) {
+          if (!$ure_show_deprecated_caps && isset($deprecatedCaps[$capability['inner']])) {
+            $input_type = 'hidden';        
+          } else {
+            $input_type = 'checkbox';
+          }
+          if (isset($deprecatedCaps[$capability['inner']])) {
+            $labelStyle = 'style="color:#BBBBBB;"';
+          } else {
+            $labelStyle = '';
+          }
           $checked = ''; $disabled = '';
           if (isset($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']])) {
             $checked = 'checked="checked"';
@@ -104,19 +124,20 @@ $roleSelectHTML .= '</select>';
             $checked = 'checked="checked"';
           }
           $cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);
-        ?>
-          <input type="checkbox" name="<?php echo $cap_id; ?>" id="<?php echo $cap_id; ?>" value="<?php echo $capability['inner']; ?>" <?php echo $checked; ?> <?php echo $disabled; ?>/>
-        <?php
+?>
+          <input type="<?php echo $input_type;?>" name="<?php echo $cap_id; ?>" id="<?php echo $cap_id; ?>" value="<?php echo $capability['inner']; ?>" <?php echo $checked; ?> <?php echo $disabled; ?>/>
+<?php
+        if ($input_type=='checkbox') {
           if ($ure_caps_readable) {
-        ?>
-            <label for="<?php echo $cap_id; ?>" title="<?php echo $capability['inner']; ?>" ><?php echo $capability['human']; ?></label><br/>
-        <?php
+            $capInd = 'human';
           } else {
-        ?>
-            <label for="<?php echo $cap_id; ?>" title="<?php echo $capability['human']; ?>" ><?php echo $capability['inner']; ?></label><br/>
-        <?php
+            $capInd = 'inner';
           }
+        ?>
+          <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capInd]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
+<?php            
           $quantInCell++;
+        }
           if ($quantInCell >= $quantInColumn) {
             $quantInCell = 0;
             echo '</td>
