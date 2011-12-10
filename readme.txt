@@ -16,9 +16,9 @@ Add new roles and customize its capabilities according to your needs, from scrat
 Unnecessary self-made role can be deleted if there are no users whome such role is assigned.
 Role assigned every new created user by default may be changed too.
 Capabilities could be assigned on per user basis. You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
-To read more about 'User Role Editor' visit this link at <a href="http://www.shinephp.com/user-role-editor-wordpress-plugin/" >shinephp.com</a>
+To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
-Русская версия этой статьи доступна по адресу <a href="http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/" >ru.shinephp.com</a>
+Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
 
 
 == Installation ==
@@ -42,7 +42,7 @@ To update selected role globally for the Network you should turn on the "Apply t
 3. screenshot-3.png User Capabilities link
 4. screenshot-4.png User Capabilities Editor
 
-To read more about 'User Role Editor' visit this link at <a href="http://www.shinephp.com/user-role-editor-wordpress-plugin/" >shinephp.com</a>
+To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
 
 == Special Thanks to ==
