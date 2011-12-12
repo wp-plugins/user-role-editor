@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Role Editor 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-10 19:15+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir <vladimir@shinephp.com>\n"
+"Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../ure-role-edit.php:27
+#, fuzzy
+msgid "None"
+msgstr "תרום"
+
+#: ../ure-role-edit.php:92
+msgid " Name can not be empty!"
+msgstr "שם לא יכול להשאר ריק!"
+
+#: ../ure-role-edit.php:96
+msgid " Name must contain latin characters and digits only!"
+msgstr "שם חייב להכיל אותיות באנגלית וספרות בלבד!"
+
+#: ../ure-role-edit.php:101
+#: ../ure-role-edit.php:284
+msgid "Delete Role"
+msgstr "מחיקת סוג משתמש"
+
+#: ../ure-role-edit.php:103
+msgid "Change Default Role"
+msgstr "שנה את סוג משתמש המוגדר כברירת מחדל"
+
+#: ../ure-role-edit.php:105
+msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
+msgstr ""
+
+#: ../ure-role-edit.php:107
+msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
+msgstr "זהירות! הסרה של אפשרויות קריטיות עשוי לגרום לתוספים מסוים או קוד נסמך שלא לעבוד כשורה"
+
+#: ../ure-role-edit.php:109
+msgid "Please confirm to continue"
+msgstr "אשר את הפעולה והמשך"
+
+#: ../ure-role-edit.php:146
+#, php-format
+msgid "Role \"%s\" update: please confirm to continue"
+msgstr "סוג המשתמש  \"%s\" עודכן: אנא אשר והמשך"
+
+#: ../ure-role-edit.php:154
+msgid "Select Role and change its capabilities list"
+msgstr "בחר סוג משתמש ושנה את היכולות שלו"
+
+#: ../ure-role-edit.php:156
+msgid "Select Role:"
+msgstr "בחר סוג משתמש"
+
+#: ../ure-role-edit.php:166
+#: ../ure-user-edit.php:86
+msgid "Show capabilities in human readable form"
+msgstr "הראה יכולות משתמשים בשפה קריאה"
+
+#: ../ure-role-edit.php:175
+#: ../ure-user-edit.php:95
+msgid "Show deprecated capabilities"
+msgstr ""
+
+#: ../ure-role-edit.php:179
+msgid "If checked, then apply action to ALL sites of this Network"
+msgstr "אם סומן, החל פעולה על כל האתרים ברשת זאת"
+
+#: ../ure-role-edit.php:189
+msgid "Apply to All Sites"
+msgstr "החל לכל האתרים"
+
+#: ../ure-role-edit.php:247
+#: ../ure-user-edit.php:156
+msgid "Update"
+msgstr "עדכן"
+
+#: ../ure-role-edit.php:247
+#: ../ure-user-edit.php:156
+msgid "Save Changes"
+msgstr "שמור שינויים"
+
+#: ../ure-role-edit.php:248
+#: ../ure-user-edit.php:157
+msgid "Cancel"
+msgstr "ביטול"
+
+#: ../ure-role-edit.php:248
+#: ../ure-user-edit.php:157
+msgid "Cancel not saved changes"
+msgstr "בטל שינויים שלא נשמרו"
+
+#: ../ure-role-edit.php:251
+msgid "Reset"
+msgstr "איפוס"
+
+#: ../ure-role-edit.php:251
+msgid "Restore Roles from backup copy"
+msgstr "שחזר סוגי משתמשים מהעתק הגיבוי"
+
+#: ../ure-role-edit.php:261
+msgid "Add New Role"
+msgstr "הוסף סוג משתמש חדש"
+
+#: ../ure-role-edit.php:263
+msgid "Name: "
+msgstr ""
+
+#: ../ure-role-edit.php:267
+msgid "Make copy of: "
+msgstr ""
+
+#: ../ure-role-edit.php:270
+#: ../ure-role-edit.php:299
+msgid "Add"
+msgstr "הוסף"
+
+#: ../ure-role-edit.php:270
+msgid "Add New User Role"
+msgstr "הוסף סוג משתמש חדש"
+
+#: ../ure-role-edit.php:274
+msgid "Default Role for New User"
+msgstr "סוג משתמש ברירת מחדל למשתמשים חדשים"
+
+#: ../ure-role-edit.php:279
+msgid "Change"
+msgstr "שנה"
+
+#: ../ure-role-edit.php:279
+msgid "Set as Default User Role"
+msgstr "קבע כסוג משתמש ברירת מחדל"
+
+#: ../ure-role-edit.php:289
+msgid "Delete"
+msgstr "למחוק"
+
+#: ../ure-role-edit.php:289
+msgid "Delete User Role"
+msgstr "מחק סוג משתמש"
+
+#: ../ure-role-edit.php:294
+#: ../ure-role-edit.php:299
+msgid "Add New Capability"
+msgstr "הוסף יכולת חדשה"
+
+#: ../ure-role-edit.php:304
+msgid "Remove Capability"
+msgstr "הסר יכולת"
+
+#: ../ure-role-edit.php:309
+msgid "Remove"
+msgstr "הסר"
+
+#: ../ure-role-edit.php:309
+msgid "Remove User Capability"
+msgstr "הסר יכולת משתמש"
+
+#: ../ure-user-edit.php:67
+#, php-format
+msgid "User \"%s\" update: please confirm to continue"
+msgstr "עדכון המשתמש \"%s\" : אנא אשר והמשך"
+
+#: ../ure-user-edit.php:74
+msgid "Change capabilities for user"
+msgstr "שינוי יכולות המשתמש"
+
+#: ../ure-user-edit.php:77
+msgid "Role:"
+msgstr "סוג משתמש"
+
+#: ../ure-user-edit.php:99
+msgid "Add capabilities to this user:"
+msgstr "הוסף יכולות למשתמש זה:"
+
+#: ../ure-options.php:59
+#, fuzzy
+msgid "User Roles are restored from the backup data. "
+msgstr "יכולות סוגי המשתמשים שוחזרו מקובץ הגיבוי"
+
+#: ../ure-options.php:125
+msgid "Error: "
+msgstr ""
+
+#: ../ure-options.php:125
+#: ../ure-options.php:143
+msgid "Role"
+msgstr "סוג משתמש:"
+
+#: ../ure-options.php:125
+msgid "does not exist"
+msgstr ""
+
+#: ../ure-options.php:143
+msgid "is updated successfully"
+msgstr "עודכן בהצלחה"
+
+#: ../ure-options.php:152
+msgid "User"
+msgstr "משתמש"
+
+#: ../ure-options.php:152
+msgid "capabilities are updated successfully"
+msgstr "היכולות עודכנו בהצלחה"
+
+#: ../ure-options.php:192
+msgid "About this Plugin:"
+msgstr "אודות תוסף זה:"
+
+#: ../ure-options.php:193
+msgid "Author's website"
+msgstr "אתר היוצר"
+
+#: ../ure-options.php:194
+msgid "Plugin webpage"
+msgstr "דף התוסף"
+
+#: ../ure-options.php:195
+#: ../user-role-editor.php:219
+msgid "Changelog"
+msgstr "יומן שינויים"
+
+#: ../ure-options.php:196
+msgid "FAQ"
+msgstr "שאלות נפוצות"
+
+#: ../ure-options.php:210
+msgid "Greetings:"
+msgstr "ברכות:"
+
+#: ../ure-options.php:211
+msgid "It's me, the author"
+msgstr "זה אני, יוצר התוסף"
+
+#: ../ure-options.php:212
+msgid "For the help with Belorussian translation"
+msgstr "לעזרה עם תרגום לבלרוסית"
+
+#: ../ure-options.php:213
+msgid "For the help with Brasilian translation"
+msgstr "לעזרה עם תרגום לברזילאית"
+
+#: ../ure-options.php:214
+msgid "For the help with Chinese translation"
+msgstr "לעזרה עם תרגום לסינית"
+
+#: ../ure-options.php:215
+msgid "For the help with Dutch translation"
+msgstr "לעזרה עם תרגום להולנדית"
+
+#: ../ure-options.php:216
+msgid "For the help with Finnish translation"
+msgstr "לעזרה עם תרגום לפינית"
+
+#: ../ure-options.php:217
+msgid "For the help with French translation"
+msgstr "לעזרה עם תרגום לצרפתית"
+
+#: ../ure-options.php:218
+msgid "For the help with German translation"
+msgstr "לעזרה עם תרגום לגרמנית"
+
+#: ../ure-options.php:219
+msgid "For the help with Hungarian translation"
+msgstr "לעזרה עם תרגום להונגרית"
+
+#: ../ure-options.php:220
+#: ../ure-options.php:221
+#: ../ure-options.php:222
+#: ../ure-options.php:223
+msgid "For the help with Italian translation"
+msgstr "לעזרה עם תרגום לאילטקית"
+
+#: ../ure-options.php:224
+msgid "For the help with Japanese translation"
+msgstr "לעזרה עם תרגום ליפנית"
+
+#: ../ure-options.php:225
+msgid "For the help with Persian translation"
+msgstr "לעזרה עם תרגום לפרסית"
+
+#: ../ure-options.php:226
+msgid "For the help with Polish translation"
+msgstr "לעזרה עם תרגום לפולנית"
+
+#: ../ure-options.php:227
+msgid "For the help with Spanish translation"
+msgstr "לעזרה עם תרגום לספרדית"
+
+#: ../ure-options.php:228
+msgid "For the help with Swedish translation"
+msgstr "לעזרה עם תרגום לשוודית"
+
+#: ../ure-options.php:229
+#: ../ure-options.php:230
+#: ../ure-options.php:231
+msgid "For the help with Turkish translation"
+msgstr "לעזרה עם תרגום לטורקית"
+
+#: ../ure-options.php:233
+msgid "For the code to hide administrator role"
+msgstr "עבור קוד כדי להחביא את סוג משתמש מנהל"
+
+#: ../ure-options.php:234
+msgid "For the code enhancement suggestion"
+msgstr ""
+
+#: ../ure-options.php:236
+msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
+msgstr "רוצה לראות את השם שלך עם קישור אל האתר שלך כאן? אתה מוזמן לעזור עם התרגום ועם רעיונות ושיפורים חדשים"
+
+#: ../user-role-editor.php:35
+msgid "User Role Editor requires WordPress 3.0 or newer."
+msgstr "התוסף User Role Editor מתאים לאתרי וורדפרס בגרסה 3.0 ומעלה"
+
+#: ../user-role-editor.php:35
+#: ../user-role-editor.php:40
+msgid "Please update!"
+msgstr "אנא עדכן!"
+
+#: ../user-role-editor.php:40
+msgid "User Role Editor requires PHP 5.0 or newer."
+msgstr "התוסף User Role Editor מחייב אחסון עם PHP 5.0 ומעלה"
+
+#: ../user-role-editor.php:65
+msgid "Only"
+msgstr "רק"
+
+#: ../user-role-editor.php:65
+msgid "is allowed to use"
+msgstr "מותר לשימוש"
+
+#: ../user-role-editor.php:71
+#: ../user-role-editor.php:233
+msgid "User Role Editor"
+msgstr "User Role Editor"
+
+#: ../user-role-editor.php:209
+msgid "Settings"
+msgstr "הגדרות"
+
+#: ../user-role-editor.php:258
+msgid "Capabilities"
+msgstr "יכולות"
+
+#: ../ure-lib.php:45
+msgid "Error is occur. Please check the log file."
+msgstr "ארעה שגיאה, אנא בדוק את קובץ היומן."
+
+#: ../ure-lib.php:153
+msgid "Database operation error. Check log file."
+msgstr "שגיאת מסד נתונים, אנא בדוק את קובץ היומן."
+
+#: ../ure-lib.php:186
+msgid "No backup data. It is created automatically before the first role data update."
+msgstr "אין קובץ גיבוי. מידע זה נוצר באופן אוטומטי לפני השינוי הראשון שאתם עושים בהגדרות סוגי המשתמשים."
+
+#: ../ure-lib.php:224
+msgid "Backup record is created for the current role capabilities"
+msgstr "גיבוי נוצר עבור יכולות סוגי המשתמשים הנוכחיים"
+
+#: ../ure-lib.php:300
+msgid "Error: Role name must contain latin characters and digits only!"
+msgstr "שגיאה! השם של סוג המשתמש חייב להיות מורכב מאותיות באנגלית וספרות בלבד"
+
+#: ../ure-lib.php:307
+#, php-format
+msgid "Role %s exists already"
+msgstr "סוג המשתמש %s כבר קיים"
+
+#: ../ure-lib.php:320
+msgid "Error is encountered during new role create operation"
+msgstr "ארעה שגיאה בעת יצירת סוג המשתמש החדש"
+
+#: ../ure-lib.php:322
+#, php-format
+msgid "Role %s is created successfully"
+msgstr "סוג המשתמש %s נוצר בהצלחה"
+
+#: ../ure-lib.php:406
+msgid "Error encountered during role delete operation"
+msgstr "ארעה שגיאה במהלך נסיון המחיקה של סוג המשתמש"
+
+#: ../ure-lib.php:408
+#, php-format
+msgid "Role %s is deleted successfully"
+msgstr "סוג המשתמש %s נמחק בהצלחה"
+
+#: ../ure-lib.php:426
+msgid "Error encountered during default role change operation"
+msgstr "ארעה שגיאה בעת הנסיון לשנות את סוג משתמש ברירת מחדל"
+
+#: ../ure-lib.php:432
+#, php-format
+msgid "Default role for new users is set to %s successfully"
+msgstr "סוג המשתמש %s נקבע כברירת מחדל"
+
+#: ../ure-lib.php:460
+msgid "Editor"
+msgstr "עורך"
+
+#: ../ure-lib.php:461
+msgid "Author"
+msgstr "כותב"
+
+#: ../ure-lib.php:462
+msgid "Contributor"
+msgstr "תורם"
+
+#: ../ure-lib.php:463
+msgid "Subscriber"
+msgstr "מנוי"
+
+#: ../ure-lib.php:465
+msgid "Switch themes"
+msgstr "החלפת תבניות"
+
+#: ../ure-lib.php:466
+msgid "Edit themes"
+msgstr "עריכת תבניות"
+
+#: ../ure-lib.php:467
+msgid "Activate plugins"
+msgstr "הפעלת תוספים"
+
+#: ../ure-lib.php:468
+msgid "Edit plugins"
+msgstr "עריכת תוספים"
+
+#: ../ure-lib.php:469
+msgid "Edit users"
+msgstr "עריכת משתמשים"
+
+#: ../ure-lib.php:470
+msgid "Edit files"
+msgstr "עריכת קבצים"
+
+#: ../ure-lib.php:471
+msgid "Manage options"
+msgstr "ניהול אפשרויות אתר"
+
+#: ../ure-lib.php:472
+msgid "Moderate comments"
+msgstr "ניהול תגובות"
+
+#: ../ure-lib.php:473
+msgid "Manage categories"
+msgstr "ניהול קטגוריות"
+
+#: ../ure-lib.php:474
+msgid "Manage links"
+msgstr "ניהול קישורים"
+
+#: ../ure-lib.php:475
+msgid "Upload files"
+msgstr "העלאת קבצים"
+
+#: ../ure-lib.php:476
+msgid "Import"
+msgstr "יבוא"
+
+#: ../ure-lib.php:477
+msgid "Unfiltered html"
+msgstr "עריכת HTML"
+
+#: ../ure-lib.php:478
+msgid "Edit posts"
+msgstr "עריכת פוסטים"
+
+#: ../ure-lib.php:479
+msgid "Edit others posts"
+msgstr "עריכת פוסטים של אחרים"
+
+#: ../ure-lib.php:480
+msgid "Edit published posts"
+msgstr "עריכת פוסטים שפורסמו"
+
+#: ../ure-lib.php:481
+msgid "Publish posts"
+msgstr "פוסטים שפורסמו"
+
+#: ../ure-lib.php:482
+msgid "Edit pages"
+msgstr "עריכת עמודים"
+
+#: ../ure-lib.php:483
+msgid "Read"
+msgstr "קורא"
+
+#: ../ure-lib.php:484
+msgid "Level 10"
+msgstr "דרגה 10"
+
+#: ../ure-lib.php:485
+msgid "Level 9"
+msgstr "דרגה 9"
+
+#: ../ure-lib.php:486
+msgid "Level 8"
+msgstr "דרגה 8"
+
+#: ../ure-lib.php:487
+msgid "Level 7"
+msgstr "דרגה 7"
+
+#: ../ure-lib.php:488
+msgid "Level 6"
+msgstr "דרגה 6"
+
+#: ../ure-lib.php:489
+msgid "Level 5"
+msgstr "דרגה 5"
+
+#: ../ure-lib.php:490
+msgid "Level 4"
+msgstr "דרגה 4"
+
+#: ../ure-lib.php:491
+msgid "Level 3"
+msgstr "דרגה 3"
+
+#: ../ure-lib.php:492
+msgid "Level 2"
+msgstr "דרגה 2"
+
+#: ../ure-lib.php:493
+msgid "Level 1"
+msgstr "דרגה 1"
+
+#: ../ure-lib.php:494
+msgid "Level 0"
+msgstr "דרגה 0"
+
+#: ../ure-lib.php:495
+msgid "Edit others pages"
+msgstr "עריכת דפים של אחרים"
+
+#: ../ure-lib.php:496
+msgid "Edit published pages"
+msgstr "עריכת דפים שפורסמו"
+
+#: ../ure-lib.php:497
+msgid "Publish pages"
+msgstr "פרסום דפים"
+
+#: ../ure-lib.php:498
+msgid "Delete pages"
+msgstr "מחיקת דפים"
+
+#: ../ure-lib.php:499
+msgid "Delete others pages"
+msgstr "מחיקת דפים של אחרים"
+
+#: ../ure-lib.php:500
+msgid "Delete published pages"
+msgstr "מחיקת דפים שפורסמו"
+
+#: ../ure-lib.php:501
+msgid "Delete posts"
+msgstr "מחיקת פוסטים"
+
+#: ../ure-lib.php:502
+msgid "Delete others posts"
+msgstr "מחיקת פוסטים של אחרים"
+
+#: ../ure-lib.php:503
+msgid "Delete published posts"
+msgstr "מחיקת פוסטים שפורסמו"
+
+#: ../ure-lib.php:504
+msgid "Delete private posts"
+msgstr "מחיקת פוסטים פרטיים"
+
+#: ../ure-lib.php:505
+msgid "Edit private posts"
+msgstr "עריכת פוסטים פרטיים"
+
+#: ../ure-lib.php:506
+msgid "Read private posts"
+msgstr "קריאת פוסטים פרטיים"
+
+#: ../ure-lib.php:507
+msgid "Delete private pages"
+msgstr "מחיקת עמודים פרטיים"
+
+#: ../ure-lib.php:508
+msgid "Edit private pages"
+msgstr "מחיקת עמודים פרטיים"
+
+#: ../ure-lib.php:509
+msgid "Read private pages"
+msgstr "קריאת עמודים פרטיים"
+
+#: ../ure-lib.php:510
+msgid "Delete users"
+msgstr "מחיקת משתמשים"
+
+#: ../ure-lib.php:511
+msgid "Create users"
+msgstr "יצירת משתמשים"
+
+#: ../ure-lib.php:512
+msgid "Unfiltered upload"
+msgstr "העלאת קבצים חופשית"
+
+#: ../ure-lib.php:513
+msgid "Edit dashboard"
+msgstr "שינוי לוח הבקרה"
+
+#: ../ure-lib.php:514
+msgid "Update plugins"
+msgstr "עדכון תוספים"
+
+#: ../ure-lib.php:515
+msgid "Delete plugins"
+msgstr "מחיקת תוספים"
+
+#: ../ure-lib.php:516
+msgid "Install plugins"
+msgstr "התקנת תוספים"
+
+#: ../ure-lib.php:517
+msgid "Update themes"
+msgstr "עדכון תבניות"
+
+#: ../ure-lib.php:518
+msgid "Install themes"
+msgstr "התקנת תבניות חדשות"
+
+#: ../ure-lib.php:519
+msgid "Update core"
+msgstr "עדכון וורדפרס"
+
+#: ../ure-lib.php:520
+msgid "List users"
+msgstr "בצפייה במשתמשים"
+
+#: ../ure-lib.php:521
+msgid "Remove users"
+msgstr "הסרת משתמשים"
+
+#: ../ure-lib.php:522
+msgid "Add users"
+msgstr "הוספת משתמשים"
+
+#: ../ure-lib.php:523
+msgid "Promote users"
+msgstr "שינוי משתמשים"
+
+#: ../ure-lib.php:524
+msgid "Edit theme options"
+msgstr "עריכת אפשרויות התבנית"
+
+#: ../ure-lib.php:525
+msgid "Delete themes"
+msgstr "מחיקת תבניות"
+
+#: ../ure-lib.php:526
+msgid "Export"
+msgstr "ייצוא תוכן"
+
+#: ../ure-lib.php:609
+msgid "Error: Capability name must contain latin characters and digits only!"
+msgstr "שגיאה! שם יכולת חייב להכיל אותיות באנגלית וספרות בלבד"
+
+#: ../ure-lib.php:621
+#, php-format
+msgid "Capability %s is added successfully"
+msgstr "היכולת %s נוספה בהצלחה"
+
+#: ../ure-lib.php:623
+#, php-format
+msgid "Capability %s exists already"
+msgstr "כבר קיימת יכולת בשם %s"
+
+#: ../ure-lib.php:772
+#, php-format
+msgid "Error! You do not have permission to delete this capability: %s!"
+msgstr "שגיאה! אין לך הרשאה למחוק את היכולת %s"
+
+#: ../ure-lib.php:794
+#, php-format
+msgid "Capability %s is removed successfully"
+msgstr "היכולת %s הוסרה בהצלחה"
+
+#: ../ure-lib.php:825
+msgid "Help"
+msgstr ""
+
