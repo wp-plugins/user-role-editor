@@ -23,7 +23,7 @@ if (!isset($ure_currentRole) || !$ure_currentRole) {
 }
 
 $roleDefaultHTML = '<select id="default_user_role" name="default_user_role" width="200" style="width: 200px">';
-$roleToCopyHTML = '<select id="copy_from_user_role" name="copy_from_user_role" width="200" style="width: 200px">
+$roleToCopyHTML = '<select id="user_role_copy_from" name="user_role_copy_from" width="200" style="width: 200px">
   <option value="none" selected="selected">'.__('None', 'ure').'</option>';
 $roleSelectHTML = '<select id="user_role" name="user_role" onchange="ure_Actions(\'role-change\', this.value);">';
 foreach ($ure_roles as $key=>$value) {
@@ -129,8 +129,8 @@ if (is_multisite()) {
         } else {
           url = url +'&user_role='+ escape(value);
           if (action=='addnewrole') {
-            el = document.getElementById('copy_from_user_role');
-            url = url +'&copy_from_user_role='+ el.value;
+            el = document.getElementById('user_role_copy_from');
+            url = url +'&user_role_copy_from='+ el.value;
           }
         }
       }

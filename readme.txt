@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 3.3
+Stable tag: 3.3.1
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -80,6 +80,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.3.1 =
+* 12.12.2011
+* Compatibility with Internet Explorer fix: It automatically replaced '&copy' in '&copy_from_user_role' URL parameter inside JavaScript code to copyright sign.So I should use other name for this parameter. Thanks to Michael Wiekenberg for the help with isolating this issue.
+
 = 3.3 =
 * 10.12.2011
 * New role can be created as a copy of other existing one.
