@@ -308,9 +308,9 @@ function ure_newRoleCreate(&$ure_currentRole) {
       }
       // add new role to the roles array
       $ure_currentRole = strtolower($user_role);
-      $copy_from_user_role = isset($_GET['copy_from_user_role']) ? $_GET['copy_from_user_role'] : false;
-      if (!empty($copy_from_user_role) && $copy_from_user_role!='none' && $wp_roles->is_role($copy_from_user_role)) {
-        $role = $wp_roles->get_role($copy_from_user_role);
+      $user_role_copy_from = isset($_GET['user_role_copy_from']) ? $_GET['user_role_copy_from'] : false;
+      if (!empty($user_role_copy_from) && $user_role_copy_from!='none' && $wp_roles->is_role($user_role_copy_from)) {
+        $role = $wp_roles->get_role($user_role_copy_from);
         $capabilities = $role->capabilities;
       } else {
         $capabilities = array('read'=>1, 'level_0'=>1);
