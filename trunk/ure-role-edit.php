@@ -14,7 +14,7 @@ if (!defined('URE_PLUGIN_URL')) {
 ure_makeRolesBackup();
 
 if (!isset($ure_currentRole) || !$ure_currentRole) {
-  if (isset($_REQUEST['user_role']) && $_REQUEST['user_role']) {
+  if (isset($_REQUEST['user_role']) && $_REQUEST['user_role'] && isset($ure_roles[$_REQUEST['user_role']])) {
     $ure_currentRole = $_REQUEST['user_role'];
   } else {
     $ure_currentRole = $ure_rolesId[count($ure_rolesId) - 1];
@@ -134,7 +134,7 @@ if (is_multisite()) {
           }
         }
       }
-      document.location = url;
+      document.location.href = url;
     } else {
       document.getElementById('ure-form').submit();
     }
