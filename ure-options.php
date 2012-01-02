@@ -188,7 +188,7 @@ ure_showMessage($mess);
 </script>
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
 					<div class="inner-sidebar" >
-						<div id="side-sortables" class="meta-box-sortabless ui-sortable" style="position:relative;">
+						<div id="side-sortables" class="meta-box-sortables ui-sortable" style="position:relative;">
 									<?php ure_displayBoxStart(__('About this Plugin:', 'ure')); ?>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/"><?php _e('Plugin webpage', 'ure'); ?></a>

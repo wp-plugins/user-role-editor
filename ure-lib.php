@@ -138,11 +138,13 @@ function ure_getUserRoles() {
   } 
   
   $ure_roles = $wp_roles->roles;
-  asort($ure_roles);
+  if (is_array($ure_roles)) {
+    asort($ure_roles);
+  }
   
   return $ure_roles;
 }
-// end of getUserRoles()
+// end of ure_getUserRoles()
 
 
 // restores User Roles from the backup record
@@ -296,8 +298,9 @@ function ure_newRoleCreate(&$ure_currentRole) {
   if (isset($_GET['user_role']) && $_GET['user_role']) {
     $user_role = utf8_decode(urldecode($_GET['user_role']));
     // sanitize user input for security
-    if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*/', $user_role)) {
-      return 'Error! '.__('Error: Role name must contain latin characters and digits only!', 'ure');;
+    $valid_name = preg_match('/^[A-Za-z_][A-Za-z0-9_]*/', $user_role, $match);
+    if (!$valid_name || ($valid_name && ($match[0]!=$user_role))) { // some non-alphanumeric charactes found!
+      return __('Error: Role name must contain latin characters and digits only!', 'ure');
     }  
     if ($user_role) {
       if (!isset($wp_roles)) {
