@@ -3,8 +3,8 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 3.3.2
+Tested up to: 3.3.1
+Stable tag: 3.3.3
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -54,14 +54,15 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 = Translations =
 * Russian: [Vladimir Garagulya](http://shinephp.com)
+* Spanish: [Dario Ferrer](http://www.darioferrer.com)
+* Swedish: [Christer Dahlbacka](www.startlinks.eu), [Andréas Lundgren](http://adevade.com/)
 * -----------------------------------------------------
-* translations below are included to the package, but all of them are outdated and every file needs to be updated.
+* translations below are included to the package, but all of them are outdated and every file needs to be updated. You are welcome!
 * French: [Whiler](http://blogs.wittwer.fr/whiler)
 * Finnish: [Lauri Merisaari](http://www.viidakkorumpu.fi)
 * Japanese: Kaz, [Technolog.jp](http://technolog.jp)
 * Hebrew: [Sagive](http://www.sagive.co.il)
 * Italian: [Umberto Sartori](http://venezialog.net), [Talksina](http://www.iadkiller.org), [Alessandro Mariani](http://technodin.org), [Tristano Ajmone ](http://www.zenfactor.org)
-* Spanish: [Dario Ferrer](http://www.darioferrer.com)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im), [Sadri Ercan](http://www.faydaliweb.com), [Can KAYA](http://www.kartaca.com)
 * Belorussian: [Marsis G.](http://pc.de) - needs update
 * Brasilian Portuguese: [Rafael Galdencio](http://www.arquiteturailustrada.com.br) - needs update
@@ -71,7 +72,6 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Hungarian: [István](http://www.blacksnail.hu) - needs update
 * Persian: [Good Life](http://good-life.ir) - needs update
 * Polish: [TagSite](http://www.tagsite.eu) - needs update
-* Swedish: [Christer Dahlbacka](www.startlinks.eu) - needs update
 
 Dear plugin User!
 If you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, plugin settings page and in this readme.txt file.
@@ -80,6 +80,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.3.2 =
+* 11.01.2012
+* Spanish (Dario) and Swedish (Andréas) translations update.
+
 = 3.3.2 =
 * 02.01.2012
 * Enhance server side validation for user input of new role name, minor bug fixes.
