@@ -82,7 +82,7 @@ function ure_is_admin( $user_id = false ) {
     if (empty($current_user) && function_exists('get_currentuserinfo')) {
       get_currentuserinfo();
     }
-		$user_id = ! empty($current_user) ? $current_user->id : 0;
+		$user_id = ! empty($current_user) ? $current_user->ID : 0;
 	}
 
 	if ( ! $user_id )
@@ -179,7 +179,7 @@ function restoreUserRoles() {
     $reload_link = remove_query_arg('action', $reload_link);
     $reload_link = add_query_arg('action', 'roles_restore_note', $reload_link);
 ?>    
-<script language="javascript" type="text/javascript" >
+<script type="text/javascript" >
   document.location = '<?php echo $reload_link; ?>';
 </script>  
 <?php    
@@ -813,11 +813,15 @@ function capabilityHelpLink($capability) {
   switch ($capability) {
     case 'activate_plugins':
       $url = 'http://www.shinephp.com/activate_plugins-wordpress-capability/';
-      $post_name = 'activate_plugins WordPress capability';
+      $post_name = 'activate_plugins WordPress user capability';
       break;
     case 'edit_dashboard':
       $url = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
-      $post_name = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
+      $post_name = 'edit_dashboard WordPress user capability';
+      break;    
+    case 'moderate_comments':
+      $url = 'http://www.shinephp.com/moderate_comments-wordpress-user-capability/';
+      $post_name = 'moderate_comments WordPress user capability';
       break;    
     default:
       $url = '';
@@ -825,7 +829,7 @@ function capabilityHelpLink($capability) {
   }
   // end of switch
   if (!empty($url)) {
-    $link = '<a href="'.$url.'" title="'.$post_name.'" target="new"><img src="'.URE_PLUGIN_URL.'/images/help.png" title="'.__('Help','ure').'" alt="'.__('Help','ure').'" /></a>';
+    $link = '<a href="'.$url.'" title="read about '.$capability.' user capability" target="new"><img src="'.URE_PLUGIN_URL.'/images/help.png" alt="'.__('Help','ure').'" /></a>';
   } else {
     $link = '';
   }
