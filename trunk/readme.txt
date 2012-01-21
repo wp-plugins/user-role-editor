@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.3.3
+Stable tag: 3.4
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -80,7 +80,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
-= 3.3.2 =
+= 3.3.4 =
+* 21.01.2012
+* You can see/edit "Administrator" role now. Insert this line of code "define('URE_SHOW_ADMIN_ROLE', 1);" into your wp-config.php file and login with administrator account for that.
+* If for some reason your Administrator role missed some capabilities added by plugins or themes, you can fix that.
+
+= 3.3.3 =
 * 11.01.2012
 * Spanish (Dario) and Swedish (Andréas) translations update.
 

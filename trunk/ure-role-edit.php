@@ -22,6 +22,8 @@ if (!isset($ure_currentRole) || !$ure_currentRole) {
   $ure_currentRoleName = $ure_roles[$ure_currentRole]['name'];
 }
 
+$youAreAdmin = defined('URE_SHOW_ADMIN_ROLE') && ure_is_admin();
+
 $roleDefaultHTML = '<select id="default_user_role" name="default_user_role" width="200" style="width: 200px">';
 $roleToCopyHTML = '<select id="user_role_copy_from" name="user_role_copy_from" width="200" style="width: 200px">
   <option value="none" selected="selected">'.__('None', 'ure').'</option>';
@@ -29,7 +31,7 @@ $roleSelectHTML = '<select id="user_role" name="user_role" onchange="ure_Actions
 foreach ($ure_roles as $key=>$value) {
   $selected1 = ure_optionSelected($key, $ure_currentRole);
   $selected2 = ure_optionSelected($key, $defaultRole);
-  if ($key!='administrator') {
+  if ($youAreAdmin || $key!='administrator') {
     $roleSelectHTML .= '<option value="'.$key.'" '.$selected1.'>'.__($value['name'], 'ure').'</option>';    
     $roleDefaultHTML .= '<option value="'.$key.'" '.$selected2.'>'.__($value['name'], 'ure').'</option>';
     $roleToCopyHTML .= '<option value="'.$key.'" >'.__($value['name'], 'ure').'</option>';
