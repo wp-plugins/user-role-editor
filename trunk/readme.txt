@@ -83,7 +83,7 @@ Share with me new ideas about plugin further development and link to your site w
 = 3.4 =
 * 21.01.2012
 * You can see/edit "Administrator" role now. Insert this line of code "define('URE_SHOW_ADMIN_ROLE', 1);" into your wp-config.php file and login with administrator account for that.
-* If for some reason your Administrator role missed some capabilities added by plugins or themes, you can fix that.
+  If for some reason your Administrator role missed some capabilities added by plugins or themes, you can fix that. But be careful with changing "Administrator" role, do not turn off accidentally some critical capabilities to not block your admin users.
 
 = 3.3.3 =
 * 11.01.2012
