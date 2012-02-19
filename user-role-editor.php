@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.4
+Version: 3.5
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -228,7 +228,11 @@ function ure_settings_menu() {
     if (!is_multisite()) {
       $keyCapability = 'edit_users';
     } else {
-      $keyCapability = 'manage_network_users';
+      if (defined('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE') && URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE==1) {
+        $keyCapability = 'add_users';
+      } else {
+        $keyCapability = 'manage_network_users';
+      }
     }
     $ure_page = add_submenu_page('users.php', __('User Role Editor'), __('User Role Editor'), $keyCapability, basename(__FILE__), 'ure_optionsPage');
     add_action("admin_print_styles-$ure_page", 'ure_adminCssAction');
@@ -294,7 +298,23 @@ if (function_exists('is_multisite') && is_multisite()) {
 
 if (is_admin()) {
   // activation action
-  register_activation_hook(__FILE__, "ure_install");
+  if ( is_multisite() ) {
+    global $current_user;
+    if (empty($current_user) && function_exists('get_currentuserinfo')) {
+      get_currentuserinfo();
+    }
+    if (!empty($current_user)) {
+      $super_admins = get_super_admins();
+      $allow_activation = is_array( $super_admins ) && in_array( $current_user->user_login, $super_admins );    
+    } else {
+      $allow_activation = false;
+    }
+  } else {
+    $allow_activation = true;
+  }
+  if ($allow_activation) {
+    register_activation_hook(__FILE__, "ure_install");
+  }
   add_action('admin_init', 'ure_init');
   // add a Settings link in the installed plugins page
   add_filter('plugin_action_links', 'ure_plugin_action_links', 10, 2);
