@@ -257,32 +257,74 @@ function ure_saveRolesToDb() {
 // end of saveRolesToDb()
 
 
+function ure_direct_site_roles_update($blogIds) {
+  global $wpdb, $table_prefix, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole, $ure_currentRoleName;
+
+  if (!isset($ure_roles[$ure_currentRole])) {
+    $ure_roles[$ure_currentRole]['name'] = $ure_currentRoleName;
+  }
+  $ure_roles[$ure_currentRole]['capabilities'] = $ure_capabilitiesToSave;
+  $serialized_roles = serialize($ure_roles);  
+  foreach ($blogIds as $blog_id) {
+    $prefix = $wpdb->get_blog_prefix($blog_id);
+    $options_table_name = $prefix.'options';
+    $option_name = $prefix.'user_roles';
+    $query = "update $options_table_name
+                set option_value='$serialized_roles'
+                where option_name='$option_name'
+                limit 1";
+    $record = $wpdb->query($query);
+    if ($wpdb->last_error) {
+      ure_logEvent($wpdb->last_error, true);
+      return false;
+    }
+  }
+  
+}
+// end of ure_direct_site_roles_update()
+
+
 function ure_updateRoles() {
   global $wpdb, $ure_apply_to_all, $ure_roles, $ure_toldAboutBackup;
-
+  
   $ure_toldAboutBackup = false;
-  if (is_multisite() && $ure_apply_to_all) {  // update Role for the all blogs/sites in the network
+  if (is_multisite() && is_super_admin() && $ure_apply_to_all) {  // update Role for the all blogs/sites in the network (permitted to superadmin only)
+    
+    if (defined('WP_DEBUG') && WP_DEBUG==1) {
+     $time_shot = microtime();
+    }
+    
     $old_blog = $wpdb->blogid;
     // Get all blog ids
     $blogIds = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
-    foreach ($blogIds as $blog_id) {
-      switch_to_blog($blog_id);
+    if (defined('URE_MULTISITE_DIRECT_UPDATE') && URE_MULTISITE_DIRECT_UPDATE == 1) {
+      ure_direct_site_roles_update($blogIds);
+    } else {
+      foreach ($blogIds as $blog_id) {
+        switch_to_blog($blog_id);
+        $ure_roles = ure_getUserRoles();
+        if (!$ure_roles) {
+          return false;
+        }
+        if (!ure_saveRolesToDb()) {
+          return false;
+        }
+      }
+      switch_to_blog($old_blog);
       $ure_roles = ure_getUserRoles();
-      if (!$ure_roles) {
-        return false;
-      }
-      if (!ure_saveRolesToDb()) {
-        return false;
-      }
+            
     }
-    switch_to_blog($old_blog);
-    $ure_roles = ure_getUserRoles();
+  
+    if (defined('WP_DEBUG') && WP_DEBUG==1) {
+      echo '<div class="updated fade below-h2">Roles updated for '.(microtime()-$time_shot).' milliseconds</div>';
+    }
+    
   } else {
     if (!ure_saveRolesToDb()) {
       return false;
     }
   }
-
+      
   return true;
 }
 // end of ure_updateRoles()
@@ -813,19 +855,31 @@ function capabilityHelpLink($capability) {
   switch ($capability) {
     case 'activate_plugins':
       $url = 'http://www.shinephp.com/activate_plugins-wordpress-capability/';
-      $post_name = 'activate_plugins WordPress user capability';
+      break;
+    case 'add_users':
+      $url = 'http://www.shinephp.com/add_users-wordpress-user-capability/';
+      break;        
+    case 'create_users':
+      $url = 'http://www.shinephp.com/create_users-wordpress-user-capability/';
+      break;
+    case 'delete_others_pages':
+    case 'delete_others_posts':
+    case 'delete_pages':
+    case 'delete_posts':
+    case 'delete_private_pages':
+    case 'delete_private_posts':
+    case 'delete_published_pages':
+    case 'delete_published_posts':  
+      $url = 'http://www.shinephp.com/delete-posts-and-pages-wordpress-user-capabilities-set/';
       break;
     case 'edit_dashboard':
       $url = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
-      $post_name = 'edit_dashboard WordPress user capability';
       break;    
     case 'moderate_comments':
       $url = 'http://www.shinephp.com/moderate_comments-wordpress-user-capability/';
-      $post_name = 'moderate_comments WordPress user capability';
       break;    
     default:
       $url = '';
-      $post_name = '';
   }
   // end of switch
   if (!empty($url)) {

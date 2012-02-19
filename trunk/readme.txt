@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.4
+Stable tag: 3.5
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -53,6 +53,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * [FullThrottle](http://fullthrottledevelopment.com/how-to-hide-the-adminstrator-on-the-wordpress-users-screen) - For the code to hide administrator role at admin backend.
 
 = Translations =
+* Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
 * Russian: [Vladimir Garagulya](http://shinephp.com)
 * Spanish: [Dario Ferrer](http://www.darioferrer.com)
 * Swedish: [Christer Dahlbacka](www.startlinks.eu), [Andréas Lundgren](http://adevade.com/)
@@ -70,7 +71,6 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Dutch: [Rémi Bruggeman](http://www.remisan.be) - needs update
 * German: [Peter](http://www.red-socks-reinbek.de) - needs update
 * Hungarian: [István](http://www.blacksnail.hu) - needs update
-* Persian: [Good Life](http://good-life.ir) - needs update
 * Polish: [TagSite](http://www.tagsite.eu) - needs update
 
 Dear plugin User!
@@ -80,6 +80,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.5 =
+* 19.02.2012
+* User Role Editor is could be available now for single site administrators (Administrator role) under multi-site environment. You should define URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE constant in your blog wp-config.php file for that. Insert this line "define('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE', 1);" there is you decide to give single site admin such opportunity.
+* One of "User Role Editor" users with 600+ sites in the multi-site network reported that URE doesn't update roles for all sites, but stalls somewhere in the middle. Other network update method is realized as alternative. Due to my tests it works approximately 30 times faster. If you met the same problem, try it. It will be great if you share your experience with me. In order select alternative method of all sites update add this line to you blog wp-config.php file "define('URE_MULTISITE_DIRECT_UPDATE', 1);". But be careful. It's recommended to make 1st try on the backup copy, not on a live site.
+* Persian translation is updated. Thanks to [Parsa](http://parsa.ws).
+
 = 3.4 =
 * 21.01.2012
 * You can see/edit "Administrator" role now. Insert this line of code "define('URE_SHOW_ADMIN_ROLE', 1);" into your wp-config.php file and login with administrator account for that.

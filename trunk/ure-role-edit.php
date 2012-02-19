@@ -177,7 +177,7 @@ if (is_multisite()) {
                 <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>
               </div>
 <?php
-if (is_multisite()) {
+if (is_multisite() && is_super_admin()) {
   $hint = __('If checked, then apply action to ALL sites of this Network');
   if ($ure_apply_to_all) {
     $checked = 'checked="checked"';
