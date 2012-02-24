@@ -41,7 +41,7 @@ $roleSelectHTML .= '</select>';
 $roleDefaultHTML .= '</select>';
 $roleToCopyHTML .= '</select>';
 
-$ure_rolesCanDelete = getRolesCanDelete($ure_roles);
+$ure_rolesCanDelete = ure_getRolesCanDelete($ure_roles);
 if ($ure_rolesCanDelete && count($ure_rolesCanDelete)>0) {
   $roleDeleteHTML = '<select id="del_user_role" name="del_user_role" width="200" style="width: 200px">';
   foreach ($ure_rolesCanDelete as $key=>$value) {
@@ -52,7 +52,7 @@ if ($ure_rolesCanDelete && count($ure_rolesCanDelete)>0) {
   $roleDeleteHTML = '';
 }
 
-$capabilityRemoveHTML = getCapsToRemoveHTML();
+$capabilityRemoveHTML = ure_getCapsToRemoveHTML();
 
 ?>
 
@@ -198,7 +198,7 @@ if (is_multisite() && is_super_admin()) {
           <tr>
             <td style="vertical-align:top;">
 <?php
-  $deprecatedCaps = get_deprecated_caps();
+  $deprecatedCaps = ure_get_deprecated_caps();
   $quant = count($ure_fullCapabilities);
   $quantInColumn = (int) $quant/3;
   $quantInCell = 0;
@@ -230,7 +230,7 @@ if (is_multisite() && is_super_admin()) {
       $capIndAlt = 'human';
     }
 ?>
-   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capIndAlt]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
+   <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capIndAlt]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo ure_capability_help_link($capability['inner']); ?><br/>
 <?php   
     $quantInCell++;
    }

@@ -71,7 +71,12 @@ $roleSelectHTML .= '</select>';
 
 </script>
 <?php
-	ure_displayBoxStart(__('Change capabilities for user', 'ure').' &lt;'.$ure_userToEdit->display_name.'&gt;');
+  $userInfo = ' <span style="font-weight: bold;">'.$ure_userToEdit->user_login; 
+  if ($ure_userToEdit->display_name!==$ure_userToEdit->user_login) {
+    $userInfo .= ' ('.$ure_userToEdit->display_name.')';
+  }
+  $userInfo .= '</span>';
+	ure_displayBoxStart(__('Change capabilities for user', 'ure').$userInfo);
  
 ?>
   <div style="float: left;"><?php echo __('Role:', 'ure').' '.$roleSelectHTML; ?></div>
@@ -101,7 +106,7 @@ $roleSelectHTML .= '</select>';
     <tr>
       <td style="vertical-align:top;">
 <?php
-        $deprecatedCaps = get_deprecated_caps();
+        $deprecatedCaps = ure_get_deprecated_caps();
         $quant = count($ure_fullCapabilities);
         $quantInColumn = (int) $quant / 3;
         $quantInCell = 0;
@@ -136,7 +141,7 @@ $roleSelectHTML .= '</select>';
             $capIndAlt = 'human';
           }
         ?>
-          <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capIndAlt]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo capabilityHelpLink($capability['inner']); ?><br/>
+          <label for="<?php echo $cap_id; ?>" title="<?php echo $capability[$capIndAlt]; ?>" <?php echo $labelStyle;?> ><?php echo $capability[$capInd]; ?></label> <?php echo ure_capability_help_link($capability['inner']); ?><br/>
 <?php            
           $quantInCell++;
         }
