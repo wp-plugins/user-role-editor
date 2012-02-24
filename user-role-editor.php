@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.5
+Version: 3.5.1
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -108,7 +108,7 @@ function ure_admin_jquery(){
 // end of ure_admin_jquery()
 
 
-// We have to vulnerable queries id users admin interface which should be processed
+// We have two vulnerable queries id users admin interface which should be processed
 // 1st: http://blogdomain.com/wp-admin/user-edit.php?user_id=ID&wp_http_referer=%2Fwp-admin%2Fusers.php
 // 2nd: http://blogdomain.com/wp-admin/users.php?action=delete&user=ID&_wpnonce=ab34225a78
 // If put Administrator user ID into such request, user with lower capabilities (if he has 'edit_users')
@@ -146,24 +146,27 @@ function ure_not_edit_admin($allcaps, $caps, $name) {
 }
 // end of ure_not_edit_admin()
 
+
 // add where criteria to exclude users with 'Administrator' role from users list
-function ure_exclude_superadmins($user_query) {
+function ure_exclude_administrators($user_query) {
   
   global $wpdb;
 
-  // get user_id of users with 'Administrator' role
-  $tableName = defined('CUSTOM_USER_META_TABLE') ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
-  $meta_key = $wpdb->base_prefix.'capabilities';
+  // get user_id of users with 'Administrator' role  
+  $tableName = (!is_multisite() && defined('CUSTOM_USER_META_TABLE')) ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
+  $meta_key = $wpdb->prefix.'capabilities';
   $admin_role_key = '%"administrator"%';
   $query = "select user_id
               from $tableName
               where meta_key='$meta_key' and meta_value like '$admin_role_key'";
   $ids_arr = $wpdb->get_col($query);
-  $ids = implode(',', $ids_arr);
-  $user_query->query_where .= " AND $wpdb->users.ID NOT IN ($ids)";
+  if (is_array($ids_arr) && count($ids_arr)>0) {
+    $ids = implode(',', $ids_arr);
+    $user_query->query_where .= " AND ($wpdb->users.ID NOT IN ($ids))";
+  }
   
 }
-// end of ure_exclude_superadmins()
+// end of ure_exclude_administrators()
 
 
 function exclude_admins_view($views) {
@@ -195,7 +198,7 @@ function ure_init() {
     // prohibit any actions with user who has Administrator role
     add_filter('user_has_cap', 'ure_not_edit_admin', 10, 3);
     // exclude users with 'Administrator' role from users list
-    add_action('pre_user_query', 'ure_exclude_superadmins');
+    add_action('pre_user_query', 'ure_exclude_administrators');
     // do not show 'Administrator (n)' view above users list
     add_filter('views_users', 'exclude_admins_view');
   }
@@ -254,10 +257,14 @@ function ure_user_row($actions, $user) {
   global $pagenow, $current_user;
 
   if ($pagenow == 'users.php') {
-    if (current_user_can('edit_user', $user->ID) && ($current_user->ID != $user->ID)) {
-      if (isset($user->caps['administrator'])) {
-        unset($actions['edit']);
-        unset($actions['delete']);
+    if (is_super_admin() || 
+        (is_multisite() && defined('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE') && URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE==1 && current_user_can('administrator'))) {
+      if (isset($user->caps['administrator'])) { 
+        if ($current_user->ID!=$user->ID) {
+          unset($actions['edit']);
+          unset($actions['delete']);
+          unset($actions['remove']);
+        }
       } else {
         $actions['capabilities'] = '<a href="' . wp_nonce_url("users.php?page=user-role-editor.php&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . __('Capabilities', 'ure') . '</a>';
       }
@@ -293,29 +300,40 @@ if (function_exists('is_multisite') && is_multisite()) {
   }
 
   add_action( 'wpmu_new_blog', 'duplicate_roles_for_new_blog', 10, 2 );
+  
+  
+  /** 
+   * Filter out URE plugin from not superadmin users
+   * @param type array $plugins plugins list
+   * @return type array $plugins updated plugins list
+   */
+  function ure_exclude_from_plugins_list($plugins) {
+    
+    // if multi-site, then allow plugin activation for network superadmins and, if that's specially defined, - for single site administrators too    
+    if (is_super_admin() || (defined('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE') && URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE==1)) {    
+      return $plugins;
+    }
+
+    // exclude URE from plugins list
+    foreach ($plugins as $key => $value) {
+      if ($key == 'user-role-editor/user-role-editor.php') {
+        unset($plugins[$key]);
+      }
+    }
+
+    return $plugins;
+  }
+  // end of ure_exclude_from_plugins_list()
+  
+  add_filter( 'all_plugins', 'ure_exclude_from_plugins_list' ); 
+  
 }
 
 
 if (is_admin()) {
   // activation action
-  if ( is_multisite() ) {
-    global $current_user;
-    if (empty($current_user) && function_exists('get_currentuserinfo')) {
-      get_currentuserinfo();
-    }
-    if (!empty($current_user)) {
-      $super_admins = get_super_admins();
-      $allow_activation = is_array( $super_admins ) && in_array( $current_user->user_login, $super_admins );    
-    } else {
-      $allow_activation = false;
-    }
-  } else {
-    $allow_activation = true;
-  }
-  if ($allow_activation) {
-    register_activation_hook(__FILE__, "ure_install");
-  }
-  add_action('admin_init', 'ure_init');
+  register_activation_hook(__FILE__, "ure_install");
+  add_action('admin_init', 'ure_init');  
   // add a Settings link in the installed plugins page
   add_filter('plugin_action_links', 'ure_plugin_action_links', 10, 2);
   add_filter('plugin_row_meta', 'ure_plugin_row_meta', 10, 2);

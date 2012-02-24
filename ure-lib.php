@@ -56,8 +56,8 @@ function ure_has_administrator_role($user_id) {
     return false;
   }
 
-  $tableName = defined('CUSTOM_USER_META_TABLE') ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
-  $metaKey = $wpdb->base_prefix.'capabilities';
+  $tableName = (!is_multisite() && defined('CUSTOM_USER_META_TABLE')) ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
+  $metaKey = $wpdb->prefix.'capabilities';
   $query = "SELECT count(*)
                 FROM $tableName
                 WHERE user_id=$user_id AND meta_key='$metaKey' AND meta_value like '%administrator%'";
@@ -148,7 +148,7 @@ function ure_getUserRoles() {
 
 
 // restores User Roles from the backup record
-function restoreUserRoles() {
+function ure_restore_user_roles() {
 
   global $wpdb, $wp_roles;
 
@@ -193,7 +193,7 @@ function restoreUserRoles() {
 
   return $mess;
 }
-// end of restorUserRoles()
+// end of ure_restore_user_roles()
 
 
 function ure_makeRolesBackup() {
@@ -374,11 +374,11 @@ function ure_newRoleCreate(&$ure_currentRole) {
 
 
 // define roles which we could delete, e.g self-created and not used with any blog user
-function getRolesCanDelete($ure_roles) {
+function ure_getRolesCanDelete($ure_roles) {
   global $wpdb;
   
-  $tableName = defined('CUSTOM_USER_META_TABLE') ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
-  $metaKey = $wpdb->base_prefix.'capabilities';
+  $tableName = (!is_multisite() && defined('CUSTOM_USER_META_TABLE')) ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
+  $metaKey = $wpdb->prefix.'capabilities';
   $defaultRole = get_option('default_role');
   $standardRoles = array('administrator', 'editor', 'author', 'contributor', 'subscriber');
   $ure_rolesCanDelete = array();
@@ -677,7 +677,7 @@ function ure_AddNewCapability() {
 
 
 // returns array of built-in WP capabilities (WP 3.1 wp-admin/includes/schema.php) 
-function getBuiltInWPCaps() {
+function ure_getBuiltInWPCaps() {
   $caps = array();
 	$caps['switch_themes'] = 1;
 	$caps['edit_themes'] = 1;
@@ -747,7 +747,7 @@ function getBuiltInWPCaps() {
 //
 
 // return the array of unused capabilities
-function getCapsToRemove() {
+function ure_getCapsToRemove() {
   global $wp_roles, $wpdb;
 
   // build full capabilities list from all roles except Administrator 
@@ -763,7 +763,7 @@ function getCapsToRemove() {
     }
   }
 
-  $capsToExclude = getBuiltInWPCaps();
+  $capsToExclude = ure_getBuiltInWPCaps();
   
   $capsToRemove = array();
   foreach ($fullCapsList as $capability=>$value) {
@@ -789,8 +789,8 @@ function getCapsToRemove() {
 // end of getCapsToRemove()
 
 
-function getCapsToRemoveHTML() {
-  $capsToRemove = getCapsToRemove();
+function ure_getCapsToRemoveHTML() {
+  $capsToRemove = ure_getCapsToRemove();
   if (!empty($capsToRemove) && is_array($capsToRemove) && count($capsToRemove)>0) {
     $html = '<select id="remove_user_capability" name="remove_user_capability" width="200" style="width: 200px">';
   foreach ($capsToRemove as $key=>$value) {
@@ -812,7 +812,7 @@ function ure_removeCapability() {
   $mess = '';
   if (isset($_GET['removeusercapability']) && $_GET['removeusercapability']) {
     $capability = $_GET['removeusercapability'];
-    $capsToRemove = getCapsToRemove();    
+    $capsToRemove = ure_getCapsToRemove();    
     if (!is_array($capsToRemove) || count($capsToRemove)==0 || !isset($capsToRemove[$capability])) {
       return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability);
     }
@@ -846,7 +846,7 @@ function ure_removeCapability() {
 
 
 // returns link to the capability according its name in $capability parameter
-function capabilityHelpLink($capability) {
+function ure_capability_help_link($capability) {
   
   if (empty($capability)) {
     return '';
@@ -890,11 +890,11 @@ function capabilityHelpLink($capability) {
   
   return $link;
 }
-// end of capabilityHelpLink()
+// end of ure_capability_help_link()
 
 
 // returns array of deprecated capabilities
-function get_deprecated_caps() {
+function ure_get_deprecated_caps() {
   
   return array('level_0'=>0, 'level_1'=>0, 'level_2'=>0, 'level_3'=>0, 'level_4'=>0, 'level_5'=>0, 'level_6'=>0, 'level_7'=>0, 'level_8'=>0, 'level_9'=>0, 'level_10'=>0);
   

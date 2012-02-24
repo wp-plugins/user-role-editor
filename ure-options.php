@@ -26,7 +26,7 @@ if (isset($_REQUEST['action'])) {
   $action = $_REQUEST['action'];
   // restore roles capabilities from the backup record
   if ($action=='reset') {
-    $mess = restoreUserRoles();
+    $mess = ure_restore_user_roles();
     if (!$mess) {
       return;
     }
@@ -211,7 +211,7 @@ ure_showMessage($mess);
                         <li><a href="http://thenineshub.com/" title="To The Nines Web Agency" target="new">To The Nines Web Agency</a></li>
                         <li><a href="http://helpkyria.com" title="http://helpkyria.com" target="new">Miami</a></li>
                         <li>quintain</li>
-                        <li><a href="http://www.primothemes.com" title="primothemes.com" target="new">PriMoThemes.com / WebSharks, Inc.</a></li>
+                        <li><a href="http://www.s2member.com" title="s2member.com" target="new">s2member.com / WebSharks, Inc.</a></li>
                         <li><a href="http://www.eastwoodzhao.com" title="www.eastwoodzhao.com" target="new">Eastwood</a></li>
                       </ul>
 									<?php ure_displayBoxEnd();?>
