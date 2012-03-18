@@ -872,6 +872,9 @@ function ure_capability_help_link($capability) {
     case 'delete_published_posts':  
       $url = 'http://www.shinephp.com/delete-posts-and-pages-wordpress-user-capabilities-set/';
       break;
+    case 'delete_plugins':  
+      $url = 'http://www.shinephp.com/delete_plugins-wordpress-user-capability/';
+      break;
     case 'edit_dashboard':
       $url = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
       break;    
