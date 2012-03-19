@@ -875,6 +875,9 @@ function ure_capability_help_link($capability) {
     case 'delete_plugins':  
       $url = 'http://www.shinephp.com/delete_plugins-wordpress-user-capability/';
       break;
+    case 'delete_themes':  
+      $url = 'http://www.shinephp.com/delete_themes-wordpress-user-capability/';
+      break;
     case 'edit_dashboard':
       $url = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
       break;    
