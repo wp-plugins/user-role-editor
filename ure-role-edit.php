@@ -258,10 +258,10 @@ if (is_multisite() && is_super_admin()) {
 <?php
   ure_displayBoxEnd();
 ?>
-		</div>
-<div style="max-width: 800px;">
+    
+<div style="display: block; float: left;">
 <?php
-  $boxStyle = 'width: 330px; min-width:240px;margin-right: 10px;';
+  $boxStyle = 'width: 330px; min-width:240px; min-height: 130px; margin-right: 10px;';
   ure_displayBoxStart(__('Add New Role', 'ure'), $boxStyle); ?>
 <div class="ure-bottom-box-input">
   <label for="new_user_role"><?php echo __('Name: ', 'ure'); ?></label>
@@ -318,3 +318,5 @@ if (is_multisite() && is_super_admin()) {
   
 ?>
 </div>
+    
+		</div>
