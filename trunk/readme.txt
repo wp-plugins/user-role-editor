@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.5.2
+Stable tag: 3.5.3
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -54,6 +54,8 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 = Translations =
 * Dutch: [Frank Groeneveld](http://ivaldi.nl), [Rémi Bruggeman](http://www.remisan.be)
+* French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog/), [Whiler](http://blogs.wittwer.fr/whiler)
+* Hebrew: [Aryo Digital](http://www.aryo.co.il), [Sagive](http://www.sagive.co.il)
 * Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
 * Russian: [Vladimir Garagulya](http://shinephp.com)
 * Spanish: [Dario Ferrer](http://www.darioferrer.com)
@@ -61,11 +63,9 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
 * -----------------------------------------------------
 * translations below are included to the package, but all of them are outdated and every file needs to be updated. You are welcome!
-* French: [Whiler](http://blogs.wittwer.fr/whiler)
 * Finnish: [Lauri Merisaari](http://www.viidakkorumpu.fi)
 * Japanese: Kaz, [Technolog.jp](http://technolog.jp)
-* Hebrew: [Sagive](http://www.sagive.co.il)
-* Italian: [Umberto Sartori](http://venezialog.net), [Talksina](http://www.iadkiller.org), [Alessandro Mariani](http://technodin.org), [Tristano Ajmone ](http://www.zenfactor.org)
+* Italian: [Umberto Sartori](http://venezialog.net), [Talksina](http://www.iadkiller.org), [Alessandro Mariani](http://technodin.org)
 * Belorussian: [Marsis G.](http://pc.de) - needs update
 * Brasilian Portuguese: [Rafael Galdencio](http://www.arquiteturailustrada.com.br) - needs update
 * Chinese: [Yackytsu](http://www.jackytsu.com) - needs update
@@ -80,6 +80,13 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.5.3 =
+* 24.03.2012
+* French translation is updated, thanks to Presse et Multimedia.
+* Hebrew translation is updated, thanks to Aryo Digital.  
+* Persian translation is updated, thanks to Parsa.  
+* Minor CSS fix to provide compatibility with RTL languages.
+
 = 3.5.2 =
 * 17.03.2012
 * Turkish translation is updated, thanks to Muhammed YILDIRIM.
