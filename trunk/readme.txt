@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.5.3
+Stable tag: 3.5.4
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -56,9 +56,10 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Dutch: [Frank Groeneveld](http://ivaldi.nl), [Rémi Bruggeman](http://www.remisan.be)
 * French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog/), [Whiler](http://blogs.wittwer.fr/whiler)
 * Hebrew: [Aryo Digital](http://www.aryo.co.il), [Sagive](http://www.sagive.co.il)
+* Lithuanian: [Vincent G](http://host1free.com)
 * Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
 * Russian: [Vladimir Garagulya](http://shinephp.com)
-* Spanish: [Dario Ferrer](http://www.darioferrer.com)
+* Spanish: [Victor Ricardo Díaz (INFOMED)](http://www.sld.cu), [Dario Ferrer](http://www.darioferrer.com)
 * Swedish: [Christer Dahlbacka](www.startlinks.eu), [Andréas Lundgren](http://adevade.com/)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
 * -----------------------------------------------------
@@ -80,6 +81,11 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.5.4 =
+* 4.04.2012
+* Lithuanian translation is added, thanks to Vincent G.
+* Spanish translation is updated, thanks to Victor Ricardo Díaz.
+
 = 3.5.3 =
 * 24.03.2012
 * French translation is updated, thanks to Presse et Multimedia.
