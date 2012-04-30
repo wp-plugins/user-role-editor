@@ -43,7 +43,7 @@ $roleSelectHTML .= '</select>';
 
 ?>
 
-<div id="post-body-content" class="has-sidebar-content">
+<div class="has-sidebar-content">
 <script language="javascript" type="text/javascript">
   function ure_Actions(action, value) {
     var url = '<?php echo URE_WP_ADMIN_URL.'/'.URE_PARENT; ?>?page=user-role-editor.php&object=user&user_id=<?php echo $ure_userToEdit->ID; ?>';

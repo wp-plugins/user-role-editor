@@ -56,7 +56,7 @@ $capabilityRemoveHTML = ure_getCapsToRemoveHTML();
 
 ?>
 
-						<div id="post-body-content" class="has-sidebar-content">
+						<div class="has-sidebar-content">
 <script language="javascript" type="text/javascript">
 <?php
 if (is_multisite()) {
@@ -259,7 +259,7 @@ if (is_multisite() && is_super_admin()) {
   ure_displayBoxEnd();
 ?>
     
-<div style="display: block; float: left;">
+<div style="clear: left; float: left; width: 800px;">
 <?php
   $boxStyle = 'width: 330px; min-width:240px; min-height: 130px; margin-right: 10px;';
   ure_displayBoxStart(__('Add New Role', 'ure'), $boxStyle); ?>

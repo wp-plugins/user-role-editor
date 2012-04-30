@@ -71,3 +71,11 @@ input.warning:hover, a.warning:hover {
   margin-bottom: 0px;
   white-space: nowrap;
 }
+
+.ure-sidebar {
+  float: right;
+}
+
+#ure_greetings {
+  max-width: 250px;
+}

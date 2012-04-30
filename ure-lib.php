@@ -884,6 +884,9 @@ function ure_capability_help_link($capability) {
     case 'edit_dashboard':
       $url = 'http://www.shinephp.com/edit_dashboard-wordpress-capability/';
       break;    
+    case 'edit_files':
+      $url = 'http://www.shinephp.com/edit_files-wordpress-user-capability/';
+      break;            
     case 'moderate_comments':
       $url = 'http://www.shinephp.com/moderate_comments-wordpress-user-capability/';
       break;    
@@ -905,7 +908,20 @@ function ure_capability_help_link($capability) {
 // returns array of deprecated capabilities
 function ure_get_deprecated_caps() {
   
-  return array('level_0'=>0, 'level_1'=>0, 'level_2'=>0, 'level_3'=>0, 'level_4'=>0, 'level_5'=>0, 'level_6'=>0, 'level_7'=>0, 'level_8'=>0, 'level_9'=>0, 'level_10'=>0);
+  $dep_caps = array('level_0'=>0, 
+                    'level_1'=>0, 
+                    'level_2'=>0, 
+                    'level_3'=>0, 
+                    'level_4'=>0, 
+                    'level_5'=>0, 
+                    'level_6'=>0, 
+                    'level_7'=>0, 
+                    'level_8'=>0, 
+                    'level_9'=>0, 
+                    'level_10'=>0,
+                    'edit_files'=>0);
+  
+  return $dep_caps;
   
 }
 // end of get_deprecated_caps()

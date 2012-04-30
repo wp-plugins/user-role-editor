@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.5.4
+Version: 3.6
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -290,12 +290,14 @@ if (function_exists('is_multisite') && is_multisite()) {
     $current_blog = $wpdb->blogid;
     switch_to_blog($blogIds[0]);
     $main_roles = new WP_Roles();  // get roles from primary blog
+    $default_role = get_option('default_role');  // get default role from primary blog
     switch_to_blog($blog_id);  // switch to the new created blog
     $main_roles->use_db = false;  // do not touch DB
     $main_roles->add_cap('administrator', 'dummy_123456');   // just to save current roles into new blog
     $main_roles->role_key = $wp_roles->role_key;
-    $main_roles->use_db = true;  // saved roles into new blog DB
+    $main_roles->use_db = true;  // save roles into new blog DB
     $main_roles->remove_cap('administrator', 'dummy_123456');  // remove unneeded dummy capability
+    update_option('default_role', $default_role); // set default role for new blog as it set for primary one
     switch_to_blog($current_blog);  // return to blog where we were at the begin
   }
 

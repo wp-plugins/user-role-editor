@@ -3,8 +3,8 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 3.5.4
+Tested up to: 3.4
+Stable tag: 3.6
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -81,6 +81,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.6 =
+* 30.04.2012
+* CSS and page layout fix for compatibility with WordPress 3.4.
+* WordPress multi-site: when new blog created default role setting is copied for it from the main blog default role value now.
+* Minor translations files update, e.g Russian roles names in plugin are identical to those WordPress uses itself now, etc.
+
 = 3.5.4 =
 * 4.04.2012
 * Lithuanian translation is added, thanks to Vincent G.
