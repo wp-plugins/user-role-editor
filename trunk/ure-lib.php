@@ -887,6 +887,9 @@ function ure_capability_help_link($capability) {
     case 'edit_files':
       $url = 'http://www.shinephp.com/edit_files-wordpress-user-capability/';
       break;            
+    case 'edit_plugins':
+      $url = 'http://www.shinephp.com/edit_plugins-wordpress-user-capability';
+      break;                
     case 'moderate_comments':
       $url = 'http://www.shinephp.com/moderate_comments-wordpress-user-capability/';
       break;    

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: User Role Editor 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-30 22:13+0700\n"
-"PO-Revision-Date: 2012-04-30 22:13+0700\n"
+"PO-Revision-Date: 2012-05-05 20:26+0700\n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: w3b.it <web@w3b.it>\n"
 "Language: \n"
@@ -59,7 +59,7 @@ msgstr "Impostazioni"
 #: ../user-role-editor.php:222
 #: ../ure-options.php:194
 msgid "Changelog"
-msgstr "Cambia log"
+msgstr "Storico degli Aggiornamenti"
 
 #: ../user-role-editor.php:269
 msgid "Capabilities"
@@ -332,32 +332,32 @@ msgstr "Cancellare pagine pubblicate"
 # @ ure
 #: ../ure-lib.php:546
 msgid "Delete posts"
-msgstr "Cancellare messaggi"
+msgstr "Cancellare articoli"
 
 # @ ure
 #: ../ure-lib.php:547
 msgid "Delete others posts"
-msgstr "Cancellare messaggi di altri Utenti"
+msgstr "Cancellare articoli di altri Utenti"
 
 # @ ure
 #: ../ure-lib.php:548
 msgid "Delete published posts"
-msgstr "Cancellare messaggi pubblicati"
+msgstr "Cancellare articoli pubblicati"
 
 # @ ure
 #: ../ure-lib.php:549
 msgid "Delete private posts"
-msgstr "Cancellare messaggi privati"
+msgstr "Cancellare articoli privati"
 
 # @ ure
 #: ../ure-lib.php:550
 msgid "Edit private posts"
-msgstr "Modificare messaggii privati"
+msgstr "Modificare articoli privati"
 
 # @ ure
 #: ../ure-lib.php:551
 msgid "Read private posts"
-msgstr "Leggere messaggi privati"
+msgstr "Leggere articoli privati"
 
 # @ ure
 #: ../ure-lib.php:552
@@ -488,12 +488,12 @@ msgstr "Il permesso %s è stato rimosso"
 
 #: ../ure-lib.php:898
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 # @ ure
 #: ../ure-role-edit.php:29
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 # @ ure
 #: ../ure-role-edit.php:94
@@ -518,7 +518,7 @@ msgstr "Cambia ruolo di default"
 
 #: ../ure-role-edit.php:107
 msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
-msgstr ""
+msgstr "Ripristina i Ruoli da una copia di backup. Attenzione, il backup è stato creato al primo avvio di URE, tutte le modifiche apportate in seguito andranno perse."
 
 #: ../ure-role-edit.php:109
 msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
@@ -554,7 +554,7 @@ msgstr "Mostra permessi in forma leggibile per un uomo"
 #: ../ure-role-edit.php:177
 #: ../ure-user-edit.php:100
 msgid "Show deprecated capabilities"
-msgstr ""
+msgstr "Mostra permessi deprecati"
 
 # @ default
 #: ../ure-role-edit.php:181
@@ -607,11 +607,11 @@ msgstr "Aggiungi nuovo ruolo"
 
 #: ../ure-role-edit.php:267
 msgid "Name: "
-msgstr ""
+msgstr "Nome:"
 
 #: ../ure-role-edit.php:271
 msgid "Make copy of: "
-msgstr ""
+msgstr "Fai una copia di:"
 
 # @ ure
 #: ../ure-role-edit.php:274
@@ -690,11 +690,11 @@ msgstr "Aggiungi permessi a questo Utente: "
 # @ ure
 #: ../ure-options.php:59
 msgid "User Roles are restored from the backup data. "
-msgstr ""
+msgstr "I Ruoli Utente sono stati ripristinati dai dati di backup."
 
 #: ../ure-options.php:125
 msgid "Error: "
-msgstr ""
+msgstr "Errore:"
 
 # @ ure
 #: ../ure-options.php:125
@@ -704,7 +704,7 @@ msgstr "Ruolo"
 
 #: ../ure-options.php:125
 msgid "does not exist"
-msgstr ""
+msgstr "non esiste"
 
 # @ ure
 #: ../ure-options.php:143
@@ -742,9 +742,8 @@ msgstr "FAQ"
 
 # @ ure
 #: ../ure-options.php:196
-#, fuzzy
 msgid "Greetings"
-msgstr "Ringraziamenti:"
+msgstr "Ringraziamenti"
 
 # @ ure
 #: ../ure-options.php:218
@@ -796,7 +795,7 @@ msgstr "Per l'aiuto con la traduzione in Tedesco"
 #: ../ure-options.php:228
 #: ../ure-options.php:229
 msgid "For the help with Hebrew translation"
-msgstr ""
+msgstr "Per l'aiuto con la traduzione in Ebraico"
 
 # @ ure
 #: ../ure-options.php:230
@@ -819,7 +818,7 @@ msgstr "per l'aiuto con la traduzione in Giapponese"
 # @ pgc
 #: ../ure-options.php:234
 msgid "For the help with Lithuanian translation"
-msgstr ""
+msgstr "Per l'aiuto con la traduzione in Lituano"
 
 # @ ure
 #: ../ure-options.php:235
@@ -841,7 +840,7 @@ msgstr "per l'aiuto con la traduzione in Spagnolo"
 # @ ure
 #: ../ure-options.php:240
 msgid "For the updated Swedish translation"
-msgstr ""
+msgstr "Per l'aiuto con la traduzione in Svedese"
 
 # @ ure
 #: ../ure-options.php:241
@@ -860,7 +859,7 @@ msgstr "Per il codice che nasconde il ruolo di amministratore"
 
 #: ../ure-options.php:245
 msgid "For the code enhancement suggestion"
-msgstr ""
+msgstr "Per consigli su come migliorare il codice"
 
 # @ ure
 #: ../ure-options.php:247
