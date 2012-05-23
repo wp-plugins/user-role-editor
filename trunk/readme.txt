@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -56,6 +56,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Dutch: [Frank Groeneveld](http://ivaldi.nl), [Rémi Bruggeman](http://www.remisan.be)
 * French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog/), [Whiler](http://blogs.wittwer.fr/whiler)
 * Hebrew: [Aryo Digital](http://www.aryo.co.il), [Sagive](http://www.sagive.co.il)
+* Hindi: [Outshine Solutions](http://outshinesolutions.com/)
 * Italian: [Tristano Ajmone](http://www.zenfactor.org), [Umberto Sartori](http://venezialog.net)
 * Lithuanian: [Vincent G](http://host1free.com)
 * Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
@@ -81,6 +82,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.6.2 =
+* 23.05.2012
+* Hindi translation is added. Thanks to Love Chandel.
+
 = 3.6.1 =
 * 07.05.2012
 * Italian translation is updated. Thanks to Tristano Ajmone.
