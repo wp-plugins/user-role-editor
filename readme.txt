@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladi
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
 Tested up to: 3.4
-Stable tag: 3.6.2
+Stable tag: 3.7
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
 
@@ -82,6 +82,13 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.7 =
+* 23.06.2012
+* 'Select All', 'Unselect All', 'Inverse' buttons were added to the from for more convenient capabilities management while role editing.
+* Role and capability name could be started from digit, and underscore '_' character. Hyphen '-' character could be included into such name too.
+* Old versions used 'edit_users' capability to check if show/hide 'User Role Editor' menu item under 'Users' menu. Starting from version 3.7 'administrator' role is checked. Existed inconsistency, when non-admin user with 'edit_users' capability saws 'User Role Editor' menu, but got 'Only Administrator is allowed to use User Role Editor' error message, was removed.
+* Bug fix: if you work with WordPress admin via https, URE will use https instead of http, as it made in older versions.
+
 = 3.6.2 =
 * 23.05.2012
 * Hindi translation is added. Thanks to Love Chandel.
