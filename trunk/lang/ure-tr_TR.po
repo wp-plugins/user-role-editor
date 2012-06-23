@@ -613,9 +613,8 @@ msgid "FAQ"
 msgstr "SSS"
 
 #: ../ure-options.php:196
-#, fuzzy
 msgid "Greetings"
-msgstr "Teşekkürlerimle:"
+msgstr ""
 
 #: ../ure-options.php:218
 msgid "Greetings:"
@@ -691,9 +690,8 @@ msgid "For the help with Spanish translation"
 msgstr "İspanyolca tercümesi için"
 
 #: ../ure-options.php:240
-#, fuzzy
 msgid "For the updated Swedish translation"
-msgstr "Swedish tercümesi için"
+msgstr ""
 
 #: ../ure-options.php:241
 msgid "For the help with Swedish translation"

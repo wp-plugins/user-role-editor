@@ -73,7 +73,6 @@ if (is_multisite()) {
 <?php
 }
 ?>
-
   function ure_Actions(action, value) {
     if (action=='cancel') {
       document.location = '<?php echo URE_WP_ADMIN_URL.'/'.URE_PARENT; ?>?page=user-role-editor.php';
@@ -94,7 +93,7 @@ if (is_multisite()) {
         alert(elInMess +'<?php _e(' Name can not be empty!','ure');?>');
         return false;
       }
-      if  (!(/^[a-z$_][\w$]*$/i.test(value))) {
+      if  (!(/^[\w-]*$/.test(value))) {
         alert(elInMess +'<?php _e(' Name must contain latin characters and digits only!','ure');?>');
         return false;
       }
@@ -244,15 +243,21 @@ if (is_multisite() && is_super_admin()) {
             </td>
           </tr>
       </table>
+
 <hr/>
     <input type="hidden" name="object" value="role" />
-    <div class="submit" style="padding-top: 0px;">
+    <div class="submit" style="padding-top: 0px;padding-bottom: 0px;">
       <div style="float:left; padding-bottom: 10px;">
-          <input type="submit" name="submit" value="<?php _e('Update', 'ure'); ?>" title="<?php _e('Save Changes', 'ure'); ?>" />
-          <input type="button" name="cancel" value="<?php _e('Cancel', 'ure') ?>" title="<?php _e('Cancel not saved changes','ure');?>" onclick="ure_Actions('cancel');"/>          
+        <input type="submit" name="submit" value="<?php _e('Update', 'ure'); ?>" title="<?php _e('Save Changes', 'ure'); ?>" />
+        <input type="button" name="cancel" value="<?php _e('Cancel', 'ure') ?>" title="<?php _e('Cancel not saved changes', 'ure'); ?>" onclick="ure_Actions('cancel');"/>          
       </div>
+      <div style="float: left; margin-left: 40px;">
+        <input type="button" name="select_all" id="select_all" value="<?php _e('Select All', 'ure'); ?>" title="<?php _e('Select All Capabilities', 'ure'); ?>" onclick="ure_select_all(1);" />
+        <input type="button" name="unselect_all" id="unselect_all" value="<?php _e('Unselect All', 'ure'); ?>" title="<?php _e('Unselect All Capabilities', 'ure'); ?>" onclick="ure_select_all(0);" />
+        <input type="button" name="reverse" id="reverse" value="<?php _e('Reverse', 'ure'); ?>" title="<?php _e('Turn checked capabilities off and vise versa', 'ure'); ?>" onclick="ure_select_all(-1);" />
+      </div>  
       <div style="float:right; padding-bottom: 10px;">
-        <input type="button" name="default" value="<?php _e('Reset', 'ure') ?>" title="<?php _e('Restore Roles from backup copy','ure');?>" onclick="ure_Actions('reset');"/>
+        <input type="button" name="default" value="<?php _e('Reset', 'ure') ?>" title="<?php _e('Restore Roles from backup copy', 'ure'); ?>" onclick="ure_Actions('reset');"/>
       </div>
     </div>
 <?php

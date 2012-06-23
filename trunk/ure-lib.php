@@ -10,8 +10,7 @@ if (!function_exists("get_option")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
-$ure_siteURL = get_option( 'siteurl' );
-
+$ure_siteURL = get_site_url();
 $urePluginDirName = substr(strrchr(dirname(__FILE__), DIRECTORY_SEPARATOR), 1);
 
 define('URE_PLUGIN_URL', WP_PLUGIN_URL.'/'.$urePluginDirName);
@@ -20,6 +19,7 @@ define('URE_WP_ADMIN_URL', $ure_siteURL.'/wp-admin');
 define('URE_ERROR', 'Error is encountered');
 define('URE_SPACE_REPLACER', '_URE-SR_');
 define('URE_PARENT', 'users.php');
+define('URE_KEY_CAPABILITY', 'administrator');
 
 $ure_roles = false; $ure_capabilitiesToSave = false; 
 $ure_currentRole = false; $ure_currentRoleName = false;
@@ -340,7 +340,7 @@ function ure_newRoleCreate(&$ure_currentRole) {
   if (isset($_GET['user_role']) && $_GET['user_role']) {
     $user_role = utf8_decode(urldecode($_GET['user_role']));
     // sanitize user input for security
-    $valid_name = preg_match('/^[A-Za-z_][A-Za-z0-9_]*/', $user_role, $match);
+    $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_role, $match);
     if (!$valid_name || ($valid_name && ($match[0]!=$user_role))) { // some non-alphanumeric charactes found!
       return __('Error: Role name must contain latin characters and digits only!', 'ure');
     }  
@@ -650,7 +650,8 @@ function ure_AddNewCapability() {
   if (isset($_GET['new_user_capability']) && $_GET['new_user_capability']) {
     $user_capability = utf8_decode(urldecode($_GET['new_user_capability']));
     // sanitize user input for security
-    if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*/', $user_capability)) {
+    $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_capability, $match);
+    if (!$valid_name || ($valid_name && ($match[0]!=$user_capability))) { // some non-alphanumeric charactes found!    
       return 'Error! '.__('Error: Capability name must contain latin characters and digits only!', 'ure');;
     }
    

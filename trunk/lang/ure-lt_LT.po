@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor v. 2.1.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-30 22:14+0700\n"
-"PO-Revision-Date: 2012-04-30 22:14+0700\n"
+"POT-Creation-Date: 2012-06-23 23:24+0700\n"
+"PO-Revision-Date: 2012-06-23 23:24+0700\n"
 "Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -45,22 +45,22 @@ msgstr "gali naudoti"
 
 # @ ure
 #: user-role-editor.php:71
-#: user-role-editor.php:240
+#: user-role-editor.php:246
 msgid "User Role Editor"
 msgstr "User Role Editor"
 
 # @ ure
-#: user-role-editor.php:212
+#: user-role-editor.php:218
 msgid "Settings"
 msgstr "Nuostatos"
 
 # @ ure
-#: user-role-editor.php:222
-#: ure-options.php:194
+#: user-role-editor.php:228
+#: ure-options.php:218
 msgid "Changelog"
 msgstr "Pasikeitimų žurnalas"
 
-#: user-role-editor.php:269
+#: user-role-editor.php:275
 msgid "Capabilities"
 msgstr "Gebos"
 
@@ -459,33 +459,33 @@ msgid "Export"
 msgstr "Eksportuoti"
 
 # @ ure
-#: ure-lib.php:654
+#: ure-lib.php:655
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr "Klaida: Gebos pavadinimas turi susidaryti tik iš lotyniškų simbolių bei skaičių!"
 
 # @ ure
-#: ure-lib.php:666
+#: ure-lib.php:667
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr "Geba %s sėkmingai pridėta"
 
-#: ure-lib.php:668
+#: ure-lib.php:669
 #, php-format
 msgid "Capability %s exists already"
 msgstr "Geba %s jau egzistuoja"
 
-#: ure-lib.php:817
+#: ure-lib.php:818
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr "Klaida! Jūs neturite leidimo ištrinti šią gebą: %s!"
 
 # @ ure
-#: ure-lib.php:839
+#: ure-lib.php:840
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr "Geba %s sėkmingai pašalinta"
 
-#: ure-lib.php:898
+#: ure-lib.php:902
 msgid "Help"
 msgstr "Pagalba"
 
@@ -495,71 +495,71 @@ msgid "None"
 msgstr "Nieko"
 
 # @ ure
-#: ure-role-edit.php:94
+#: ure-role-edit.php:93
 msgid " Name can not be empty!"
 msgstr "Vardo laukelis negali būti tuščias!"
 
 # @ ure
-#: ure-role-edit.php:98
+#: ure-role-edit.php:97
 msgid " Name must contain latin characters and digits only!"
 msgstr "Vardas turi susidaryti tik iš lotyniškų simbolių bei skaičių!"
 
 # @ ure
-#: ure-role-edit.php:103
-#: ure-role-edit.php:288
+#: ure-role-edit.php:102
+#: ure-role-edit.php:293
 msgid "Delete Role"
 msgstr "Ištrinti Funkciją"
 
 # @ ure
-#: ure-role-edit.php:105
+#: ure-role-edit.php:104
 msgid "Change Default Role"
 msgstr "Pakeisti Numatytąją Funkciją"
 
-#: ure-role-edit.php:107
+#: ure-role-edit.php:106
 msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
 msgstr "Atstatyti funkcijas iš atsarginės kopijos. Būkite atsargus, atsarginė kopija buvo sukurta, kai pirmą kartą paleidote URE. Visi pakeitimai, kuriuos atlikote po to, bus prarasti"
 
-#: ure-role-edit.php:109
+#: ure-role-edit.php:108
 msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
 msgstr "Dėmesio! Būkite atsargus - kritinės gebos pašalinimas gali nulemti kai kurių papildinių ar kitų individualizuotų kodų užstrigimą"
 
 # @ ure
-#: ure-role-edit.php:111
+#: ure-role-edit.php:110
 msgid "Please confirm to continue"
 msgstr "Prašome patvirtinti, kad galėtumėte tęsti"
 
 # @ ure
-#: ure-role-edit.php:148
+#: ure-role-edit.php:147
 #, php-format
 msgid "Role \"%s\" update: please confirm to continue"
 msgstr "Funkcijos \"%s\" atnaujinimas: Prašome patvirtinti, kad galėtumėte tęsti"
 
 # @ ure
-#: ure-role-edit.php:156
+#: ure-role-edit.php:155
 msgid "Select Role and change its capabilities list"
 msgstr "Pasirinkti funkciją ir pakeisti jai priskirtų gebų sąrašą"
 
 # @ ure
-#: ure-role-edit.php:158
+#: ure-role-edit.php:157
 msgid "Select Role:"
 msgstr "Pasirinkite Funkciją:"
 
 # @ ure
-#: ure-role-edit.php:168
+#: ure-role-edit.php:167
 #: ure-user-edit.php:91
 msgid "Show capabilities in human readable form"
 msgstr "Rodyti gebas žmogui suprantama forma"
 
-#: ure-role-edit.php:177
+#: ure-role-edit.php:176
 #: ure-user-edit.php:100
 msgid "Show deprecated capabilities"
 msgstr "Rodyti prieštaraujančias gebas"
 
-#: ure-role-edit.php:181
+#: ure-role-edit.php:180
 msgid "If checked, then apply action to ALL sites of this Network"
 msgstr "Jeigu pažymėta, tuomet veiksmas pritaikomas VISIEMS šio Tinklo puslapiams"
 
-#: ure-role-edit.php:191
+#: ure-role-edit.php:190
 msgid "Apply to All Sites"
 msgstr "Pritaikyti Visiems Puslapiams"
 
@@ -589,79 +589,104 @@ msgstr "Atšaukti neįrašytus pakeitimus"
 
 # @ ure
 #: ure-role-edit.php:255
+msgid "Select All"
+msgstr ""
+
+#: ure-role-edit.php:255
+msgid "Select All Capabilities"
+msgstr ""
+
+#: ure-role-edit.php:256
+msgid "Unselect All"
+msgstr ""
+
+#: ure-role-edit.php:256
+msgid "Unselect All Capabilities"
+msgstr ""
+
+#: ure-role-edit.php:257
+msgid "Reverse"
+msgstr ""
+
+#: ure-role-edit.php:257
+msgid "Turn checked capabilities off and vise versa"
+msgstr ""
+
+# @ ure
+#: ure-role-edit.php:260
 msgid "Reset"
 msgstr "Atkurti"
 
 # @ ure
-#: ure-role-edit.php:255
+#: ure-role-edit.php:260
 msgid "Restore Roles from backup copy"
 msgstr "Atkurti funkcijas pagal atsarginės kopijos duomenis"
 
 # @ ure
-#: ure-role-edit.php:265
+#: ure-role-edit.php:270
 msgid "Add New Role"
 msgstr "Pridėti Naują Funkciją"
 
-#: ure-role-edit.php:267
+#: ure-role-edit.php:272
 msgid "Name: "
 msgstr "Vardas:"
 
-#: ure-role-edit.php:271
+#: ure-role-edit.php:276
 msgid "Make copy of: "
 msgstr "Padaryti kopiją:"
 
 # @ ure
-#: ure-role-edit.php:274
-#: ure-role-edit.php:303
+#: ure-role-edit.php:279
+#: ure-role-edit.php:308
 msgid "Add"
 msgstr "Pridėti"
 
 # @ ure
-#: ure-role-edit.php:274
+#: ure-role-edit.php:279
 msgid "Add New User Role"
 msgstr "Pridėti Naują Vartotojo Funkciją"
 
 # @ ure
-#: ure-role-edit.php:278
+#: ure-role-edit.php:283
 msgid "Default Role for New User"
 msgstr "Numatytoji Funkcija Naujam Vartotojui"
 
 # @ ure
-#: ure-role-edit.php:283
+#: ure-role-edit.php:288
 msgid "Change"
 msgstr "Pakeisti"
 
 # @ ure
-#: ure-role-edit.php:283
+#: ure-role-edit.php:288
 msgid "Set as Default User Role"
 msgstr "Nustatyti kaip Numatytąją Vartotojo Funkciją"
 
 # @ ure
-#: ure-role-edit.php:293
+#: ure-role-edit.php:298
 msgid "Delete"
 msgstr "Ištrinti"
 
 # @ ure
-#: ure-role-edit.php:293
+#: ure-role-edit.php:298
 msgid "Delete User Role"
 msgstr "Ištrinti Vartotojo Funkciją"
 
 # @ ure
-#: ure-role-edit.php:298
 #: ure-role-edit.php:303
+#: ure-role-edit.php:308
 msgid "Add New Capability"
 msgstr "Pridėti Naują Gebą"
 
-#: ure-role-edit.php:308
+#: ure-role-edit.php:313
 msgid "Remove Capability"
 msgstr "Pašalinti Gebą"
 
 # @ ure
-#: ure-role-edit.php:313
+#: ure-role-edit.php:318
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: ure-role-edit.php:313
+#: ure-role-edit.php:318
 msgid "Remove User Capability"
 msgstr "Pašalinti Vartotojo Gebą"
 
@@ -718,147 +743,151 @@ msgid "capabilities are updated successfully"
 msgstr "Gebos sėkmingai atnaujintos"
 
 # @ ure
-#: ure-options.php:191
+#: ure-options.php:215
 msgid "About this Plugin:"
 msgstr "Apie šį Papildinį:"
 
 # @ ure
-#: ure-options.php:192
+#: ure-options.php:216
 msgid "Author's website"
 msgstr "Autoriaus svetainė"
 
 # @ ure
-#: ure-options.php:193
+#: ure-options.php:217
 msgid "Plugin webpage"
 msgstr "Papildinio puslapis"
 
 # @ ure
-#: ure-options.php:195
+#: ure-options.php:219
 msgid "FAQ"
 msgstr "DUK"
 
 # @ ure
-#: ure-options.php:196
-#, fuzzy
+#: ure-options.php:220
 msgid "Greetings"
-msgstr "Pasisveikinimai:"
+msgstr ""
 
 # @ ure
-#: ure-options.php:218
+#: ure-options.php:242
 msgid "Greetings:"
 msgstr "Pasisveikinimai:"
 
 # @ ure
-#: ure-options.php:219
+#: ure-options.php:243
 msgid "It's me, the author"
 msgstr "Čia aš, autorius"
 
 # @ ure
-#: ure-options.php:220
+#: ure-options.php:244
 msgid "For the help with Belorussian translation"
 msgstr "Ieškant pagalbos, verčiant į baltarusių kalbą"
 
 # @ ure
-#: ure-options.php:221
+#: ure-options.php:245
 msgid "For the help with Brasilian translation"
 msgstr "Ieškant pagalbos, verčiant į portugalų (Brazilija) kalbą"
 
 # @ ure
-#: ure-options.php:222
+#: ure-options.php:246
 msgid "For the help with Chinese translation"
 msgstr "Ieškant pagalbos, verčiant į kinų kalbą"
 
 # @ ure
-#: ure-options.php:223
+#: ure-options.php:247
 msgid "For the help with Dutch translation"
 msgstr "Ieškant pagalbos, verčiant į olandų kalbą"
 
 # @ ure
-#: ure-options.php:224
+#: ure-options.php:248
 msgid "For the help with Finnish translation"
 msgstr "Ieškant pagalbos, verčiant į suomių kalbą"
 
 # @ ure
-#: ure-options.php:225
-#: ure-options.php:226
+#: ure-options.php:249
+#: ure-options.php:250
 msgid "For the help with French translation"
 msgstr "Ieškant pagalbos, verčiant į prancūzų kalbą"
 
 # @ ure
-#: ure-options.php:227
+#: ure-options.php:251
 msgid "For the help with German translation"
 msgstr "Ieškant pagalbos, verčiant į vokiečių kalbą"
 
 # @ ure
-#: ure-options.php:228
-#: ure-options.php:229
+#: ure-options.php:252
+#: ure-options.php:253
 msgid "For the help with Hebrew translation"
 msgstr ""
 
 # @ ure
-#: ure-options.php:230
+#: ure-options.php:254
+msgid "For the help with Hindi translation"
+msgstr ""
+
+# @ ure
+#: ure-options.php:255
 msgid "For the help with Hungarian translation"
 msgstr "Ieškant pagalbos, verčiant į vengrų kalbą"
 
 # @ ure
-#: ure-options.php:231
-#: ure-options.php:232
+#: ure-options.php:256
+#: ure-options.php:257
 msgid "For the help with Italian translation"
 msgstr "Ieškant pagalbos, verčiant į italų kalbą"
 
 # @ ure
-#: ure-options.php:233
+#: ure-options.php:258
 msgid "For the help with Japanese translation"
 msgstr "Ieškant pagalbos, verčiant į japonų kalbą"
 
 # @ ure
-#: ure-options.php:234
+#: ure-options.php:259
 msgid "For the help with Lithuanian translation"
 msgstr ""
 
 # @ ure
-#: ure-options.php:235
-#: ure-options.php:236
+#: ure-options.php:260
+#: ure-options.php:261
 msgid "For the help with Persian translation"
 msgstr "Ieškant pagalbos, verčiant į persų kalbą"
 
 # @ ure
-#: ure-options.php:237
+#: ure-options.php:262
 msgid "For the help with Polish translation"
 msgstr "Ieškant pagalbos, verčiant į lenkų kalbą"
 
 # @ ure
-#: ure-options.php:238
-#: ure-options.php:239
+#: ure-options.php:263
+#: ure-options.php:264
 msgid "For the help with Spanish translation"
 msgstr "Ieškant pagalbos, verčiant į ispanų kalbą"
 
 # @ ure
-#: ure-options.php:240
+#: ure-options.php:265
 msgid "For the updated Swedish translation"
 msgstr ""
 
 # @ ure
-#: ure-options.php:241
+#: ure-options.php:266
 msgid "For the help with Swedish translation"
 msgstr "Ieškant pagalbos, verčiant į švedų kalbą"
 
 # @ ure
-#: ure-options.php:242
+#: ure-options.php:267
 msgid "For the help with Turkish translation"
 msgstr "Ieškant pagalbos, verčiant į turkų kalbą"
 
 # @ ure
-#: ure-options.php:244
+#: ure-options.php:269
 msgid "For the code to hide administrator role"
 msgstr "Kodui, paslėpti administratoriaus funkciją"
 
-#: ure-options.php:245
+#: ure-options.php:270
 msgid "For the code enhancement suggestion"
 msgstr "Kodo gerinimo pasiūlymams"
 
 # @ ure
-#: ure-options.php:247
+#: ure-options.php:272
 msgid "Do you wish to see your name with link to your site here? You are welcome! Your help with translation and new ideas are very appreciated."
 msgstr "Ar čia norėtumėte matyti savo vardą su nuoroda į Jūsų tinklapį? Maloniai prašome! Jūsų pagalba verčiant ir pateikiant naujas idėjas yra labai laukiama."
 

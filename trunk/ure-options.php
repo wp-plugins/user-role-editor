@@ -185,8 +185,32 @@ ure_showMessage($mess);
       el.style.visibility = 'visible';
     }
   }
+  // end of ure_show_greetings()
+  
+  function ure_select_all(selected) {
+    
+    var form = document.getElementById('ure_form');
+    for (i=0; i<form.elements.length; i++) {
+      el = form.elements[i];
+      if (el.type!='checkbox') { 
+        continue;
+      }  
+      if (el.name=='ure_caps_readable' || el.name=='ure_show_deprecated_caps') {
+        continue;
+      }
+      if (selected>=0) {
+        form.elements[i].checked = selected;      
+      } else {
+        form.elements[i].checked = !form.elements[i].checked;      
+      }
+    }
+    
+  }
+  // end of ure_select_all()
+  
+  
 </script>
-				<div id="poststuff">
+<div id="poststuff">
 					<div class="ure-sidebar" >
 									<?php ure_displayBoxStart(__('About this Plugin:', 'ure')); ?>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
@@ -250,7 +274,7 @@ ure_showMessage($mess);
                       </div>
 					</div>
           <div class="has-sidebar" >
-            <form method="post" action="<?php echo URE_PARENT; ?>?page=user-role-editor.php" onsubmit="return ure_onSubmit();">
+            <form id="ure_form" method="post" action="<?php echo URE_PARENT; ?>?page=user-role-editor.php" onsubmit="return ure_onSubmit();">
               <?php
               settings_fields('ure-options');
               ?>
