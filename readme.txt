@@ -85,7 +85,7 @@ Share with me new ideas about plugin further development and link to your site w
 == Changelog ==
 = 3.7.2 =
 * 20.07.2012
-* SQL-injection vulnerability was found and fixed. Thanks to Ddave for reporting it, look this [thread](http://shinephp.com/community/topic/little-bug-in-ure_has_administrator_role#post-819) for the details. 
+* SQL-injection vulnerability was found and fixed. Thanks to DDave for reporting it, look this [thread](http://shinephp.com/community/topic/little-bug-in-ure_has_administrator_role#post-819) for the details. 
 
 = 3.7.1 =
 * 25.06.2012
