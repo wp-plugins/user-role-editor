@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: User Role Editor v. 2.1.9\n"
+"Project-Id-Version: User Role Editor v. 3.7.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-23 23:10+0700\n"
-"PO-Revision-Date: 2012-06-23 23:10+0700\n"
-"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2012-07-24 18:42+0100\n"
+"Last-Translator: Peter Becker-Heidmann <peter@becker-heidmann.de>\n"
+"Language-Team: Peter Becker-Heidmann <peter@becker-heidmann.de>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,17 +32,16 @@ msgstr "Bitte aktualisieren!"
 
 # @ ure
 #: user-role-editor.php:40
-#, fuzzy
 msgid "User Role Editor requires PHP 5.0 or newer."
-msgstr "User Role Editor benötigt Wordpress 3.0 oder aktueller"
+msgstr "User Role Editor benötigt PHP 5.0 oder aktueller"
 
 #: user-role-editor.php:65
 msgid "Only"
-msgstr ""
+msgstr "Nur"
 
 #: user-role-editor.php:65
 msgid "is allowed to use"
-msgstr ""
+msgstr "ist gestattet zu benutzen"
 
 # @ ure
 #: user-role-editor.php:71
@@ -63,7 +62,7 @@ msgstr "Änderungen"
 
 #: user-role-editor.php:275
 msgid "Capabilities"
-msgstr ""
+msgstr "Rechte"
 
 # @ ure
 #: ure-lib.php:45
@@ -78,23 +77,23 @@ msgstr "Datenbankfehler. Überprüfen Sie die Protokolldatei."
 # @ ure
 #: ure-lib.php:188
 msgid "No backup data. It is created automatically before the first role data update."
-msgstr "Keine Backup-Daten vorhanden. Es wird automatisch vor der ersten Aktualisierung von Rollen-Daten erstellt."
+msgstr "Keine Sicherungskopie vorhanden. Sie wird automatisch vor der ersten Aktualisierung von Rollen-Daten erstellt."
 
 # @ ure
 #: ure-lib.php:226
 msgid "Backup record is created for the current role capabilities"
-msgstr "Sicherheitskopie der aktuellen Rollenbefugnisse wurde erstellt"
+msgstr "Sicherheitskopie der aktuellen Rollenbefugnisse wird erstellt"
 
 # @ ure
 #: ure-lib.php:345
 msgid "Error: Role name must contain latin characters and digits only!"
-msgstr "Fehler: Der Rollen-Name darf nur lateinische Buchstaben und Ziffern enthalten!"
+msgstr "Fehler: Der Rollen-Name darf nur Buchstaben und Ziffern enthalten!"
 
 # @ ure
 #: ure-lib.php:352
 #, php-format
 msgid "Role %s exists already"
-msgstr ""
+msgstr "Rolle %s existiert bereits"
 
 # @ ure
 #: ure-lib.php:365
@@ -462,49 +461,48 @@ msgstr "Export"
 # @ ure
 #: ure-lib.php:655
 msgid "Error: Capability name must contain latin characters and digits only!"
-msgstr ""
+msgstr "Fehler: Der Name des Rechts darf nur Buchstaben und Ziffern enthalten!"
 
 # @ ure
 #: ure-lib.php:667
-#, fuzzy, php-format
+#, php-format
 msgid "Capability %s is added successfully"
-msgstr "Rolle %s wurde erfolgreich erstellt"
+msgstr "Recht %s wurde erfolgreich hinzugefügt"
 
 #: ure-lib.php:669
 #, php-format
 msgid "Capability %s exists already"
-msgstr ""
+msgstr "Recht %s existiert bereits"
 
 #: ure-lib.php:818
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
-msgstr ""
+msgstr "Fehler: Sie haben nicht die Erlaubnis, dieses Recht zu löschen: %s!"
 
 # @ ure
 #: ure-lib.php:840
 #, php-format
 msgid "Capability %s is removed successfully"
-msgstr ""
+msgstr "Das Recht %s wurde erfogreich entfernt"
 
 #: ure-lib.php:902
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 # @ ure
 #: ure-role-edit.php:29
-#, fuzzy
 msgid "None"
-msgstr "Spende"
+msgstr "Nichts"
 
 # @ ure
 #: ure-role-edit.php:93
 msgid " Name can not be empty!"
-msgstr "name darf nicht leer sein!"
+msgstr "Name darf nicht leer sein!"
 
 # @ ure
 #: ure-role-edit.php:97
 msgid " Name must contain latin characters and digits only!"
-msgstr "Der name darf nur lateinische Buchstaben und Ziffern enthalten!"
+msgstr "Der Name darf nur Buchstaben und Ziffern enthalten!"
 
 # @ ure
 #: ure-role-edit.php:102
@@ -519,11 +517,11 @@ msgstr "Ändern der Standard-Rolle"
 
 #: ure-role-edit.php:106
 msgid "Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost"
-msgstr ""
+msgstr "Wiederherstellung der Rollen von der Sicherungskopie. Seien Sie vorsichtig, die Sicherung wurde bei Ihrer ersten Benutzung von URE erstellt. Alle Änderungen, die Sie danach vorgenommen haben, gehen verloren"
 
 #: ure-role-edit.php:108
 msgid "Warning! Be careful - removing critical capability could crash some plugin or other custom code"
-msgstr ""
+msgstr "Achtung! Seien Sie vorsichtig - das Löschen kritischer Rechte könnte Plugin- oder angepassten Code zerstören."
 
 # @ ure
 #: ure-role-edit.php:110
@@ -539,7 +537,7 @@ msgstr "Aktualisierung der Rolle \"%s\": Zum Fortfahren bitte bestätigen"
 # @ ure
 #: ure-role-edit.php:155
 msgid "Select Role and change its capabilities list"
-msgstr "Eine Rolle auswählen und ihre Befugnisse ändern"
+msgstr "Eine Rolle auswählen und ihre Rechte ändern"
 
 # @ ure
 #: ure-role-edit.php:157
@@ -550,20 +548,20 @@ msgstr "Eine Rolle auswählen:"
 #: ure-role-edit.php:167
 #: ure-user-edit.php:91
 msgid "Show capabilities in human readable form"
-msgstr "Anzeige der Berechtigungen in verständlicher Form"
+msgstr "Anzeige der Rechte in allgemeinverständlicher Form"
 
 #: ure-role-edit.php:176
 #: ure-user-edit.php:100
 msgid "Show deprecated capabilities"
-msgstr ""
+msgstr "Zeige herabgesetzte Rechte"
 
 #: ure-role-edit.php:180
 msgid "If checked, then apply action to ALL sites of this Network"
-msgstr ""
+msgstr "Fall aktiviert, wende die Aktion auf ALLE Webpräsenzen"
 
 #: ure-role-edit.php:190
 msgid "Apply to All Sites"
-msgstr ""
+msgstr "Wende auf alle Webpräsenzen an"
 
 # @ ure
 #: ure-role-edit.php:251
@@ -591,29 +589,28 @@ msgstr "Ungesicherte Änderungen verwerfen"
 
 # @ ure
 #: ure-role-edit.php:255
-#, fuzzy
 msgid "Select All"
-msgstr "Eine Rolle auswählen:"
+msgstr "Wähle alle aus"
 
 #: ure-role-edit.php:255
 msgid "Select All Capabilities"
-msgstr ""
+msgstr "Wähle alle Rechte"
 
 #: ure-role-edit.php:256
 msgid "Unselect All"
-msgstr ""
+msgstr "Wähle alle ab"
 
 #: ure-role-edit.php:256
 msgid "Unselect All Capabilities"
-msgstr ""
+msgstr "Wähle alle Rechte ab"
 
 #: ure-role-edit.php:257
 msgid "Reverse"
-msgstr ""
+msgstr "Rückgängig"
 
 #: ure-role-edit.php:257
 msgid "Turn checked capabilities off and vise versa"
-msgstr ""
+msgstr "Schalte alle markierten Rechte ab und umgekehrt"
 
 # @ ure
 #: ure-role-edit.php:260
@@ -632,11 +629,11 @@ msgstr "Neue Rolle hinzufügen"
 
 #: ure-role-edit.php:272
 msgid "Name: "
-msgstr ""
+msgstr "Name:"
 
 #: ure-role-edit.php:276
 msgid "Make copy of: "
-msgstr ""
+msgstr "Erstelle Kopie von:"
 
 # @ ure
 #: ure-role-edit.php:279
@@ -662,7 +659,7 @@ msgstr "Ändern"
 # @ ure
 #: ure-role-edit.php:288
 msgid "Set as Default User Role"
-msgstr "Geänderte Standard-Benutzer-Rolle sichern"
+msgstr "Als Standard-Benutzer-Rolle setzen"
 
 # @ ure
 #: ure-role-edit.php:298
@@ -678,30 +675,30 @@ msgstr "Löschen der Benutzer-Rolle"
 #: ure-role-edit.php:303
 #: ure-role-edit.php:308
 msgid "Add New Capability"
-msgstr ""
+msgstr "Füge neues Recht hinzu"
 
 #: ure-role-edit.php:313
 msgid "Remove Capability"
-msgstr ""
+msgstr "Entferne Recht"
 
 # @ ure
 #: ure-role-edit.php:318
 msgid "Remove"
-msgstr ""
+msgstr "Entferne"
 
 #: ure-role-edit.php:318
 msgid "Remove User Capability"
-msgstr ""
+msgstr "Entferne Benutzerrecht"
 
 # @ ure
 #: ure-user-edit.php:67
 #, php-format
 msgid "User \"%s\" update: please confirm to continue"
-msgstr ""
+msgstr "Benutzer \"%s\" Aktualisierung: Bitte bestätigen, um fortzufahren"
 
 #: ure-user-edit.php:79
 msgid "Change capabilities for user"
-msgstr ""
+msgstr "Ändere Rechte für Benutzer"
 
 # @ ure
 #: ure-user-edit.php:82
@@ -710,17 +707,16 @@ msgstr "Rolle:"
 
 #: ure-user-edit.php:104
 msgid "Add capabilities to this user:"
-msgstr ""
+msgstr "Füge Rechte für diesen Benutzer hinzu:"
 
 # @ ure
 #: ure-options.php:59
-#, fuzzy
 msgid "User Roles are restored from the backup data. "
-msgstr "Rollenbefugnisse werden von der Sicherheitskopie wiederhergestellt"
+msgstr "Rollenbefugnisse werden von der Sicherheitskopie wiederhergestellt."
 
 #: ure-options.php:125
 msgid "Error: "
-msgstr ""
+msgstr "Fehler:"
 
 # @ ure
 #: ure-options.php:125
@@ -730,7 +726,7 @@ msgstr "Rolle"
 
 #: ure-options.php:125
 msgid "does not exist"
-msgstr ""
+msgstr "existiert nicht"
 
 # @ ure
 #: ure-options.php:143
@@ -739,12 +735,12 @@ msgstr "wurde erfolgreich aktualisiert"
 
 #: ure-options.php:152
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 # @ ure
 #: ure-options.php:152
 msgid "capabilities are updated successfully"
-msgstr ""
+msgstr "Rechte wurden erfolgreich aktualisiert"
 
 # @ ure
 #: ure-options.php:215
@@ -768,7 +764,6 @@ msgstr "FAQ"
 
 # @ ure
 #: ure-options.php:220
-#, fuzzy
 msgid "Greetings"
 msgstr "Mitarbeiter:"
 
@@ -785,115 +780,111 @@ msgstr "Der Autor"
 # @ ure
 #: ure-options.php:244
 msgid "For the help with Belorussian translation"
-msgstr "Hilfe bei der Übersetzung ins Weißrussische"
+msgstr "Für die Hilfe bei der Übersetzung ins Weißrussische"
 
 # @ ure
 #: ure-options.php:245
 msgid "For the help with Brasilian translation"
-msgstr "Hilfe bei der Übersetzung ins Brasilianische"
+msgstr "Für die Hilfe bei der Übersetzung ins Brasilianische"
 
 # @ ure
 #: ure-options.php:246
 msgid "For the help with Chinese translation"
-msgstr "Hilfe bei der Übersetzung ins Chinesische"
+msgstr "Für die Hilfe bei der Übersetzung ins Chinesische"
 
 # @ ure
 #: ure-options.php:247
 msgid "For the help with Dutch translation"
-msgstr "Hilfe bei der Übersetzung ins Niederländische"
+msgstr "Für die Hilfe bei der Übersetzung ins Niederländische"
 
 # @ ure
 #: ure-options.php:248
 msgid "For the help with Finnish translation"
-msgstr ""
+msgstr "Für die Hilfe bei der Übersetzung ins Finnische"
 
 # @ ure
 #: ure-options.php:249
 #: ure-options.php:250
 msgid "For the help with French translation"
-msgstr "Hilfe bei der Übersetzung ins Französische"
+msgstr "Für die Hilfe bei der Übersetzung ins Französische"
 
 # @ ure
 #: ure-options.php:251
 msgid "For the help with German translation"
-msgstr "Hilfe bei der Übersetzung ins Deutsche"
+msgstr "Für die Hilfe bei der Übersetzung ins Deutsche"
 
 # @ ure
 #: ure-options.php:252
 #: ure-options.php:253
-#, fuzzy
 msgid "For the help with Hebrew translation"
-msgstr "Hilfe bei der Übersetzung ins Französische"
+msgstr "Für die Hilfe bei der Übersetzung ins Französische"
 
 # @ ure
 #: ure-options.php:254
-#, fuzzy
 msgid "For the help with Hindi translation"
-msgstr "Hilfe bei der Übersetzung ins Ungarische"
+msgstr "Für die Hilfe bei der Übersetzung ins Ungarische"
 
 # @ ure
 #: ure-options.php:255
 msgid "For the help with Hungarian translation"
-msgstr "Hilfe bei der Übersetzung ins Ungarische"
+msgstr "Für die Hilfe bei der Übersetzung ins Ungarische"
 
 # @ ure
 #: ure-options.php:256
 #: ure-options.php:257
 msgid "For the help with Italian translation"
-msgstr "Hilfe bei der Übersetzung ins Italienische"
+msgstr "Für die Hilfe bei der Übersetzung ins Italienische"
 
 # @ ure
 #: ure-options.php:258
 msgid "For the help with Japanese translation"
-msgstr "Hilfe bei der Übersetzung ins Japanische"
+msgstr "Für die Hilfe bei der Übersetzung ins Japanische"
 
 # @ ure
 #: ure-options.php:259
-#, fuzzy
 msgid "For the help with Lithuanian translation"
-msgstr "Hilfe bei der Übersetzung ins Italienische"
+msgstr "Für die Hilfe bei der Übersetzung ins Italienische"
 
 # @ ure
 #: ure-options.php:260
 #: ure-options.php:261
 msgid "For the help with Persian translation"
-msgstr "Hilfe bei der Übersetzung ins Persische"
+msgstr "Für die Hilfe bei der Übersetzung ins Persische"
 
 # @ ure
 #: ure-options.php:262
 msgid "For the help with Polish translation"
-msgstr "Hilfe bei der Übersetzung ins Polnische"
+msgstr "Für die Hilfe bei der Übersetzung ins Polnische"
 
 # @ ure
 #: ure-options.php:263
 #: ure-options.php:264
 msgid "For the help with Spanish translation"
-msgstr "Hilfe bei der Übersetzung ins Spanische"
+msgstr "Für die Hilfe bei der Übersetzung ins Spanische"
 
 # @ ure
 #: ure-options.php:265
-#, fuzzy
 msgid "For the updated Swedish translation"
-msgstr "Hilfe bei der Übersetzung ins Spanische"
+msgstr "Für die Hilfe bei der Übersetzung ins Spanische"
 
 # @ ure
 #: ure-options.php:266
 msgid "For the help with Swedish translation"
-msgstr ""
+msgstr "Für die Hilfe bei der Übersetzung ins Schwedische"
 
 # @ ure
 #: ure-options.php:267
 msgid "For the help with Turkish translation"
-msgstr ""
+msgstr "Für die Hilfe bei der Übersetzung ins Türkische"
 
 # @ ure
 #: ure-options.php:269
 msgid "For the code to hide administrator role"
-msgstr "Code zum Verstecken der Administrator-Rolle"
+msgstr "Für den Code zum Verstecken der Administrator-Rolle"
 
 #: ure-options.php:270
 msgid "For the code enhancement suggestion"
-msgstr ""
+msgstr "Für Empfehlungen zur Code-Verbesserung"
 
 # @ ure
 #: ure-options.php:272
