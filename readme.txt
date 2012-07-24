@@ -55,9 +55,10 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 = Translations =
 * Dutch: [Frank Groeneveld](http://ivaldi.nl), [Rémi Bruggeman](http://www.remisan.be)
-* French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog/), [Whiler](http://blogs.wittwer.fr/whiler)
+* French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog), [Whiler](http://blogs.wittwer.fr/whiler)
+* German: [Peter](http://www.becker-heidmann.de)
 * Hebrew: [Aryo Digital](http://www.aryo.co.il), [Sagive](http://www.sagive.co.il)
-* Hindi: [Outshine Solutions](http://outshinesolutions.com/)
+* Hindi: [Outshine Solutions](http://outshinesolutions.com)
 * Italian: [Tristano Ajmone](http://www.zenfactor.org), [Umberto Sartori](http://venezialog.net)
 * Lithuanian: [Vincent G](http://host1free.com)
 * Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
@@ -72,7 +73,6 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Belorussian: [Marsis G.](http://pc.de) - needs update
 * Brasilian Portuguese: [Rafael Galdencio](http://www.arquiteturailustrada.com.br) - needs update
 * Chinese: [Yackytsu](http://www.jackytsu.com) - needs update
-* German: [Peter](http://www.red-socks-reinbek.de) - needs update
 * Hungarian: [István](http://www.blacksnail.hu) - needs update
 * Polish: [TagSite](http://www.tagsite.eu) - needs update
 
@@ -83,6 +83,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.7.3 =
+* 25.07.2012
+* German translation is updated. Thanks to Piter.
+
 = 3.7.2 =
 * 20.07.2012
 * SQL-injection vulnerability was found and fixed. Thanks to DDave for reporting it, look this [thread](http://shinephp.com/community/topic/little-bug-in-ure_has_administrator_role#post-819) for the details. 
