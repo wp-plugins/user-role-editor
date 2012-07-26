@@ -61,7 +61,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Hindi: [Outshine Solutions](http://outshinesolutions.com)
 * Italian: [Tristano Ajmone](http://www.zenfactor.org), [Umberto Sartori](http://venezialog.net)
 * Lithuanian: [Vincent G](http://host1free.com)
-* Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir)
+* Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir), Amir Khalilnejad
 * Russian: [Vladimir Garagulya](http://shinephp.com)
 * Spanish: [Victor Ricardo Díaz (INFOMED)](http://www.sld.cu), [Dario Ferrer](http://www.darioferrer.com)
 * Swedish: [Christer Dahlbacka](www.startlinks.eu), [Andréas Lundgren](http://adevade.com/)
@@ -83,6 +83,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.7.4 =
+* 26.07.2012
+* Persian translation is updated. Thanks to Amir Khalilnejad.
+
 = 3.7.3 =
 * 25.07.2012
 * German translation is updated. Thanks to Piter.
