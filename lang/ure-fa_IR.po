@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-23 23:12+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Last-Translator: Amir <am.kh70@gmail.com>\n"
 "Language-Team: Parsa <i@parsa.ws>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -487,27 +487,27 @@ msgstr "لغو تغییرات اعمال نشده"
 
 #: ../ure-role-edit.php:255
 msgid "Select All"
-msgstr ""
+msgstr "انتخاب همه"
 
 #: ../ure-role-edit.php:255
 msgid "Select All Capabilities"
-msgstr ""
+msgstr "انتخاب تمام قابلیتها"
 
 #: ../ure-role-edit.php:256
 msgid "Unselect All"
-msgstr ""
+msgstr "همه را از حالت انتخاب خارج کن"
 
 #: ../ure-role-edit.php:256
 msgid "Unselect All Capabilities"
-msgstr ""
+msgstr "همه قابلیتها را از حالت انتخاب خارج کن"
 
 #: ../ure-role-edit.php:257
 msgid "Reverse"
-msgstr ""
+msgstr "بازگرداندن"
 
 #: ../ure-role-edit.php:257
 msgid "Turn checked capabilities off and vise versa"
-msgstr ""
+msgstr "ویژگی های خاموش را روشن کن و بالعکس"
 
 #: ../ure-role-edit.php:260
 msgid "Reset"
@@ -639,7 +639,7 @@ msgstr "سؤالات"
 
 #: ../ure-options.php:220
 msgid "Greetings"
-msgstr ""
+msgstr "خوشامدگویی ها"
 
 #: ../ure-options.php:242
 msgid "Greetings:"
@@ -681,11 +681,11 @@ msgstr "برای ترجمه به زبان آلمانی"
 #: ../ure-options.php:252
 #: ../ure-options.php:253
 msgid "For the help with Hebrew translation"
-msgstr ""
+msgstr "برای کمک ترجمه عبری"
 
 #: ../ure-options.php:254
 msgid "For the help with Hindi translation"
-msgstr ""
+msgstr "برای کمک ترجمه هندی"
 
 #: ../ure-options.php:255
 msgid "For the help with Hungarian translation"
@@ -702,7 +702,7 @@ msgstr "برای ترجمه به زبان ژاپنی"
 
 #: ../ure-options.php:259
 msgid "For the help with Lithuanian translation"
-msgstr ""
+msgstr "برای کمک ترجمه لیتوانیایی"
 
 #: ../ure-options.php:260
 #: ../ure-options.php:261
