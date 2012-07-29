@@ -229,6 +229,10 @@ ure_showMessage($mess);
                         </form>                        
                       </div>
                       <hr />
+                      <div style="text-align: center;">
+                        <a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL.'/images/chooseplugin.png';?>" alt="ChoosePlugin.com" title="Advanced search plugins service from User Role Editor developer"/></a>
+                      </div>  
+                      <hr />
                       <h3>Recently donated</h3>
                       <ul>
                         <li><a href="http://thenineshub.com/" title="To The Nines Web Agency" target="new">To The Nines Web Agency</a></li>
@@ -261,6 +265,7 @@ ure_showMessage($mess);
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/good-life.png'; ?>)" target="_blank" title="<?php _e("For the help with Persian translation", 'ure'); ?>" href="http://good-life.ir">Good Life</a>
                       <span title="<?php _e("For the help with Persian translation", 'ure'); ?>">Amir Khalilnejad</span>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/tagsite.png'; ?>)" target="_blank" title="<?php _e("For the help with Polish translation", 'ure'); ?>" href="http://www.tagsite.eu">TagSite</a>
+                      <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/bartosz.png'; ?>)" target="_blank" title="<?php _e("For the help with Polish translation", 'ure'); ?>" href="http://www.digitalfactory.pl">Bartosz</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/infomed.png'; ?>)" target="_blank" title="<?php _e("For the help with Spanish translation", 'ure'); ?>" href="http://www.sld.cu">Victor Ricardo Díaz (INFOMED)</a>
                       <span title="<?php _e("For the help with Spanish translation", 'ure'); ?>" >Dario  Ferrer</span>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/andreas.png'; ?>)" target="_blank" title="<?php _e("For the updated Swedish translation", 'ure'); ?>" href="http://adevade.com/">Andréas Lundgren</a>
