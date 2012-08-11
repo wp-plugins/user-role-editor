@@ -894,6 +894,9 @@ function ure_capability_help_link($capability) {
     case 'moderate_comments':
       $url = 'http://www.shinephp.com/moderate_comments-wordpress-user-capability/';
       break;    
+    case 'update_core':
+      $url = 'http://www.shinephp.com/update_core-capability-for-wordpress-user/';
+      break;    
     default:
       $url = '';
   }
