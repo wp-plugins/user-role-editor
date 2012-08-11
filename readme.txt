@@ -85,6 +85,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 == Changelog ==
 = 3.7.5 =
+* 11.08.2012
+* Minor fix of German language translation file. One string translation was the reason of URE empty screen. Just replace your German language translation files in the ./lang directory with files from this package. 
+
+= 3.7.5 =
 * 29.07.2012
 * Polish translation is updated. Thanks to Bartosz.
 * "User Role Editor" menu item could be shown in translated form now. Do not lose it - it is on the same place at the "Users" submenu.
