@@ -251,6 +251,9 @@ function ure_saveRolesToDb() {
     ure_logEvent($wpdb->last_error, true);
     return false;
   }
+  if ($record==0) {
+    return false;
+  }
 
   return true;
 }
@@ -277,6 +280,9 @@ function ure_direct_site_roles_update($blogIds) {
     if ($wpdb->last_error) {
       ure_logEvent($wpdb->last_error, true);
       return false;
+    }
+    if ($record==0) {
+     return false;
     }
   }
   
