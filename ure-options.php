@@ -179,10 +179,10 @@ ure_showMessage($mess);
 <script language="javascript" type="text/javascript" >
   function ure_show_greetings(message) {
     var el = document.getElementById('ure_greetings');
-    if (el.style.visibility=='visible') {
-      el.style.visibility = 'hidden';
+    if (el.style.display=='block') {
+      el.style.display = 'none';
     } else {
-      el.style.visibility = 'visible';
+      el.style.display = 'block';
     }
   }
   // end of ure_show_greetings()
@@ -212,12 +212,20 @@ ure_showMessage($mess);
 </script>
 <div id="poststuff">
 					<div class="ure-sidebar" >
+                      <div style="text-align: center;">
+                        <a href="http://w-shadow.com/admin-menu-editor-pro/?utm_source=UserRoleEditor&utm_medium=banner&utm_campaign=Plugins " target="_new" ><img src="<?php echo URE_PLUGIN_URL.'/images/admin-menu-editor-pro.jpg';?>" alt="Admin Menu Editor Pro" title="Move, rename, hide, add admin menu items, restrict access"/></a>
+                      </div>  
+                      <hr />
+                     <div style="text-align: center;">
+                        <a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL.'/images/chooseplugin.png';?>" alt="ChoosePlugin.com" title="Advanced search plugins service from User Role Editor developer"/></a>
+                      </div>  
+                      <hr />
 									<?php ure_displayBoxStart(__('About this Plugin:', 'ure')); ?>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'ure'); ?></a>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/"><?php _e('Plugin webpage', 'ure'); ?></a>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/faq-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq"><?php _e('FAQ', 'ure'); ?></a>
-                      <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/greetings.png'; ?>);" onclick="ure_show_greetings()" href="#"><?php _e('Greetings', 'ure'); ?></a>
+                      <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/greetings.png'; ?>);" onclick="ure_show_greetings()" href="#greetings"><?php _e('Greetings', 'ure'); ?></a>
                       <hr />
                       <div style="text-align: center;">
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -228,11 +236,7 @@ ure_showMessage($mess);
                           <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">                        
                         </form>                        
                       </div>
-                      <hr />
-                      <div style="text-align: center;">
-                        <a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL.'/images/chooseplugin.png';?>" alt="ChoosePlugin.com" title="Advanced search plugins service from User Role Editor developer"/></a>
-                      </div>  
-                      <hr />
+                      <hr />                      
                       <h3>Recently donated</h3>
                       <ul>
                         <li><a href="http://thenineshub.com/" title="To The Nines Web Agency" target="new">To The Nines Web Agency</a></li>
@@ -242,8 +246,8 @@ ure_showMessage($mess);
                         <li><a href="http://www.eastwoodzhao.com" title="www.eastwoodzhao.com" target="new">Eastwood</a></li>
                       </ul>
 									<?php ure_displayBoxEnd();?>
-                      <div id="ure_greetings" style="clear: left; float: left; visibility: hidden;">    
-                  <?php ure_displayBoxStart(__('Greetings:','ure')); ?>
+                      <div id="ure_greetings" style="clear: left; float: left; display: none;">    
+                  <?php ure_displayBoxStart('<a name="greetings">'.__('Greetings:','ure').'</a>'); ?>
 											<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'ure'); ?>" href="http://www.shinephp.com/">Vladimir</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/marsis.png'; ?>)" target="_blank" title="<?php _e("For the help with Belorussian translation", 'ure'); ?>" href="http://pc.de">Marsis G.</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/rafael.png'; ?>)" target="_blank" title="<?php _e("For the help with Brasilian translation", 'ure'); ?>" href="http://www.arquiteturailustrada.com.br/">Rafael Galdencio</a>
