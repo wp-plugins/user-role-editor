@@ -123,8 +123,8 @@ Share with me new ideas about plugin further development and link to your site w
 * Old versions used 'edit_users' capability to check if show/hide 'User Role Editor' menu item under 'Users' menu. Starting from version 3.7 'administrator' role is checked. Existed inconsistency, when non-admin user with 'edit_users' capability saws 'User Role Editor' menu, but got 'Only Administrator is allowed to use User Role Editor' error message, was removed.
 * Bug fix: if you work with WordPress admin via https, URE will use https instead of http, as it made in older versions.
 
+Click [here](http://www.shinephp.com/user-role-editor-wordpress-plugin-changelog)</a> to look at [the rest part](http://www.shinephp.com/user-role-editor-wordpress-plugin-changelog) of User Role Editor changelog.
 
-Older records are available at [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog).
 
 == Additional Documentation ==
 
