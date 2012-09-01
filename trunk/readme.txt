@@ -86,7 +86,7 @@ Share with me new ideas about plugin further development and link to your site w
 == Changelog ==
 = 3.8 =
 * 01.09.2012
-* Bug fix: Some times URE didn't show real changes it made to the database. The reason direct update of database did not invalidate data stored at WordPress cache. Special thanks to [Knut Sparhell](http://sparhell.no/knut/) for the help to detect this critical issue.
+* Bug fix: Some times URE didn't show real changes it made to the database. The reason was that direct update of database did not invalidate data stored at WordPress cache. Special thanks to [Knut Sparhell](http://sparhell.no/knut/) for the help to detect this critical issue.
 * WordPress core capabilities are shown separately from capabilities added by plugins and manually.
 * If you configured URE to show you 'Administrator' role, you will see its capabilities, but you can not exclude any capability from it. I may just add capabilities to the Administrator role now. The reason - Administrator role should have all existing capabilities included.
 * Brasilian Portuguese translation is updated. Thanks to [Onbiz](http://www.onbiz.com.br/).
