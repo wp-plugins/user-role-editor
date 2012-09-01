@@ -54,6 +54,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * [FullThrottle](http://fullthrottledevelopment.com/how-to-hide-the-adminstrator-on-the-wordpress-users-screen) - For the code to hide administrator role at admin backend.
 
 = Translations =
+* Brasilian Portuguese: [Onbiz](http://www.onbiz.com.br/), [Rafael Galdencio](http://www.arquiteturailustrada.com.br)
 * Dutch: [Frank Groeneveld](http://ivaldi.nl), [Rémi Bruggeman](http://www.remisan.be)
 * French: [Presse et Multimedia](http://presse-et-multimedia.fr/blog), [Whiler](http://blogs.wittwer.fr/whiler)
 * German: [Peter](http://www.becker-heidmann.de)
@@ -72,7 +73,6 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Finnish: [Lauri Merisaari](http://www.viidakkorumpu.fi)
 * Japanese: Kaz, [Technolog.jp](http://technolog.jp)
 * Belorussian: [Marsis G.](http://pc.de) - needs update
-* Brasilian Portuguese: [Rafael Galdencio](http://www.arquiteturailustrada.com.br) - needs update
 * Chinese: [Yackytsu](http://www.jackytsu.com) - needs update
 * Hungarian: [István](http://www.blacksnail.hu) - needs update
 
@@ -84,6 +84,13 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.8 =
+* 01.09.2012
+* Bug fix: Some times URE didn't show real changes it made to the database. The reason direct update of database did not invalidate data stored at WordPress cache. Special thanks to [Knut Sparhell](http://sparhell.no/knut/) for the help to detect this critical issue.
+* WordPress core capabilities are shown separately from capabilities added by plugins and manually.
+* If you configured URE to show you 'Administrator' role, you will see its capabilities, but you can not exclude any capability from it. I may just add capabilities to the Administrator role now. The reason - Administrator role should have all existing capabilities included.
+* Brasilian Portuguese translation is updated. Thanks to [Onbiz](http://www.onbiz.com.br/).
+
 = 3.7.5 =
 * 11.08.2012
 * Minor fix of German language translation file. One string translation was the reason of URE empty screen. Just replace your German language translation files in the ./lang directory with files from this package. 
@@ -92,7 +99,6 @@ Share with me new ideas about plugin further development and link to your site w
 * 29.07.2012
 * Polish translation is updated. Thanks to Bartosz.
 * "User Role Editor" menu item could be shown in translated form now. Do not lose it - it is on the same place at the "Users" submenu.
-
 
 = 3.7.4 =
 * 26.07.2012
@@ -117,60 +123,6 @@ Share with me new ideas about plugin further development and link to your site w
 * Old versions used 'edit_users' capability to check if show/hide 'User Role Editor' menu item under 'Users' menu. Starting from version 3.7 'administrator' role is checked. Existed inconsistency, when non-admin user with 'edit_users' capability saws 'User Role Editor' menu, but got 'Only Administrator is allowed to use User Role Editor' error message, was removed.
 * Bug fix: if you work with WordPress admin via https, URE will use https instead of http, as it made in older versions.
 
-= 3.6.2 =
-* 23.05.2012
-* Hindi translation is added. Thanks to Love Chandel.
-
-= 3.6.1 =
-* 07.05.2012
-* Italian translation is updated. Thanks to Tristano Ajmone.
-
-= 3.6 =
-* 30.04.2012
-* CSS and page layout fix for compatibility with WordPress 3.4.
-* WordPress multi-site: when new blog created default role setting is copied for it from the main blog default role value now.
-* Minor translations files update, e.g Russian roles names in plugin are identical to those WordPress uses itself now, etc.
-
-= 3.5.4 =
-* 4.04.2012
-* Lithuanian translation is added, thanks to Vincent G.
-* Spanish translation is updated, thanks to Victor Ricardo Díaz.
-
-= 3.5.3 =
-* 24.03.2012
-* French translation is updated, thanks to Presse et Multimedia.
-* Hebrew translation is updated, thanks to Aryo Digital.  
-* Persian translation is updated, thanks to Parsa.  
-* Minor CSS fix to provide compatibility with RTL languages.
-
-= 3.5.2 =
-* 17.03.2012
-* Turkish translation is updated, thanks to Muhammed YILDIRIM.
-* Dutch translation is updated, thanks to Frank Groeneveld.  
-
-= 3.5.1 =
-* 24.02.2012
-* Bugs for multi-site WordPress network installation were discovered and fixed: 1) blocked login to admin back-end; 2) empty users list for administrators of single sites; 3) empty authors drop down list at the post editor page.
-* If URE plugin is not enabled for single site administrator, then URE is automatically excluded from plugins list available to that administrator.
-
-= 3.5 =
-* 19.02.2012
-* User Role Editor could be available now for single site administrators (Administrator role) under multi-site environment. You should define URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE constant in your blog wp-config.php file for that. Insert this line "define('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE', 1);" there, if you decide to give single site admin such opportunity.
-* One of "User Role Editor" users with 1100+ sites in the multi-site network reported that URE doesn't update roles for all sites, but stalls somewhere in the middle. Other network update method is realized as alternative. Due to my tests it works approximately 30 times faster. If you met the same problem, try it. It will be great if you share your experience with me. In order select alternative method of all sites update add this line to you blog wp-config.php file "define('URE_MULTISITE_DIRECT_UPDATE', 1);". But be careful. It's recommended to make 1st try on the backup copy, not on a live site.
-* Persian translation is updated. Thanks to [Parsa](http://parsa.ws).
-
-= 3.4 =
-* 21.01.2012
-* You can see/edit "Administrator" role now. Insert this line of code "define('URE_SHOW_ADMIN_ROLE', 1);" into your wp-config.php file and login with administrator account for that.
-  If for some reason your Administrator role missed some capabilities added by plugins or themes, you can fix that. But be careful with changing "Administrator" role, do not turn off accidentally some critical capabilities to not block your admin users.
-
-= 3.3.3 =
-* 11.01.2012
-* Spanish (Dario) and Swedish (Andréas) translations update.
-
-= 3.3.2 =
-* 02.01.2012
-* Enhance server side validation for user input of new role name, minor bug fixes.
 
 Older records are available at [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog).
 

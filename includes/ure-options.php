@@ -83,7 +83,7 @@ foreach ($ure_roles as $key=>$value) {
   $ure_rolesId[] = $key;
 }
 
-
+$built_in_wp_caps = ure_getBuiltInWPCaps();
 $ure_fullCapabilities = array();
 foreach($ure_roles as $role) {
   // validate if capabilities is an array
@@ -92,6 +92,11 @@ foreach($ure_roles as $role) {
       $cap = array();
       $cap['inner'] = $key;
       $cap['human'] = __(ure_ConvertCapsToReadable($key),'ure');
+			if ( isset( $built_in_wp_caps[ $key ] ) ) {
+				$cap['wp_core'] = true;				
+			} else {
+				$cap['wp_core'] = false;				
+			}
       if (!isset($ure_fullCapabilities[$key])) {
         $ure_fullCapabilities[$key] = $cap;
       }
@@ -129,27 +134,25 @@ if (isset($_POST['action']) && $_POST['action'] == 'update' && isset($_POST['use
     foreach ($ure_fullCapabilities as $availableCapability) {
       $cap_id = str_replace(' ', URE_SPACE_REPLACER, $availableCapability['inner']);
       if (isset($_POST[$cap_id])) {
-        $ure_capabilitiesToSave[$availableCapability['inner']] = 1;
+        $ure_capabilitiesToSave[$availableCapability['inner']] = true;
       }
     }
     if ($ure_object == 'role') {  // save role changes to database
       if (count($ure_capabilitiesToSave) > 0) {
-        if (!ure_updateRoles()) {
-          return;
+        if (ure_updateRoles()) {
+          if ($mess) {
+            $mess .= '<br/>';
+          }
+          $mess = __('Role', 'ure') . ' <em>' . __($ure_roles[$ure_currentRole]['name'], 'ure') . '</em> ' . __('is updated successfully', 'ure');
         }
+      }
+    } else {
+      if (ure_updateUser($ure_userToEdit)) {
         if ($mess) {
           $mess .= '<br/>';
         }
-        $mess = __('Role', 'ure') . ' <em>' . __($ure_roles[$ure_currentRole]['name'], 'ure') . '</em> ' . __('is updated successfully', 'ure');
+        $mess = __('User', 'ure') . ' &lt;<em>' . $ure_userToEdit->display_name . '</em>&gt; ' . __('capabilities are updated successfully', 'ure');
       }
-    } else {
-      if (!ure_updateUser($ure_userToEdit)) {
-        return;
-      }
-      if ($mess) {
-        $mess .= '<br/>';
-      }
-      $mess = __('User', 'ure') . ' &lt;<em>' . $ure_userToEdit->display_name . '</em>&gt; ' . __('capabilities are updated successfully', 'ure');
     }
   }
 }
@@ -216,6 +219,12 @@ ure_showMessage($mess);
                         <a href="http://w-shadow.com/admin-menu-editor-pro/?utm_source=UserRoleEditor&utm_medium=banner&utm_campaign=Plugins " target="_new" ><img src="<?php echo URE_PLUGIN_URL.'/images/admin-menu-editor-pro.jpg';?>" alt="Admin Menu Editor Pro" title="Move, rename, hide, add admin menu items, restrict access"/></a>
                       </div>  
                       <hr />
+                      <div style="text-align: center;">
+                        <a title="ManageWP" href="http://managewp.com/?utm_source=user_role_editor&utm_medium=Banner&utm_content=mwp250_2&utm_campaign=Plugins" targer="_new" >
+                           <img width="250" height="250" alt="ManageWP" src="<?php echo URE_PLUGIN_URL;?>/images/mwp250_2.png">
+                        </a>                        
+                      </div>  
+                      <hr />
                      <div style="text-align: center;">
                         <a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL.'/images/chooseplugin.png';?>" alt="ChoosePlugin.com" title="Advanced search plugins service from User Role Editor developer"/></a>
                       </div>  
@@ -251,6 +260,7 @@ ure_showMessage($mess);
 											<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'ure'); ?>" href="http://www.shinephp.com/">Vladimir</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/marsis.png'; ?>)" target="_blank" title="<?php _e("For the help with Belorussian translation", 'ure'); ?>" href="http://pc.de">Marsis G.</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/rafael.png'; ?>)" target="_blank" title="<?php _e("For the help with Brasilian translation", 'ure'); ?>" href="http://www.arquiteturailustrada.com.br/">Rafael Galdencio</a>
+											<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/onbiz.png'; ?>)" target="_blank" title="<?php _e("For the help with Brasilian Portuguese translation", 'ure'); ?>" href="http://www.onbiz.com.br">Onbiz</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/jackytsu.png'; ?>)" target="_blank" title="<?php _e("For the help with Chinese translation", 'ure'); ?>" href="http://www.jackytsu.com">Jackytsu</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/ivaldi.png'; ?>)" target="_blank" title="<?php _e("For the help with Dutch translation", 'ure'); ?>" href="http://www.ivaldi.nl">Frank Groeneveld</a>
                       <a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL.'/images/lauri.png'; ?>)" target="_blank" title="<?php _e("For the help with Finnish translation", 'ure'); ?>" href="http://www.viidakkorumpu.fi">Lauri Merisaari</a>
