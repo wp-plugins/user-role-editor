@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.0
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: trunk
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role (except administrator).
@@ -65,7 +65,8 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Persian: [Parsa](http://parsa.ws), [Good Life](http://good-life.ir), Amir Khalilnejad
 * Polish: [TagSite](http://www.tagsite.eu), [Bartosz](www.digitalfactory.pl)
 * Russian: [Vladimir Garagulya](http://shinephp.com)
-* Spanish: [Victor Ricardo Díaz (INFOMED)](http://www.sld.cu), [Dario Ferrer](http://www.darioferrer.com)
+* Serbian: [Diana](http://wpcouponshop.com)
+* Spanish: [Victor Ricardo Díaz (INFOMED)](http://www.sld.cu)
 * Swedish: [Christer Dahlbacka](www.startlinks.eu), [Andréas Lundgren](http://adevade.com/)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
 * -----------------------------------------------------
@@ -84,6 +85,11 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.8.1 =
+* 21.10.2012
+* Fix: URE taked roles names from the database directly and ignored changes made to roles names on the fly by other plugins or themes, names, which were cached by WordPress internally, but were not written to the database. URE uses WordPress internal cache now.
+* Serbian translation is added. Thanks to [Diana](http://wpcouponshop.com).
+
 = 3.8 =
 * 01.09.2012
 * Bug fix: Some times URE didn't show real changes it made to the database. The reason was that direct update of database did not invalidate data stored at WordPress cache. Special thanks to [Knut Sparhell](http://sparhell.no/knut/) for the help to detect this critical issue.

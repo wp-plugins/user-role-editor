@@ -122,11 +122,11 @@ function ure_showMessage($message) {
 function ure_getUserRoles() {
   global $wp_roles, $wp_user_roles;
 
-	$wp_user_roles = null;  // do not take values from cache, force WP to retrieve roles from DB
-	$wp_roles = null;
-  $wp_roles = new WP_Roles();
-  
-  $ure_roles = $wp_roles->roles;
+	if (!isset($wp_roles)) {
+		$wp_roles = new WP_Roles();
+	}
+
+	$ure_roles = $wp_roles->roles;
   if (is_array($ure_roles)) {
     asort($ure_roles);
   }
