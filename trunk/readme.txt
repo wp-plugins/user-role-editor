@@ -88,6 +88,7 @@ Share with me new ideas about plugin further development and link to your site w
 = 3.8.1 =
 * 21.10.2012
 * Fix: URE taked roles names from the database directly and ignored changes made to roles names on the fly by other plugins or themes, names, which were cached by WordPress internally, but were not written to the database. URE uses WordPress internal cache now.
+* Roles names translation update: if URE translation file doesn't exist for blog default language, URE uses WordPress internal translation now.
 * Serbian translation is added. Thanks to [Diana](http://wpcouponshop.com).
 
 = 3.8 =
