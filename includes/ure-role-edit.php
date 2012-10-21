@@ -32,9 +32,13 @@ foreach ($ure_roles as $key=>$value) {
   $selected1 = ure_optionSelected($key, $ure_currentRole);
   $selected2 = ure_optionSelected($key, $defaultRole);
   if ($youAreAdmin || $key!='administrator') {
-    $roleSelectHTML .= '<option value="'.$key.'" '.$selected1.'>'.__($value['name'], 'ure').'</option>';    
-    $roleDefaultHTML .= '<option value="'.$key.'" '.$selected2.'>'.__($value['name'], 'ure').'</option>';
-    $roleToCopyHTML .= '<option value="'.$key.'" >'.__($value['name'], 'ure').'</option>';
+		$translated_name = __($value['name'], 'ure');  // get translation from URE language file, if exists
+		if ($translated_name===$value['name']) { // get WordPress internal translation
+			$translated_name = translate_user_role($translated_name);
+		}
+    $roleSelectHTML .= '<option value="'.$key.'" '.$selected1.'>'.$translated_name.'</option>';    
+    $roleDefaultHTML .= '<option value="'.$key.'" '.$selected2.'>'.$translated_name.'</option>';
+    $roleToCopyHTML .= '<option value="'.$key.'" >'.$translated_name.'</option>';
   }
 }
 $roleSelectHTML .= '</select>';
