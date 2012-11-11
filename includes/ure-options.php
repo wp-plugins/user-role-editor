@@ -220,7 +220,7 @@ ure_showMessage($mess);
 		</div>  
 
 		<div style="text-align: center;">
-			<a title="ManageWP" href="http://managewp.com/?utm_source=user_role_editor&utm_medium=Banner&utm_content=mwp250_2&utm_campaign=Plugins" targer="_new" >
+			<a title="ManageWP" href="http://managewp.com/?utm_source=user_role_editor&utm_medium=Banner&utm_content=mwp250_2&utm_campaign=Plugins" target="_new" >
 				<img width="250" height="250" alt="ManageWP" src="<?php echo URE_PLUGIN_URL; ?>/images/mwp250_2.png">
 			</a>                        
 		</div>  
