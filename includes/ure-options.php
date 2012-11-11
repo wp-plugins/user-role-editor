@@ -225,8 +225,8 @@ ure_showMessage($mess);
 			</a>                        
 		</div>  
 
-		<div style="width: 250px;text-align: center;">
-			<a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL . '/images/chooseplugin.png'; ?>" alt="ChoosePlugin.com" title="Advanced search plugins service from User Role Editor developer" style="border: 1px solid #CCCCCC;"/></a>
+		<div style="text-align: center;">
+			<a href="http://chooseplugin.com"><img src="<?php echo URE_PLUGIN_URL . '/images/chooseplugin.png'; ?>" alt="Choose WordPress plugins with ChoosePlugin.com" title="Advanced search WordPress plugins service from User Role Editor developer" /></a>
 		</div>  
 
 		<?php ure_displayBoxStart(__('About this Plugin:', 'ure')); ?>
