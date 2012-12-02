@@ -285,6 +285,7 @@ ure_showMessage($mess);
 			<span title="<?php _e("For the help with Spanish translation", 'ure'); ?>" >Dario  Ferrer</span>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/andreas.png'; ?>)" target="_blank" title="<?php _e("For the updated Swedish translation", 'ure'); ?>" href="http://adevade.com/">Andréas Lundgren</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/christer.png'; ?>)" target="_blank" title="<?php _e("For the help with Swedish translation", 'ure'); ?>" href="http://www.startlinks.eu">Christer Dahlbacka</a>
+			<span title="<?php _e("For the help with Traditional Chinese translation", 'ure'); ?>">Jingxin Lai</span>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/muhammed.png'; ?>)" target="_blank" title="<?php _e("For the help with Turkish translation", 'ure'); ?>" href="http://ben.muhammed.im/">Muhammed YILDIRIM</a>
 			<hr />
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/fullthrottle.png'; ?>)" target="_blank" title="<?php _e("For the code to hide administrator role", 'ure'); ?>" href="http://fullthrottledevelopment.com/how-to-hide-the-adminstrator-on-the-wordpress-users-screen">FullThrottle</a>
