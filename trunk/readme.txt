@@ -86,6 +86,11 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 3.8.3 =
+* 14.12.2012
+* Compatibility issue with WordPress 3.5 was found (thanks to Sonja) and fixed: $wpdb->prepare() was called without 2nd $args parameter - removed.
+
 = 3.8.2 =
 * 02.12.2012
 * load_plugin_textdomain() call moved to the 'plugins_loaded' hook for higher compatibility with translation plugins.

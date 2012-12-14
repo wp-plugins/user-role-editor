@@ -15,7 +15,7 @@ $ure_currentRole = false; $ure_currentRoleName = false;
 $ure_toldAboutBackup = false; $ure_apply_to_all = false; 
 $ure_userToEdit = false; $ure_fullCapabilities = false;
 
-// this array will be used to cash users checked for Administrator role
+// this array will be used to cashe users checked for Administrator role
 $ure_userToCheck = array();
 
 function ure_logEvent($message, $showMessage = false) {
@@ -280,7 +280,7 @@ function ure_updateRoles() {
     
     $old_blog = $wpdb->blogid;
     // Get all blog ids
-    $blogIds = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+    $blogIds = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
     if (defined('URE_MULTISITE_DIRECT_UPDATE') && URE_MULTISITE_DIRECT_UPDATE == 1) {
       ure_direct_site_roles_update($blogIds);
     } else {
@@ -803,7 +803,7 @@ function ure_removeCapability() {
     }
         
     // process users
-    $usersId = $wpdb->get_col($wpdb->prepare("SELECT $wpdb->users.ID FROM $wpdb->users"));
+    $usersId = $wpdb->get_col("SELECT $wpdb->users.ID FROM $wpdb->users");
     foreach ($usersId as $user_id) {
       $user = get_user_to_edit($user_id);
       if (isset($user->roles[0]) && $user->roles[0] == 'administrator') {
@@ -826,7 +826,6 @@ function ure_removeCapability() {
 
   return $mess;
 }
-
 // end of ure_removeCapability()
 
 
