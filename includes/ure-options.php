@@ -26,7 +26,7 @@ if (isset($_REQUEST['action'])) {
   $action = $_REQUEST['action'];
   // restore roles capabilities from the backup record
   if ($action=='reset') {
-    $mess = ure_restore_user_roles();
+    $mess = ure_reset_user_roles();
     if (!$mess) {
       return;
     }
@@ -56,7 +56,7 @@ if (isset($_REQUEST['action'])) {
   } else if ($action=='removeusercapability') {
     $mess = ure_RemoveCapability();
   } else if ($action=='roles_restore_note') {
-    $mess = __('User Roles are restored from the backup data. ', 'ure');
+    $mess = __('User Roles are restored to WordPress default values. ', 'ure');
   }
 } else {
   $action = '';
@@ -258,6 +258,7 @@ ure_showMessage($mess);
 			<hr />
 			<h3><a name="greetings"><?php _e('Greetings', 'ure'); ?></a></h3>                  
 			<a class="ure_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'ure'); ?>" href="http://www.shinephp.com/">Vladimir</a>
+			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/yaser.png'; ?>)" target="_blank" title="<?php _e("For the help with Arabic translation", 'ure'); ?>" href="http://www.englize.com/">Yaser</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/marsis.png'; ?>)" target="_blank" title="<?php _e("For the help with Belorussian translation", 'ure'); ?>" href="http://pc.de">Marsis G.</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/rafael.png'; ?>)" target="_blank" title="<?php _e("For the help with Brasilian translation", 'ure'); ?>" href="http://www.arquiteturailustrada.com.br/">Rafael Galdencio</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/onbiz.png'; ?>)" target="_blank" title="<?php _e("For the help with Brasilian Portuguese translation", 'ure'); ?>" href="http://www.onbiz.com.br">Onbiz</a>
@@ -281,6 +282,7 @@ ure_showMessage($mess);
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/tagsite.png'; ?>)" target="_blank" title="<?php _e("For the help with Polish translation", 'ure'); ?>" href="http://www.tagsite.eu">TagSite</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/bartosz.png'; ?>)" target="_blank" title="<?php _e("For the help with Polish translation", 'ure'); ?>" href="http://www.digitalfactory.pl">Bartosz</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/wpcouponshop.png'; ?>)" target="_blank" title="<?php _e("For the help with Serbian translation", 'ure'); ?>" href="http://wpcouponshop.com">Diana</a>
+			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/branco.png'; ?>)" target="_blank" title="<?php _e("For the help with Slovak translation", 'ure'); ?>" href="http://webhostinggeeks.com/blog/">Branco (WebHostingGeeks.com)</a>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/infomed.png'; ?>)" target="_blank" title="<?php _e("For the help with Spanish translation", 'ure'); ?>" href="http://www.sld.cu">Victor Ricardo Díaz (INFOMED)</a>
 			<span title="<?php _e("For the help with Spanish translation", 'ure'); ?>" >Dario  Ferrer</span>
 			<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . '/images/andreas.png'; ?>)" target="_blank" title="<?php _e("For the updated Swedish translation", 'ure'); ?>" href="http://adevade.com/">Andréas Lundgren</a>

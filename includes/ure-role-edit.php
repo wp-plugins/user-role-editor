@@ -115,7 +115,7 @@ if (is_multisite()) {
       } else if (action=='default') {
         actionText = '<?php _e('Change Default Role', 'ure'); ?>';
       } else if (action=='reset') {
-        actionText = '<?php _e('Restore Roles from backup copy. Be careful, backup was created when you started URE 1st time. All changes you made after that will be lost', 'ure'); ?>';
+        actionText = '<?php _e('Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, reactivation could be needed', 'ure'); ?>';
       } else if (action=='removeusercapability') {
         actionText = '<?php _e('Warning! Be careful - removing critical capability could crash some plugin or other custom code', 'ure'); ?>';
       }
@@ -235,7 +235,8 @@ if (is_multisite() && is_super_admin()) {
       $labelStyle = '';
     }
     $checked = '';
-    if (isset($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']])) {
+		if ( isset( $ure_roles[ $ure_currentRole ][ 'capabilities' ][ $capability[ 'inner' ] ] ) && 
+				 !empty( $ure_roles[ $ure_currentRole ][ 'capabilities' ][ $capability[ 'inner' ] ] ) ) {		
       $checked = 'checked="checked"';
     }
     $cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);    
@@ -282,7 +283,8 @@ foreach ($ure_fullCapabilities as $capability) {
 		continue;
 	}
 	$checked = '';
-	if (isset($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']])) {
+	if ( isset( $ure_roles[ $ure_currentRole ][ 'capabilities' ][ $capability[ 'inner' ] ] ) && 
+			 !empty( $ure_roles[ $ure_currentRole ][ 'capabilities' ][ $capability[ 'inner' ] ] ) ) {
 		$checked = 'checked="checked"';
 	}
 	$cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);
@@ -335,7 +337,7 @@ foreach ($ure_fullCapabilities as $capability) {
 ?>
       </div>  
       <div style="float:right; padding-bottom: 10px;">
-        <input type="button" name="default" value="<?php _e('Reset', 'ure') ?>" title="<?php _e('Restore Roles from backup copy', 'ure'); ?>" onclick="ure_Actions('reset');"/>
+        <input type="button" name="default" value="<?php _e('Reset', 'ure') ?>" title="<?php _e('Reset Roles to WordPress defaults. All your changes will be lost', 'ure'); ?>" onclick="ure_Actions('reset');"/>
       </div>
     </div>
 <?php

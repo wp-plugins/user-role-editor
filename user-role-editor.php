@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.8.3
+Version: 3.9
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -29,16 +29,18 @@ if (!function_exists("get_option")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
-global $wp_version, $current_user;
-
-if (version_compare($wp_version,"3.0","<")) {
-  $exit_msg = __('User Role Editor requires WordPress 3.0 or newer.', 'ure').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!', 'ure').'</a>';
-	return ($exit_msg);
+$ure_wp_version = get_bloginfo('version');  // as global $wp_version could be unavailable.
+if (version_compare( $ure_wp_version, '3.2', '<' ) ) {
+  $exit_msg = sprintf( __( 'User Role Editor requires WordPress %s or newer.', 'ure' ), $ure_wp_version ) .
+							'<a href="http://codex.wordpress.org/Upgrading_WordPress"> ' . __('Please update!', 'ure') . '</a>';	
+	wp_die($exit_msg);
 }
 
-if (version_compare(PHP_VERSION, '5.0.0', '<')) {
-  $exit_msg = __('User Role Editor requires PHP 5.0 or newer.', 'ure').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!', 'ure').'</a>';
-	return ($exit_msg);
+$ure_php_version = '5.2.4';
+if (version_compare(PHP_VERSION, '5.2.4', '<')) {
+  $exit_msg = sprintf( __( 'User Role Editor requires PHP %s or newer.', 'ure' ), $ure_php_version) . 
+							'<a href="http://codex.wordpress.org/Upgrading_WordPress"> ' . __( 'Please update!', 'ure' ) . '</a>';
+	wp_die($exit_msg);
 }
 
 $ure_siteURL = get_site_url();
