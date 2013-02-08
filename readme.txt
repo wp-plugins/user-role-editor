@@ -87,7 +87,7 @@ Share with me new ideas about plugin further development and link to your site w
 
 = 3.10 =
 * 04.02.2013
-* You can assign to user multiple roles simultaneously. Use user roles and capabilities editor for that. You can click 'Capabilities' link under selected user row at users list or 'Assign Roles and Additional Capabilities' link at user profile.
+* You can assign to user multiple roles simultaneously. Use user level roles and capabilities editor for that. You can click 'Capabilities' link under selected user row at users list or 'Assign Roles and Additional Capabilities' link at user profile.
 * Critical bug fix: hidden deprecated WordPress core capabilities had turned on after any update made to the role. Deprecated capabilities are not currently in use by WordPress itself. But old plugins or themes could still use them. If you use some outdated code I recommend you to check all roles, you modified with User Role Editor, and turn off unneeded deprecated capabilities there.
 * User with Administrator role is secured better from editing, deletion by user with lower capabilities.
 
