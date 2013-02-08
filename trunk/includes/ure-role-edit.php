@@ -158,7 +158,9 @@ if (is_multisite()) {
   function ure_onSubmit() {
     if (!confirm('<?php echo sprintf(__('Role "%s" update: please confirm to continue', 'ure'), __($ure_roles[$ure_currentRole]['name'], 'ure')); ?>')) {
       return false;
-    }
+    } else {
+			return true;
+		}
   }
 
 
