@@ -75,15 +75,38 @@ if (!defined('URE_PLUGIN_URL')) {
 	</tr>
 	<tr>
 		<td style="vertical-align: text-top; padding-right: 10px; padding-top: 5px; font-size: 1.1em; border-top: 1px solid #ccc; border-right: 1px solid #ccc;">
-			<div style="margin-bottom: 17px; font-weight: bold;">WordPress <?php echo __('Roles:', 'ure'); ?></div>
+			<div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
+<?php 
+$primary_role = array_shift(array_values($ure_userToEdit->roles));  // get 1st element from roles array
+if (!empty($primary_role) && isset($ure_roles[$primary_role])) {
+	echo $ure_roles[$primary_role]['name']; 
+} else {
+	echo 'None';
+}
+if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
+?>	
+	<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('bbPress Role:', 'ure'); ?></div>
 <?php
+	// Get the roles
+	$dynamic_roles = bbp_get_dynamic_roles();
+	$bbp_user_role = bbp_get_user_role($ure_userToEdit->ID);
+	if (!empty($bbp_user_role)) {
+		echo $dynamic_roles[$bbp_user_role]['name']; 
+	}
+}
+?>
+			<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('Other Roles:', 'ure'); ?></div>
+<?php
+	$youAreAdmin = defined('URE_SHOW_ADMIN_ROLE') && ure_is_admin();
 	foreach ($ure_roles as $role_id => $role) {
-		if ( user_can( $ure_userToEdit->ID, $role_id ) ) {
-			$checked = 'checked="checked"';
-		} else {
-			$checked = '';
-		}
-		echo '<label for="wp_role_' . $role_id .'"><input type="checkbox"	id="wp_role_' . $role_id . '" name="wp_role_' . $role_id . '" value="' . $role_id . '"' . $checked .' />&nbsp;' . __($role['name'], 'ure') . '</label><br />';
+		if ( ($youAreAdmin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
+			if ( user_can( $ure_userToEdit->ID, $role_id ) ) {
+				$checked = 'checked="checked"';
+			} else {
+				$checked = '';
+			}
+			echo '<label for="wp_role_' . $role_id .'"><input type="checkbox"	id="wp_role_' . $role_id . '" name="wp_role_' . $role_id . '" value="' . $role_id . '"' . $checked .' />&nbsp;' . __($role['name'], 'ure') . '</label><br />';
+		}		
 	}
 ?>
 		</td>

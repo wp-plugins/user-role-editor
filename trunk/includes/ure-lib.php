@@ -120,18 +120,31 @@ function ure_showMessage($message) {
 // end of ure_showMessage()
 
 
-function ure_getUserRoles( $ure_object='role' ) {
-  global $wp_roles;
+function ure_getUserRoles() {
+  global $wp_roles, $wpdb;
 
 	if (!isset( $wp_roles ) ) {
 		$wp_roles = new WP_Roles();
 	}
 
-	if ('role'===$ure_object && function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
-		$ure_roles = bbp_filter_blog_editable_roles( $wp_roles->roles );  // exclude bbPress roles
-		$bbp_full_caps = bbp_get_caps_for_role( bbp_get_keymaster_role() );
-		// add bbPress keymaster caps to Administrator role
-		$ure_roles['administrator']['capabilities'] = array_merge( $ure_roles[ 'administrator' ]['capabilities'], $bbp_full_caps );
+	if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
+		$ure_roles = bbp_filter_blog_editable_roles( $wp_roles->roles );  // exclude bbPress roles	
+		$bbp_full_caps = bbp_get_caps_for_role( bbp_get_keymaster_role() );	
+		// remove bbPress dinamically created capabilities from WordPress persistent roles in case we caught some with previouse URE version
+		$cap_removed = false;	
+		foreach ($bbp_full_caps as $bbp_cap=>$val) {
+			foreach ($ure_roles as &$role) {
+				if (isset($role['capabilities'][$bbp_cap])) {
+					unset($role['capabilities'][$bbp_cap]);
+					$cap_removed = true;
+				}
+			}
+		}
+		if ($cap_removed) {
+// save changes to database
+			$option_name = $wpdb->prefix.'user_roles';
+		  update_option($option_name, $ure_roles);
+		}
 	} else {
 		$ure_roles = $wp_roles->roles;
 	}
@@ -730,13 +743,33 @@ class ure_TableSorter {
 
 
 function ure_updateUser($user) {
-  global $wp_roles, $ure_capabilitiesToSave;
+  global $wp_roles, $ure_capabilitiesToSave, $ure_roles;
 
+	$primary_role = array_shift(array_values($user->roles));  // get 1st element from roles array as user primary role
+	if (empty($primary_role) || !isset($ure_roles[$primary_role])) {
+		$primary_role = '';
+	}
+	if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
+		$bbp_user_role = bbp_get_user_role($user->ID);
+	} else {
+		$bbp_user_role = '';
+	}
+	
 	// revoke all roles and capabilities from this user
-  $user->roles = false;
+  $user->roles = array();
 	$user->remove_all_caps();
-		
-	// add roles to user
+	
+	// restore primary role
+	if (!empty($primary_role)) {
+		$user->add_role($primary_role);
+	}
+	
+	// restore bbPress user role if she had one
+	if (!empty($bbp_user_role)) {
+		$user->add_role($bbp_user_role);
+	}
+	
+	// add other roles to user
 	foreach( $_POST as $key=>$value ) {
 		$result = preg_match( '/^wp_role_(.+)/', $key, $match);
 		if ($result === 1 ) {
@@ -1071,7 +1104,7 @@ function ure_show_capabilities( $core=true, $for_role=true ) {
 	
 	$onclick_for_admin = '';
 	if (! ( is_multisite() && is_super_admin() ) ) {  // do not limit SuperAdmin for multi-site
-		if ('administrator' == $ure_currentRole) {
+		if ( $core && 'administrator' == $ure_currentRole) {
 			$onclick_for_admin = 'onclick="turn_it_back(this)"';
 		}
 	}
@@ -1090,7 +1123,7 @@ function ure_show_capabilities( $core=true, $for_role=true ) {
 			if ( !$capability['wp_core'] ) { // show WP built-in capabilities 1st
 				continue;
 			}		
-		} else {
+		} else {			
 			if ( $capability['wp_core'] ) { // show plugins and themes added capabilities
 				continue;
 			}
@@ -1144,10 +1177,10 @@ function ure_show_capabilities( $core=true, $for_role=true ) {
 
 
 /**
- * Returns list of user roles, except 1st one, and bbPress assined as they are shown by WordPress and bbPress theirselves.
+ * Returns list of user roles, except 1st one, and bbPress assigned as they are shown by WordPress and bbPress theirselves.
  * 
  * @param type $user WP_User from wp-includes/capabilities.php
- * @return string
+ * @return array
  */
 function ure_other_user_roles($user) {
 
@@ -1169,21 +1202,39 @@ function ure_other_user_roles($user) {
 		if ( !empty( $bb_press_role ) && $bb_press_role===$value ) {
 			// exclude bbPress assigned role
 			continue;
-		}
-			
-		$roles[] = $wp_roles->roles[ $value ]['name'];
+		}			
+		$roles[] = $value;		
 	}
-	array_shift($roles); // exclude primary role which is show by WordPress itself
+	array_shift($roles); // exclude primary role which is shown by WordPress itself
 			
-	if ( count( $roles ) > 0 ) {
-		$output = implode(', ', $roles );
+	return $roles;
+	 
+}
+// end of ure_other_user_roles()
+	
+
+/**
+ * Returns list of user roles, except 1st one, and bbPress assigned as they are shown by WordPress and bbPress theirselves.
+ * 
+ * @param type $roles user roles list
+ * @return string
+ */
+function ure_other_user_roles_text($roles) {
+	global $wp_roles;
+	
+	if ( is_array($roles) && count( $roles ) > 0 ) {
+		$role_names = array();
+		foreach ($roles as $role) {
+			$role_names[] = $wp_roles->roles[$role]['name'];
+		}
+		$output = implode(', ', $role_names);
 	} else {
 		$output = '';
 	}
   
  return $output; 
- 
-}
-// end of ure_other_user_roles()
 	
+}
+// end of ure_other_user_roles_text()
+
 ?>

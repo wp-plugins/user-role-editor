@@ -72,7 +72,7 @@ if (isset($_POST['ure_apply_to_all'])) {
 
 if (!isset($ure_roles) || !$ure_roles) {
 // get roles data from database
-  $ure_roles = ure_getUserRoles( $ure_object );
+  $ure_roles = ure_getUserRoles();
   if (!$ure_roles) {
     return;
   }
