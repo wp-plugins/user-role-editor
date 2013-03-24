@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://www.shinephp.com/user-role-editor-wordpress-plugin/
 Description: It allows you to change/add/delete any WordPress user role (except administrator) capabilities list with a few clicks.
-Version: 3.10
+Version: 3.11
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure
@@ -27,13 +27,6 @@ GNU General Public License for more details.
 
 if (!function_exists("get_option")) {
   die;  // Silence is golden, direct call is prohibited
-}
-
-$ure_wp_version = get_bloginfo('version');  // as global $wp_version could be unavailable.
-if (version_compare( $ure_wp_version, '3.2', '<' ) ) {
-  $exit_msg = sprintf( __( 'User Role Editor requires WordPress %s or newer.', 'ure' ), $ure_wp_version ) .
-							'<a href="http://codex.wordpress.org/Upgrading_WordPress"> ' . __('Please update!', 'ure') . '</a>';	
-	wp_die($exit_msg);
 }
 
 $ure_php_version = '5.2.4';
@@ -103,6 +96,17 @@ function ure_optionsPage() {
 
 // Install plugin
 function ure_install() {
+
+	global $wp_version, $ure_admin_notice_text;
+	
+	if ( empty($wp_version) ) {
+		require( ABSPATH . WPINC . '/version.php' );
+	}
+
+	if (version_compare( $wp_version, '3.2', '<' ) ) {
+		die( sprintf( __( 'User Role Editor requires WordPress %s or newer.', 'ure' ), $wp_version ) .
+								'<a href="http://codex.wordpress.org/Upgrading_WordPress"> ' . __('Please update!', 'ure') . '</a>' );	
+	}
 
   add_option('ure_caps_readable', 0);
   add_option('ure_show_deprecated_caps', 1);
@@ -322,6 +326,10 @@ function ure_edit_user_profile($user) {
 
 	global $current_user, $wp_roles;
 	
+	$result = stripos($_SERVER['REQUEST_URI'], 'network/user-edit.php');
+  if ($result!==false) {  // exit, this code just for single site user profile only, not for network admin center
+		return;
+	}
 	if (!ure_is_admin($current_user->ID)) {
 		return;
 	}
@@ -333,7 +341,13 @@ function ure_edit_user_profile($user) {
 			<th scope="row"><?php _e( 'Other Roles', 'ure' ); ?></th>
 			<td>
 <?php 
-	$output = ure_other_user_roles($user);
+	$roles = ure_other_user_roles($user);
+	if (is_array($roles) && count($roles)>0) {
+		foreach($roles as $role) {
+			echo '<input type="hidden" name="ure_other_roles[]" value="'.$role.'" />' ;
+		}
+	}
+	$output = ure_other_user_roles_text($roles);
 	echo $output. '&nbsp;&nbsp;&gt;&gt;&nbsp;<a href="' . wp_nonce_url("users.php?page=user-role-editor.php&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . __('Edit', 'ure') . '</a>'; 
 ?>
 			</td>
@@ -378,15 +392,16 @@ function ure_user_role_column($columns = array()) {
  */
 function ure_user_role_row($retval = '', $column_name = '', $user_id = 0) {
 
-	// Only looking for bbPress's user role column
+	// Only looking for User Role Editor other user roles column
 	if ('ure_roles' == $column_name) {
 		$user = get_userdata( $user_id );
 		// Get the users roles
-		$retval = ure_other_user_roles( $user );
+		$roles = ure_other_user_roles( $user );
+		$retval = ure_other_user_roles_text( $roles );
 
 	}
 
-		
+	
 	// Pass retval through
 	return $retval;
 }
@@ -438,6 +453,7 @@ if (function_exists('is_multisite') && is_multisite()) {
     foreach ($plugins as $key => $value) {
       if ($key == 'user-role-editor/user-role-editor.php') {
         unset($plugins[$key]);
+				break;
       }
     }
 
@@ -448,6 +464,32 @@ if (function_exists('is_multisite') && is_multisite()) {
   add_filter( 'all_plugins', 'ure_exclude_from_plugins_list' ); 
   
 } // if (function_exists('is_multisite')
+
+
+// save additional user roles when user profile is updated, as WordPress itself doesn't know about them
+function ure_user_profile_update($user_id) {
+
+	if ( !current_user_can('edit_user', $user_id) ) {
+		return;
+	}  
+	$user = get_userdata($user_id);
+	
+	if (isset($_POST['ure_other_roles'])) {
+		$new_roles = array_intersect($user->roles, $_POST['ure_other_roles']);
+		$skip_roles = array();
+		foreach($new_roles as $role) {
+			$skip_roles['$role'] = 1;
+		}
+		unset($new_roles);
+		foreach($_POST['ure_other_roles'] as $role) {
+			if (!isset($skip_roles[$role])) {
+				$user->add_role($role);
+			}
+		}
+	}
+	
+}
+// ure_update_user_profile()
 
 
 if (is_admin()) {
@@ -464,6 +506,7 @@ if (is_admin()) {
 	add_action( 'edit_user_profile', 'ure_edit_user_profile');
 	add_filter( 'manage_users_columns', 'ure_user_role_column', 10, 5 );
 	add_filter( 'manage_users_custom_column', 'ure_user_role_row', 10, 3 );
+	add_action('profile_update', 'ure_user_profile_update', 10);
 	
 }
 
