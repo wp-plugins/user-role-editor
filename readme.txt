@@ -19,7 +19,8 @@ Capabilities could be assigned on per user basis. Multiple roles could be assign
 You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
 Multi-site support is provided.
 
-To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
+To subscribe for Premium support provided by Vladimir Garagulya, User Role Editor plugin author, visit [role-edit.com](htpp://role-editor.com)
+To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com)
 
 Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
 
@@ -84,6 +85,9 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 3.12 =
+* 01.05.2013
+* Critical update: persistent cross-site scripting vulnerability is fixed.
 
 = 3.11 =
 * 24.03.2013
