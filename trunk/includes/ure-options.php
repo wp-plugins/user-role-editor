@@ -125,11 +125,12 @@ if ($ure_object=='user') {
 }
 
 if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' && isset( $_POST['submit'] ) ) {
-	if ( isset( $_POST['user_role'] ) ) {
-		$ure_currentRole = $_POST['user_role'];
-		if (!isset($ure_roles[$ure_currentRole])) {
+	if ( isset( $_POST['user_role'] ) ) {		
+		if (!isset($ure_roles[ $_POST['user_role'] ])) {
 			$mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . $ure_currentRole . '</em> ' . __('does not exist', 'ure');
+			$ure_currentRole = '';
 		} else {
+			$ure_currentRole = $_POST['user_role'];
 			$ure_currentRoleName = $ure_roles[$ure_currentRole]['name'];
 		}
 	}
