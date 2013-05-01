@@ -88,6 +88,9 @@ Share with me new ideas about plugin further development and link to your site w
 = 3.12 =
 * 01.05.2013
 * Critical update: persistent cross-site scripting vulnerability is fixed.
+* WordPress built-in constants, like WP_PLUGIN_URL are not used in order to provide compatibility with sites which use SSL. plugin_dir_url(), plugin_dir_path() functions are used to define paths to the plugin's files instead. 
+* "Greetings" section is removed from the plugin's main page. All that content is still available at (plugin page)[http://shinephp.com/user-role-editor-wordpress-plugin]
+
 
 = 3.11 =
 * 24.03.2013
