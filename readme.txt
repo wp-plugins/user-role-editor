@@ -21,7 +21,7 @@ Multi-site support is provided.
 
 To subscribe for Premium support provided by Vladimir Garagulya, User Role Editor plugin author, visit [role-editor.com](htpp://role-editor.com)
 
-To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com)
+To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
 
 Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
 
