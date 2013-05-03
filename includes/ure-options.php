@@ -227,7 +227,6 @@ ure_showMessage($mess);
 		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/user-role-editor-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/"><?php _e('Plugin webpage', 'ure'); ?></a>
 		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/changelog-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#changelog"><?php _e('Changelog', 'ure'); ?></a>
 		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/faq-icon.png'; ?>);" target="_blank" href="http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq"><?php _e('FAQ', 'ure'); ?></a>
-		<a class="ure_rsb_link" style="background-image:url(<?php echo URE_PLUGIN_URL . 'images/greetings.png'; ?>);" onclick="ure_show_greetings()" href="#greetings"><?php _e('Greetings', 'ure'); ?></a>
 		<hr />
 		<div style="text-align: center;">
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
