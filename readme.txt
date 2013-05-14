@@ -87,7 +87,7 @@ Share with me new ideas about plugin further development and link to your site w
 
 == Changelog ==
 = 3.12.1 =
-* 01.05.2013
+* 14.05.2013
 * Update for administrators of multi-site WordPress installations. Single-site WordPress installation administrator could skip this update. 
 * "Apply to All Sites" feature did not work at version 3.12. It is fixed.
 * "Apply to All Sites" feature is available now from main site of the network only
