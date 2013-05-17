@@ -70,7 +70,7 @@ Share with me new ideas about plugin further development and link to your site w
 * 17.05.2013
 * Interface update: role/capability add/remove stuff was removed from the page. Plugin has toolbar at the right side now. Click on the button opens needed dialog window.
 * New role may have different attrubutes "ID" and "Name". While ID is still restricted by latin characters hyphen, underscore and digits only, Name could contain spaces and national languages characters.
-* General code cleanup and security enhancements: all data changes request a processed via POST instead of GET now. So its more difficult to send modified malicious request without special software. Presence of special nonce field is checked for all requests.
+* General code cleanup and security enhancements: all data changes request are processed via POST instead of GET now. So its more difficult to send modified malicious request without special software. Presence of special nonce field is checked for all requests.
 * Setting up the 'administrator' role as default one for new registered users is prohibited at server side. 
 * JavaScript code separated from PHP one whenever it's possible.
 
