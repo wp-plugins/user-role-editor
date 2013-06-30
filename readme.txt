@@ -19,11 +19,10 @@ Capabilities could be assigned on per user basis. Multiple roles could be assign
 You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
 Multi-site support is provided.
 
-**User Role Editor Pro** 
-Do you need more functionality with quick and quality support? Do you not like advertisement at User Role Editor pages? Buy [Pro version](htpp://role-editor.com).
-Pro version is advertisement free. Donate link is not included also.
-Pro version includes the "Export/Import" module. You can export user roles to the local file and import them then to any WordPress site or other sites of the multi-site WordPress network.
-More Pro functionality modules will follow.
+Do you need more functionality with quality support in real time? Do you not like advertisement at User Role Editor pages? 
+Buy [Pro version](htpp://role-editor.com). 
+Pro version is advertisement free. Pro version includes the "Export/Import" module. You can export user roles to the local file and import them then 
+to any WordPress site or other sites of the multi-site WordPress network. More functionality modules will follow for Pro version.
 
 To subscribe for Premium support only visit [role-editor.com](htpp://role-editor.com). Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
