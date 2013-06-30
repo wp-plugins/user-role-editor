@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.2
-Tested up to: 3.6
+Tested up to: 3.5.2
 Stable tag: trunk
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role.
@@ -19,7 +19,13 @@ Capabilities could be assigned on per user basis. Multiple roles could be assign
 You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
 Multi-site support is provided.
 
-To subscribe for Premium support provided by User Role Editor plugin author Vladimir Garagulya visit [role-editor.com](htpp://role-editor.com)
+**User Role Editor Pro** 
+Do you need more functionality with quick and quality support? Do you not like advertisement at User Role Editor pages? Buy [Pro version](htpp://role-editor.com).
+Pro version is advertisement free. Donate link is not included also.
+Pro version includes the "Export/Import" module. You can export user roles to the local file and import them then to any WordPress site or other sites of the multi-site WordPress network.
+More Pro functionality modules will follow.
+
+To subscribe for Premium support only visit [role-editor.com](htpp://role-editor.com). Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
 
@@ -36,8 +42,8 @@ Installation procedure:
 4. Go to the "Users"-"User Role Editor" menu item and change your WordPress standard roles capabilities according to your needs.
 
 == Frequently Asked Questions ==
-- Does it work with WordPress 3.3 in multi-site environment?
-Yes, it works with WordPress 3.3 multi-site. By default plugin works for every blog from your multi-site network as for locally installed blog.
+- Does it work with WordPress in multi-site environment?
+Yes, it works with WordPress multi-site. By default plugin works for every blog from your multi-site network as for locally installed blog.
 To update selected role globally for the Network you should turn on the "Apply to All Sites" checkbox. You should have superadmin privileges to use User Role Editor under WordPress multi-site.
 
 To read full FAQ section visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq) at [shinephp.com](shinephp.com).
@@ -58,6 +64,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 
 = Translations =
+* Catalan: [Efraim Bayarri](http://replicantsfactory.com/)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
 *
 *---------------------------------------------------------------
@@ -70,6 +77,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.0 =
+* 30.06.2013
+* Pro version only: added 'Export/Import' functionality to 'export' all user roles to the local file and 'import' them then to other WordPress blog or other sites of muliti-site WordPress network, or just restore roles to previous state after playing with them with test purpose.
+* Added integration with the Gravity Forms plugin. User Role Editor shows Gravity Forms user capabilities at the custom capabilities section.
+* Code is fully restructured and encapsulated to PHP classes. Internal global variables are not in use anymore.
+
 = 3.14.1 =
 * 24.05.2013
 * Bug, which prevented the correct use of WordPress nonces on some installations (Windows), is fixed;

@@ -14,12 +14,20 @@ if (!defined('URE_PLUGIN_URL')) {
 
 <div class="has-sidebar-content">
 <?php
-  $userInfo = ' <span style="font-weight: bold;"><a href="' . wp_nonce_url("user-edit.php?user_id={$ure_userToEdit->ID}", "ure_user_{$ure_userToEdit->ID}") .'" >' . $ure_userToEdit->user_login; 
-  if ($ure_userToEdit->display_name!==$ure_userToEdit->user_login) {
-    $userInfo .= ' ('.$ure_userToEdit->display_name.')';
+	if (!is_multisite() || current_user_can('manage_network_users')) {
+		$anchor_start = '<a href="' . wp_nonce_url("user-edit.php?user_id={$this->user_to_edit->ID}", 
+          "ure_user_{$this->user_to_edit->ID}") .'" >';
+		$anchor_end = '</a>';
+	} else {
+		$anchor_start = '';
+		$anchor_end = '';
+	}
+  $user_info = ' <span style="font-weight: bold;">'.$anchor_start. $this->user_to_edit->user_login; 
+  if ($this->user_to_edit->display_name!==$this->user_to_edit->user_login) {
+    $user_info .= ' ('.$this->user_to_edit->display_name.')';
   }
-  $userInfo .= '</a></span>';
-	ure_displayBoxStart(__('Change capabilities for user', 'ure').$userInfo, 'min-width:810px;');
+  $user_info .= $anchor_end.'</span>';
+	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:810px;');
  
 ?>
 <table cellpadding="0" cellspacing="0">
@@ -27,23 +35,25 @@ if (!defined('URE_PLUGIN_URL')) {
 		<td>&nbsp;</td>		
 		<td style="padding-left: 10px; padding-bottom: 5px;">
   <?php
-  if ($ure_caps_readable) {
+  if ($this->caps_readable) {
     $checked = 'checked="checked"';
   } else {
     $checked = '';
   }
 ?>
   
-		<input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" <?php echo $checked; ?> onclick="ure_turn_caps_readable(<?php echo $ure_userToEdit->ID; ?>);"  />
+		<input type="checkbox" name="ure_caps_readable" id="ure_caps_readable" value="1" 
+      <?php echo $checked; ?> onclick="ure_turn_caps_readable(<?php echo $this->user_to_edit->ID; ?>);"  />
     <label for="ure_caps_readable"><?php _e('Show capabilities in human readable form', 'ure'); ?></label>&nbsp;&nbsp;&nbsp;
 <?php
-    if ($ure_show_deprecated_caps) {
+    if ($this->show_deprecated_caps) {
       $checked = 'checked="checked"';
     } else {
       $checked = '';
     }
 ?>
-    <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $ure_userToEdit->ID; ?>);"/>
+    <input type="checkbox" name="ure_show_deprecated_caps" id="ure_show_deprecated_caps" value="1" 
+        <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $this->user_to_edit->ID; ?>);"/>
     <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>      
 		</td>
 	</tr>
@@ -51,9 +61,9 @@ if (!defined('URE_PLUGIN_URL')) {
 		<td class="ure-user-roles">
 			<div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
 <?php 
-$primary_role = array_shift(array_values($ure_userToEdit->roles));  // get 1st element from roles array
-if (!empty($primary_role) && isset($ure_roles[$primary_role])) {
-	echo $ure_roles[$primary_role]['name']; 
+$primary_role = array_shift(array_values($this->user_to_edit->roles));  // get 1st element from roles array
+if (!empty($primary_role) && isset($this->roles[$primary_role])) {
+	echo $this->roles[$primary_role]['name']; 
 } else {
 	echo 'None';
 }
@@ -63,7 +73,7 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 <?php
 	// Get the roles
 	$dynamic_roles = bbp_get_dynamic_roles();
-	$bbp_user_role = bbp_get_user_role($ure_userToEdit->ID);
+	$bbp_user_role = bbp_get_user_role($this->user_to_edit->ID);
 	if (!empty($bbp_user_role)) {
 		echo $dynamic_roles[$bbp_user_role]['name']; 
 	}
@@ -71,15 +81,17 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 ?>
 			<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('Other Roles:', 'ure'); ?></div>
 <?php
-	$youAreAdmin = defined('URE_SHOW_ADMIN_ROLE') && ure_is_admin();
-	foreach ($ure_roles as $role_id => $role) {
-		if ( ($youAreAdmin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
-			if ( user_can( $ure_userToEdit->ID, $role_id ) ) {
+	$you_are_admin = defined('URE_SHOW_ADMIN_ROLE') && $this->user_is_admin();
+	foreach ($this->roles as $role_id => $role) {
+		if ( ($you_are_admin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
+			if ( user_can( $this->user_to_edit->ID, $role_id ) ) {
 				$checked = 'checked="checked"';
 			} else {
 				$checked = '';
 			}
-			echo '<label for="wp_role_' . $role_id .'"><input type="checkbox"	id="wp_role_' . $role_id . '" name="wp_role_' . $role_id . '" value="' . $role_id . '"' . $checked .' />&nbsp;' . __($role['name'], 'ure') . '</label><br />';
+			echo '<label for="wp_role_' . $role_id .'"><input type="checkbox"	id="wp_role_' . $role_id . 
+        '" name="wp_role_' . $role_id . '" value="' . $role_id . '"' . $checked .' />&nbsp;' . 
+        __($role['name'], 'ure') . '</label><br />';
 		}		
 	}
 ?>
@@ -89,22 +101,22 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align:top;">
-				<?php ure_show_capabilities( true, false ); ?>
+				<?php $this->show_capabilities( true, false ); ?>
       </td>
 			<td>
-				<?php ure_toolbar($ure_currentRole, $ure_object);?>
+				<?php $this->toolbar();?>
 			</td>
     </tr>
   </table>
 <?php 
-	$quant = count( $ure_fullCapabilities ) - count( ure_getBuiltInWPCaps() );
+	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() );
 	if ($quant>0) {		
 ?>
 	<span style="font-weight: bold;"><?php _e('Custom capabilities:', 'ure'); ?></span> 
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align:top;">
-				<?php ure_show_capabilities( false, false ); ?>
+				<?php $this->show_capabilities( false, false ); ?>
       </td>
     </tr>
   </table>	
@@ -115,10 +127,9 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 	</tr>
 </table>
   <input type="hidden" name="object" value="user" />
-  <input type="hidden" name="user_id" value="<?php echo $ure_userToEdit->ID; ?>" />
+  <input type="hidden" name="user_id" value="<?php echo $this->user_to_edit->ID; ?>" />
 <?php
-  ure_displayBoxEnd();
+  $this->display_box_end();
 ?>
   
 </div>
-

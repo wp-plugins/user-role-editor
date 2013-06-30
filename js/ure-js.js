@@ -60,7 +60,7 @@ jQuery(function() {
 jQuery("#ure_add_role").button({
     label: ure_data.add_role
   }).click(function(event){
-		event.preventDefault();
+    event.preventDefault();
     jQuery(function($) {
       $info = $('#ure_add_role_dialog');
       $info.dialog({                   
@@ -68,12 +68,12 @@ jQuery("#ure_add_role").button({
         modal: true,
         autoOpen: true, 
         closeOnEscape: true,      
-        width: 320,
-        height: 190,
+        width: 350,
+        height: 200,
         resizable: false,
         title: ure_data.add_new_role_title,
         'buttons'       : {
-            'Add Role': function () {
+            'Add Role': function () {              
               var role_id = $('#user_role_id').val();
               if (role_id == '') {
                 alert( ure_data.role_name_required );
@@ -93,6 +93,7 @@ jQuery("#ure_add_role").button({
             },
             'Cancel': function() {
                 $(this).dialog('close');
+                return false;
             }
           }
       });    
@@ -152,7 +153,7 @@ jQuery("#ure_add_role").button({
         modal: true,
         autoOpen: true, 
         closeOnEscape: true,      
-        width: 320,
+        width: 350,
         height: 190,
         resizable: false,
         title: ure_data.add_capability,
