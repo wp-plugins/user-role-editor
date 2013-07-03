@@ -297,6 +297,7 @@ function turn_it_back(control) {
  */
 function ure_select_all(selected) {
 
+	var qfilter = jQuery('#quick_filter').val();
   var form = document.getElementById('ure_form');
   for (i = 0; i < form.elements.length; i++) {
     el = form.elements[i];
@@ -307,11 +308,15 @@ function ure_select_all(selected) {
 				el.name.substr(0, 8) === 'wp_role_')  {
       continue;
     }
-    if (selected >= 0) {
-      form.elements[i].checked = selected;
-    } else {
-      form.elements[i].checked = !form.elements[i].checked;
-    }
+		if (qfilter!=='' && !form.elements[i].parentNode.ure_tag) {
+			continue;
+		}
+		if (selected >= 0) {
+			form.elements[i].checked = selected;
+		} else {
+			form.elements[i].checked = !form.elements[i].checked;
+		}
+		
   }
 
 }
@@ -334,10 +339,11 @@ function ure_turn_caps_readable(user_id) {
 
 function ure_turn_deprecated_caps(user_id) {
 	
+	var ure_object = '';
 	if (user_id === 0) {
-		var ure_object = 'role';
+		ure_object = 'role';
 	} else {
-		var ure_object = 'user';
+		ure_object = 'user';
 	}
 	jQuery.ure_postGo(ure_data.page_url, {action: 'show-deprecated-caps', object: ure_object, user_id: user_id, ure_nonce: ure_data.wp_nonce});
 	
@@ -351,3 +357,27 @@ function ure_role_change(role_name) {
 	
 }
 // end of ure_role_change()
+
+
+function ure_filter_capabilities(cap_id) {
+	var div_list = jQuery("div[id^='ure_div_cap_']");
+	for (i=0; i<div_list.length; i++) {		 
+		if (cap_id!=='' && div_list[i].id.substr(11).indexOf(cap_id)!==-1) {
+			div_list[i].ure_tag = true;
+			div_list[i].style.color = '#27CF27';
+		} else {
+			div_list[i].style.color = '#000000';
+			div_list[i].ure_tag = false;
+		}
+	};
+		
+}
+// end of ure_filter_capabilities()
+
+
+function ure_hide_pro_banner() {
+	
+		jQuery.ure_postGo(ure_data.page_url, {action: 'hide-pro-banner', ure_nonce: ure_data.wp_nonce});
+		
+}
+// end of ure_hide_this_banner()

@@ -13,26 +13,28 @@
  */
 class Ure_Lib extends Garvs_WP_Lib {
 
-  public $roles = null;     
-  public $notification = '';   // notification message to show on page
-  public $apply_to_all = 0; 
+	public $roles = null;     
+	public $notification = '';   // notification message to show on page
+	public $apply_to_all = 0; 
+	public $user_to_check = array();  // cached list of user IDs, who has Administrator role     
   
-  private $capabilities_to_save = null; 
-  private $current_role = '';
-  private $wp_default_role = '';
-  private $current_role_name = '';  
-  private $user_to_edit = ''; 
-  private $show_deprecated_caps = false; 
-  private $caps_readable = false;
-  private $user_to_check = array();  // cached list of user IDs, who has Administrator role     
-  private $full_capabilities = false;
-  private $ure_object = 'role';  // what to process, 'role' or 'user'  
-  private $role_default_html = '';
-  private $role_to_copy_html = '';
-  private $role_select_html = '';
-  private $role_delete_html = '';
-  private $capability_remove_html = '';
-  private $integrate_with_gravity_forms = false;
+	private $capabilities_to_save = null; 
+	private $current_role = '';
+	private $wp_default_role = '';
+	private $current_role_name = '';  
+	private $user_to_edit = ''; 
+	private $show_deprecated_caps = false; 
+	private $caps_readable = false;
+	private $hide_pro_banner = false;	
+	private $full_capabilities = false;
+	private $ure_object = 'role';  // what to process, 'role' or 'user'  
+	private $role_default_html = '';
+	private $role_to_copy_html = '';
+	private $role_select_html = '';
+	private $role_delete_html = '';
+	private $capability_remove_html = '';
+	private $integrate_with_gravity_forms = false;
+	private $advert = null;
   
   
     /** class constructor
@@ -91,8 +93,8 @@ class Ure_Lib extends Garvs_WP_Lib {
     private function advertisement() {
 
         if (!class_exists('User_Role_Editor_Pro')) {
-            $ure_advert = new ure_Advertisement();
-            $ure_advert->display();
+            $this->advert = new ure_Advertisement();
+            $this->advert->display();
         }
     }
     // end of advertisement()
@@ -184,10 +186,12 @@ class Ure_Lib extends Garvs_WP_Lib {
 ?>
                 </div>      
             </form>		      
-<?php
-        if ($this->ure_object == 'role') {
-            $this->output_role_edit_dialogs();
-        }
+<?php	
+	$this->advertise_pro_version();	
+	
+	if ($this->ure_object == 'role') {
+        $this->output_role_edit_dialogs();
+    }
 ?>
         </div>          
     </div>
@@ -197,7 +201,36 @@ class Ure_Lib extends Garvs_WP_Lib {
     }
     // end of show_editor()
     
-    
+
+	// content of User Role Editor Pro advertisement slot - for direct call
+	private function advertise_pro_version() {
+		if (class_exists('User_Role_Editor_Pro')) {
+			return;
+		}
+?>		
+			<div id="ure_pro_advertisement" style="clear:left;display:block; float: left;">
+				<a href="http://role-editor.com?utm_source=UserRoleEditor&utm_medium=banner&utm_campaign=Plugins " target="_new" >
+<?php 
+	if ($this->hide_pro_banner) {
+		echo 'User Role Editor Pro: extended functionality, no advertisement - from $29.</a>';
+	} else {
+?>
+					<img src="<?php echo URE_PLUGIN_URL;?>images/user-role-editor-pro-728x90.jpg" alt="User Role Editor Pro" 
+						 title="More functionality and premium support with Pro version of User Role Editor."/>
+				</a><br />
+				<label for id="hide_ure_pro">
+					<input type="checkbox" name="hide_ure_pro_banner" id="ure_hide_pro_banner" onclick="ure_hide_pro_banner();"/>&nbsp;Thanks, hide this banner.
+				</label>
+<?php 
+	}
+?>
+			</div>  			
+<?php		
+		
+	}
+	// end of user_role_editor()
+	
+	
     // validate information about user we intend to edit
     private function check_user_to_edit() {
 
@@ -335,6 +368,9 @@ class Ure_Lib extends Garvs_WP_Lib {
                     $this->show_deprecated_caps = 1;
                 }
                 update_option('ure_show_deprecated_caps', $this->show_deprecated_caps);
+			} else if ($action == 'hide-pro-banner') {
+                update_option('ure_hide_pro_banner', true);	
+				$this->hide_pro_banner = true;
             } else if ($action == 'add-new-capability') {
                 $this->notification = $this->add_new_capability();
             } else if ($action == 'delete-user-capability') {
@@ -361,6 +397,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     private function editor_init0() {
         $this->caps_readable = get_option('ure_caps_readable');
         $this->show_deprecated_caps = get_option('ure_show_deprecated_caps');
+		$this->hide_pro_banner = get_option('ure_hide_pro_banner', false);
         $this->wp_default_role = get_option('default_role');
 
         // could be sent as by POST, as by GET
@@ -422,7 +459,7 @@ class Ure_Lib extends Garvs_WP_Lib {
      * @param int $user_id
      * @return boolean returns true is user has Role "Administrator"
      */
-    private function has_administrator_role($user_id) {
+    public function has_administrator_role($user_id) {
         global $wpdb;
 
         if (empty($user_id) || !is_numeric($user_id)) {
@@ -941,7 +978,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                 }
             }
             $cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);
-            echo '<input type="checkbox" name="' . $cap_id . '" id="' . $cap_id . '" value="' . $capability['inner'] . '" ' . 
+            echo '<div id="ure_div_cap_'.$cap_id.'"><input type="checkbox" name="' . $cap_id . '" id="' . $cap_id . '" value="' . $capability['inner'] . '" ' . 
                  $hidden_class . ' ' . $checked . ' ' . $disabled . ' ' . $onclick_for_admin . ' />';
             if (empty($hidden_class)) {
                 if ($this->caps_readable) {
@@ -952,14 +989,14 @@ class Ure_Lib extends Garvs_WP_Lib {
                     $cap_ind_alt = 'human';
                 }
                 echo '<label for="' . $cap_id . '" title="' . $capability[$cap_ind_alt] . '" ' . $labelStyle . ' > ' . 
-                     $capability[$cap_ind] . '</label> ' . $this->capability_help_link($capability['inner']) . '<br/>';
+                     $capability[$cap_ind] . '</label> ' . $this->capability_help_link($capability['inner']) . '</div>';
                 $printed_quant++;
                 if ($printed_quant >= $quant_in_column) {
                     $printed_quant = 0;
                     echo '</td>
 					    <td style="vertical-align:top;">';
                 }
-            } // if ('hidden'
+            } // if (empty($hidden_class
         }
     }
     // end of ure_show_capabilities()

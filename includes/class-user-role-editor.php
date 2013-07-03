@@ -140,7 +140,7 @@ class User_Role_Editor {
                 } else {
                     if (!isset($this->lib->user_to_check[$user_id])) {
                         // check if user_id has Administrator role
-                        $access_deny = $this->has_administrator_role($user_id);
+                        $access_deny = $this->lib->has_administrator_role($user_id);
                     } else {
                         // user_id was checked already, get result from cash
                         $access_deny = $this->lib->user_to_check[$user_id];

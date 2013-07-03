@@ -2,7 +2,7 @@
 Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
-Requires at least: 3.2
+Requires at least: 3.5
 Tested up to: 3.5.2
 Stable tag: trunk
 
@@ -76,6 +76,13 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.1 =
+* 03.07.2013
+* Quick Filter is added. Type part of any capability. All capabilities containing that word, e.g. 'edit' or 'users' will be highlighted by green color. 
+While 'quick filter' is in action 'Select All', 'Unselect All', 'Inverse' buttons work with highlighted capabilities sub-set only. 
+Read [this post](http://role-editor.com/user-role-editor-version-4-1-is-available/) for more information: 
+* Class property and method access modifiers fatal errors were fixed (http://wordpress.org/support/topic/fatalerror-1). 
+
 = 4.0 =
 * 30.06.2013
 * Pro version only: added 'Export/Import' functionality to 'export' all user roles to the local file and 'import' them then to other WordPress blog or other sites of muliti-site WordPress network, or just restore roles to previous state after playing with them with test purpose.

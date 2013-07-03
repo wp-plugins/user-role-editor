@@ -61,6 +61,10 @@ if (is_multisite() && is_main_site( get_current_blog_id() ) && is_super_admin())
 <br /><br />
 <hr />
 <?php _e('Core capabilities:', 'ure'); ?>
+<div style="display:table-inline; float: right; margin-right: 12px;">
+	<?php _e('Quick filter:', 'ure'); ?>&nbsp;
+	<input type="text" id="quick_filter" name="quick_filter" value="" size="20" onkeyup="ure_filter_capabilities(this.value);" />
+</div>	
         <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
           <tr>
             <td style="vertical-align:top;">
