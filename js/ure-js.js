@@ -304,8 +304,9 @@ function ure_select_all(selected) {
     if (el.type !== 'checkbox') {
       continue;
     }
-    if (el.name === 'ure_caps_readable' || el.name === 'ure_show_deprecated_caps' || el.disabled ||
-				el.name.substr(0, 8) === 'wp_role_')  {
+    if (el.name === 'ure_caps_readable' || el.name === 'ure_show_deprecated_caps' || 
+		el.name === 'ure_apply_to_all' || el.disabled ||
+		el.name.substr(0, 8) === 'wp_role_')  {
       continue;
     }
 		if (qfilter!=='' && !form.elements[i].parentNode.ure_tag) {

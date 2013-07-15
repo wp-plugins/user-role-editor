@@ -98,6 +98,10 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 		</td>
 		<td style="padding-left: 5px; padding-top: 5px; border-top: 1px solid #ccc;">  
 	<span style="font-weight: bold;"><?php _e('Core capabilities:', 'ure'); ?></span>
+<div style="display:table-inline; float: right; margin-right: 12px;">
+	<?php _e('Quick filter:', 'ure'); ?>&nbsp;
+	<input type="text" id="quick_filter" name="quick_filter" value="" size="20" onkeyup="ure_filter_capabilities(this.value);" />
+</div>		
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align:top;">

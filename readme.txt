@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.5.2
+Tested up to: 3.6
 Stable tag: trunk
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role.
@@ -76,6 +76,13 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+== 4.1.1 ==
+* 15.07.2013 
+* Issue when "users with "Editor" credentials were no longer able to change the author name in the drop down on each post to someone with administrative credentials" is fixed.
+* Limitation when user with 'Administrator' role could not edit/delete other users with 'Administrator' role is removed.
+* "Apply to All sites" checkbox is excluded from "Select All" operation.
+* Quick filter is added to the user's capabilities edit form. Capabilities selection buttons work is fixed after that.
+
 = 4.1 =
 * 03.07.2013
 * Quick Filter is added. Type part of any capability. All capabilities containing that word, e.g. 'edit' or 'users' will be highlighted by green color. 

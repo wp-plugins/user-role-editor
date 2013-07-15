@@ -343,7 +343,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             }
 
             $action = $_POST['action'];
-            // restore roles capabilities from the backup record
+            
             if ($action == 'reset') {
                 $this->reset_user_roles();
                 exit;
@@ -360,17 +360,20 @@ class Ure_Lib extends Garvs_WP_Lib {
                 } else {
                     $this->caps_readable = 1;
                 }
-                update_option('ure_caps_readable', $this->caps_readable);
+                $this->put_option('ure_caps_readable', $this->caps_readable);
+				$this->flush_options();
             } else if ($action == 'show-deprecated-caps') {
                 if ($this->show_deprecated_caps) {
                     $this->show_deprecated_caps = 0;
                 } else {
                     $this->show_deprecated_caps = 1;
                 }
-                update_option('ure_show_deprecated_caps', $this->show_deprecated_caps);
+                $this->put_option('ure_show_deprecated_caps', $this->show_deprecated_caps);
+				$this->flush_options();
 			} else if ($action == 'hide-pro-banner') {
-                update_option('ure_hide_pro_banner', true);	
-				$this->hide_pro_banner = true;
+                $this->hide_pro_banner = 1;
+				$this->put_option('ure_hide_pro_banner', 1);	
+				$this->flush_options();				
             } else if ($action == 'add-new-capability') {
                 $this->notification = $this->add_new_capability();
             } else if ($action == 'delete-user-capability') {
@@ -395,9 +398,9 @@ class Ure_Lib extends Garvs_WP_Lib {
 
 
     private function editor_init0() {
-        $this->caps_readable = get_option('ure_caps_readable');
-        $this->show_deprecated_caps = get_option('ure_show_deprecated_caps');
-		$this->hide_pro_banner = get_option('ure_hide_pro_banner', false);
+        $this->caps_readable = $this->get_option('ure_caps_readable');
+        $this->show_deprecated_caps = $this->get_option('ure_show_deprecated_caps');
+		$this->hide_pro_banner = $this->get_option('ure_hide_pro_banner', 0);
         $this->wp_default_role = get_option('default_role');
 
         // could be sent as by POST, as by GET
@@ -656,7 +659,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of show_message()
     
     
-    private function make_roles_backup() 
+    public function make_roles_backup() 
     {
         global $wpdb;
 

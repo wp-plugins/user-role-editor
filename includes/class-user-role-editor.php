@@ -11,6 +11,8 @@
 class User_Role_Editor {
 	// common code staff, including options data processor
   protected $lib = null;
+  
+  public $key_capability = 'administrator';
 	
     /**
      * class constructor
@@ -24,10 +26,10 @@ class User_Role_Editor {
         }
 
         // activation action
-        register_activation_hook(URE_PLUGIN_FILE, array(&$this, 'setup'));
+        register_activation_hook(URE_PLUGIN_FULL_PATH, array(&$this, 'setup'));
 
         // deactivation action
-        register_deactivation_hook(URE_PLUGIN_FILE, array(&$this, 'cleanup'));
+        register_deactivation_hook(URE_PLUGIN_FULL_PATH, array(&$this, 'cleanup'));
 
         // get plugin specific library object
         $this->lib = Garvs_WP_Lib::get_library('ure');
@@ -169,6 +171,19 @@ class User_Role_Editor {
 
         global $wpdb;
 
+		$result = false;
+		$links_to_block = array('profile.php', 'users.php');
+		foreach ( $links_to_block as $key => $value ) {
+			$result = stripos($_SERVER['REQUEST_URI'], $value);
+			if ( $result !== false ) {
+				break;
+			}
+		}
+
+		if ( $result===false ) {	// block the user edit stuff only
+			return;
+		}
+				
         // get user_id of users with 'Administrator' role  
         $tableName = (!is_multisite() && defined('CUSTOM_USER_META_TABLE')) ? CUSTOM_USER_META_TABLE : $wpdb->usermeta;
         $meta_key = $wpdb->prefix . 'capabilities';
@@ -183,8 +198,7 @@ class User_Role_Editor {
         }
     }
     // end of exclude_administrators()
-
-
+	
     
     /*
      * Exclude view of users with Administrator role
@@ -217,13 +231,7 @@ class User_Role_Editor {
       if (is_super_admin() ||
               (is_multisite() && defined('URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE') && URE_ENABLE_SIMPLE_ADMIN_FOR_MULTISITE == 1 && 
                current_user_can('administrator'))) {
-        if (isset($user->caps['administrator'])) {
-          if ($current_user->ID != $user->ID) {
-            unset($actions['edit']);
-            unset($actions['delete']);
-            unset($actions['remove']);
-          }
-        } else if ($current_user->has_cap(URE_KEY_CAPABILITY)) {
+		if ($current_user->has_cap(URE_KEY_CAPABILITY)) {
           $actions['capabilities'] = '<a href="' . 
                   wp_nonce_url("users.php?page=".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . 
                   '">' . __('Capabilities', 'ure') . '</a>';
@@ -342,12 +350,10 @@ class User_Role_Editor {
 
 
     public function plugin_menu() {
-
-		if (function_exists('add_submenu_page')) {
-       $key_capability = $this->lib->get_key_capability();
-    	 	$ure_page = add_submenu_page('users.php', __('User Role Editor', 'ure'), __('User Role Editor', 'ure'), $key_capability, 
-       URE_PLUGIN_FILE, array(&$this, 'edit_roles'));
-       add_action("admin_print_styles-$ure_page", array( &$this, 'admin_css_action' ) );
+		$this->key_capability = $this->lib->get_key_capability();
+		if (function_exists('add_submenu_page')) {			
+			$ure_page = add_submenu_page('users.php', __('User Role Editor', 'ure'), __('User Role Editor', 'ure'), $this->key_capability, URE_PLUGIN_FILE, array(&$this, 'edit_roles'));
+			add_action("admin_print_styles-$ure_page", array(&$this, 'admin_css_action'));
 		}
 	}
 	// end of plugin_menu()
@@ -385,16 +391,26 @@ class User_Role_Editor {
 	// end of edit_roles()
 	
    
+	// move old version option to the new storage 'user_role_editor' option, array, containing all URE options
+	private function convert_option($option_name) {
+		
+		$option_value = get_option($option_name, 0);
+		delete_option($option_name);
+		$this->lib->put_option( $option_name, $option_value );
+		
+	}
 
 	/**
 	 *  execute on plugin activation
 	 */
 	function setup() {
 		
-		$this->lib->put_option( 'ure_caps_readable', 0 );
-		$this->lib->put_option( 'ure_show_deprecated_caps', 1 );
+		$this->convert_option('ure_caps_readable');				
+		$this->convert_option('ure_show_deprecated_caps');
+		$this->convert_option('ure_hide_pro_banner');		
 		$this->lib->flush_options();
-  $this->lib->make_roles_backup();
+		
+		$this->lib->make_roles_backup();
   
 	}
 	// end of setup()
