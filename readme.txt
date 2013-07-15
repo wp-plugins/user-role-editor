@@ -76,7 +76,7 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
-== 4.1.1 ==
+= 4.1.1 =
 * 15.07.2013 
 * Issue when "users with "Editor" credentials were no longer able to change the author name in the drop down on each post to someone with administrative credentials" is fixed.
 * Limitation when user with 'Administrator' role could not edit/delete other users with 'Administrator' role is removed.
