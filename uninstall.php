@@ -29,14 +29,10 @@ if (!is_multisite()) {
     delete_option($backup_option_name);
     delete_option('ure_caps_readable');
     delete_option('ure_show_deprecated_caps');      
-	delete_option('ure_hide_pro_banner');
-	delete_option('user_role_editor');
+    delete_option('ure_hide_pro_banner');
+    delete_option('user_role_editor');
   }
   switch_to_blog($old_blog);
-}
-
-if (file_exist('uninstall-pro.php')) {
-	include('uninstall-pro.php');
 }
 
 ?>

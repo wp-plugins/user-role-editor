@@ -21,10 +21,6 @@ class ure_Advertisement {
 		$used[] = $index;
 		$index = $this->rand_unique( $used );
 		$this->slots[$index] = $this->manage_wp();
-
-		$used[] = $index;
-		$index = $this->rand_unique( $used );
-		$this->slots[$index] = $this->video_user_manuals();
 				
 	}
 	// end of __construct
@@ -78,50 +74,6 @@ class ure_Advertisement {
 		return $output;
 	}
 	// end of manage_wp()
-
-
-		// content of Video User Manuals advertisement slot
-	private function video_user_manuals() {
-	
-		ob_start();
-?>			
-			<div style="margin-left: 3px; margin-bottom: 3px; text-align: center; background: url(<?php echo URE_PLUGIN_URL . 'images/vum-ebook-250-250.jpg'; ?>) left top no-repeat;">
-				<div style="width: 250px; height: 250px; position: relative; ">
-					<form accept-charset="utf-8" action="https://app.getresponse.com/add_contact_webform.html" method="post" onsubmit="return quickValidate()" target="_blank">
-					<div style="display: none;">
-						<input type="hidden" name="webform_id" value="430680" />
-					</div>
-					<input id="vum_sub_name" type="text" name="name" class="text"  tabindex="500" value="Enter your name" style="border: 0; position: absolute; left:129px;top:91px;height: 18px; width: 90px;background-color: #fff; font-size: 11px;" onfocus="this.value='';" />
-					<input class="text" id="vum_sub_email" type="text" name="email" tabindex="501"  value="Email"  style="border: 0; position: absolute; left:129px;top:126px;height: 18px; width: 90px;background-color: #fff; font-size: 11px;" onfocus="this.value='';"  />
-					<input name="submit" type="image" alt="submit" tabindex="502" src="<?php echo URE_PLUGIN_URL; ?>images/vum-submit.jpg" width="100" height="25" style="background: none; border: 0;position: absolute; left:121px;top:154px;" />
-					<a href="http://www.videousermanuals.com/blog/report/?utm_campaign=plugin-ads&utm_medium=plugin&utm_source=user-role-editor" target="_blank" style="position: absolute; left: 7px;top: 63px;width:102px;height:152px;border:0;text-decoration: none;">&nbsp;</a>
-					<a href="http://www.videousermanuals.com/blog/report/?utm_campaign=plugin-ads&utm_medium=plugin&utm_source=user-role-editor" target="_blank" style="position: absolute; left: 41px;top: 219px;width:163px;height:25px;border:0;text-decoration: none;">&nbsp;</a>
-					</form>
-				</div>
-		   <script type="text/javascript">
-				function quickValidate() {
-					if ((!jQuery('#vum_sub_name').val()) || (jQuery('#vum_sub_name').val() == 'Enter your name') ) 
-						{
-							alert('Your Name is required');
-							return false; 
-						}
-					if ((!jQuery('#vum_sub_email').val()) || (jQuery('#vum_sub_email').val() == 'Email') ) 
-						{
-							alert('Your Email is required');
-							return false; 
-						}
-						return true;
-				}			
-			</script>
-			
-			</div>  
-<?php
-		$output = ob_get_contents();
-		ob_end_clean();
-		
-		return $output;
-	}
-	// end of video_user_manuals()
 			
 	
 	/**

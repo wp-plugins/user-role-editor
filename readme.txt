@@ -23,8 +23,7 @@ Do you need more functionality with quality support in real time? Do you not lik
 Buy [Pro version](htpp://role-editor.com). 
 Pro version is advertisement free. Pro version includes the "Export/Import" module. You can export user roles to the local file and import them then 
 to any WordPress site or other sites of the multi-site WordPress network. More functionality modules will follow for Pro version.
-
-To subscribe for Premium support only visit [role-editor.com](htpp://role-editor.com). Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
+Premium support is included. Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
 
@@ -56,12 +55,6 @@ To read full FAQ section visit [this page](http://www.shinephp.com/user-role-edi
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](shinephp.com).
 
 
-== Special Thanks to ==
-* [Lorenzo Nicoletti](http://www.extera.com) - For the code enhancement. CUSTOM_USER_META_TABLE constant is used now for more compatibility with core WordPress API.
-* Marcin - For the code enhancement. This contribution allows to not lose new custom capability if it is added to other than 'Administrator' role.
-* [FullThrottle](http://fullthrottledevelopment.com/how-to-hide-the-adminstrator-on-the-wordpress-users-screen) - For the code to hide administrator role at admin backend.
-
-
 = Translations =
 * Catalan: [Efraim Bayarri](http://replicantsfactory.com/)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
@@ -76,6 +69,19 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.2 =
+* 02.08.2013 
+* Separate setting page is added for User Role Editor under Settings menu. It is available under Network Center "Settings" for the multi-site.
+* Option 'show Administrator role in the User Role Editor' was added.
+* User with super-admin privilege only may create, edit, delete users by default under multi-site configuration. 
+Use new "Allow create, edit and delete user to not super-administrators" option to workaround this obstacle. 
+Such user still should have correspondent user capabilities as "create_users", "edit_users", "delete_users". 
+Thanks to [Sjobidoo](http://wordpress.org/support/profile/sjobidoo) for suggested 
+[decision](http://wordpress.org/support/topic/plugin-user-role-editor-not-able-to-add-ability-to-edit-users).
+* PHP fatal error caused by typo in the 'uninstall.php' file is fixed.
+* Miscellaneous code enhancements. 
+
 = 4.1.1 =
 * 15.07.2013 
 * Issue when "users with "Editor" credentials were no longer able to change the author name in the drop down on each post to someone with administrative credentials" is fixed.

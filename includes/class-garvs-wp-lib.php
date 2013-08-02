@@ -14,8 +14,8 @@
 class Garvs_WP_Lib {
 
   private static $instance = null; // object exemplar reference  
-  private $options_id = ''; // identifire to save/retrieve plugin options to/from wp_option DB table
-  private $options = array(); // plugin options data
+  protected $options_id = ''; // identifire to save/retrieve plugin options to/from wp_option DB table
+  protected $options = array(); // plugin options data
   
   public $log_to_file = false;  // set to true in order to record data about critical actions to log file
   private $log_file_name = '';  // file name to write log messages
@@ -37,7 +37,7 @@ class Garvs_WP_Lib {
   /**
    * get current options for this plugin
    */
-  public function init_options($options_id) {
+  protected function init_options($options_id) {
     $this->options_id = $options_id;
     $this->options = get_option($options_id);
   }
@@ -166,28 +166,7 @@ class Garvs_WP_Lib {
     }
   }
   // end of check_version()
-  
-
-  /**
-   * plugin specific library fabric
-   * 
-   * @param string $lib_id as 'ure' for User Role Editor plugin. It will creates and returns exemplar of Ure_Lib class
-   * file class-ure-lib.php with URE_Lib class should be place at the same folder as Garvs_WP_Lib class
-   * @return 
-   */
-  public static function get_library($lib_id) {
-            
-    if (self::$instance==null) {
-        require_once( 'class-' . $lib_id .'-lib.php' );
-        $class_id = ucfirst($lib_id) .'_Lib';   
-        self::$instance = new $class_id;
-    }
-            
-    return self::$instance;
     
-  }
-  // end of get_library()
-  
   
   /**
    * returns 'selected' HTML cluster if $value matches to $etalon

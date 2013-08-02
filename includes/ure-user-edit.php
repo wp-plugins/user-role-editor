@@ -56,12 +56,13 @@ if (!defined('URE_PLUGIN_URL')) {
         <?php echo $checked; ?> onclick="ure_turn_deprecated_caps(<?php echo $this->user_to_edit->ID; ?>);"/>
     <label for="ure_show_deprecated_caps"><?php _e('Show deprecated capabilities', 'ure'); ?></label>      
 		</td>
-	</tr>
+	</tr>	
 	<tr>
 		<td class="ure-user-roles">
 			<div style="margin-bottom: 5px; font-weight: bold;"><?php echo __('Primary Role:', 'ure'); ?></div>
 <?php 
-$primary_role = array_shift(array_values($this->user_to_edit->roles));  // get 1st element from roles array
+$values = array_values($this->user_to_edit->roles);
+$primary_role = array_shift($values);  // get 1st element from roles array
 if (!empty($primary_role) && isset($this->roles[$primary_role])) {
 	echo $this->roles[$primary_role]['name']; 
 } else {
@@ -81,7 +82,8 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 ?>
 			<div style="margin-top: 5px;margin-bottom: 5px; font-weight: bold;"><?php echo __('Other Roles:', 'ure'); ?></div>
 <?php
-	$you_are_admin = defined('URE_SHOW_ADMIN_ROLE') && $this->user_is_admin();
+ $show_admin_role = $this->get_option('show_admin_role', 0);
+	$you_are_admin = ((defined('URE_SHOW_ADMIN_ROLE') && URE_SHOW_ADMIN_ROLE==1) || $show_admin_role==1) && $this->user_is_admin();
 	foreach ($this->roles as $role_id => $role) {
 		if ( ($you_are_admin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
 			if ( user_can( $this->user_to_edit->ID, $role_id ) ) {
@@ -97,11 +99,12 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 ?>
 		</td>
 		<td style="padding-left: 5px; padding-top: 5px; border-top: 1px solid #ccc;">  
-	<span style="font-weight: bold;"><?php _e('Core capabilities:', 'ure'); ?></span>
-<div style="display:table-inline; float: right; margin-right: 12px;">
-	<?php _e('Quick filter:', 'ure'); ?>&nbsp;
-	<input type="text" id="quick_filter" name="quick_filter" value="" size="20" onkeyup="ure_filter_capabilities(this.value);" />
-</div>		
+	<span style="font-weight: bold;"><?php _e('Core capabilities:', 'ure'); ?></span>		
+	<div style="display:table-inline; float: right; margin-right: 12px;">
+		<?php _e('Quick filter:', 'ure'); ?>&nbsp;
+		<input type="text" id="quick_filter" name="quick_filter" value="" size="20" onkeyup="ure_filter_capabilities(this.value);" />
+	</div>		
+	
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
       <td style="vertical-align:top;">
@@ -115,7 +118,8 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 <?php 
 	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() );
 	if ($quant>0) {		
-?>
+     echo '<hr />';
+?> 
 	<span style="font-weight: bold;"><?php _e('Custom capabilities:', 'ure'); ?></span> 
   <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
     <tr>
