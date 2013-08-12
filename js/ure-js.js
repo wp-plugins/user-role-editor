@@ -260,6 +260,7 @@ jQuery("#ure_add_role").button({
   jQuery("#ure_reset_roles").button({
     label: ure_data.reset
   }).click(function(){
+    event.preventDefault();
     if (!confirm( ure_data.reset_warning )) {
       return false;
     }

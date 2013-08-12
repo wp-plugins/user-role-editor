@@ -58,9 +58,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 = Translations =
 * Catalan: [Efraim Bayarri](http://replicantsfactory.com/)
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
-*
-*---------------------------------------------------------------
-* The most of translation files except shown above are obsolete and require updates. 
+
 
 Dear plugin User!
 If you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, plugin settings page and in this readme.txt file.
@@ -69,6 +67,21 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.3 =
+* 12.08.2013
+* Pro version only: "User Role Editor" is available under the "Users" submenu of "Network Admin" for multisite installation. 
+It provides the central point for users roles management of the whole network. Your changes are applied to the main site by default.
+The click on "Network Update" button replicates roles from the main site to the whole network at once.
+* Multisite update: roles from the main (1st) blog are copied to the new added blog automatically, 
+even new site is added from front-end after new user registration, e.g. Gravity Forms "Register User" addon does. Earlier this feature worked 
+for administrator back-end operations only.
+* Bug prevented to apply role changes to all sites of the network is fixed. In case when one of the sites have exactly the same roles as applied from the main site, MySQL returned 0 rows affected. URE recognized that as error and stopped further network updated. It is fixed now.
+* Bug prevented to save empty (without capabilities) role is fixed.
+* User interface bug with options 'Show capabilities in human readable form' and 'Show deprecated capabilities' fixed. 
+Now this checkboxes work this way: It takes global values from the User Role Editor Settings 1st. If you change it at Roles/User editor form plugin, 
+it remembers your change temporally for 10 minutes. After that this value will be returned to the URE global settings. 
+If you wish to make permanent change make it at URE settings page.
 
 = 4.2 =
 * 02.08.2013 

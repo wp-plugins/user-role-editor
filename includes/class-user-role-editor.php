@@ -19,11 +19,7 @@ class User_Role_Editor {
      */
     function __construct($library) 
     {
-
-        if (!is_admin()) {
-            return false;
-        }
-
+        
         // activation action
         register_activation_hook(URE_PLUGIN_FULL_PATH, array(&$this, 'setup'));
 
@@ -33,10 +29,20 @@ class User_Role_Editor {
         // get plugin specific library object
         $this->lib = $library;
 		
-		// Who may use this plugin
-		$this->key_capability = $this->lib->get_key_capability();
+        // Who may use this plugin
+        $this->key_capability = $this->lib->get_key_capability();
         
-		add_action('admin_init', array(&$this, 'plugin_init'), 1);
+        if ($this->lib->multisite) {
+            // new blog may be registered not at admin back-end only but automatically after new user registration, e.g. 
+            // Gravity Forms User Registration Addon does
+            add_action( 'wpmu_new_blog', array( &$this, 'duplicate_roles_for_new_blog'), 10, 2 );
+        }
+        
+        if (!is_admin()) {
+            return;
+        }
+        
+        add_action('admin_init', array(&$this, 'plugin_init'), 1);
 
         // Add the translation function after the plugins loaded hook.
         add_action('plugins_loaded', array(&$this, 'load_translation'));
@@ -86,16 +92,15 @@ class User_Role_Editor {
       add_filter('views_users',  array( &$this, 'exclude_admins_view' ) );            
     }
     
-    add_action('admin_enqueue_scripts', array( &$this, 'admin_load_js' ) );
+    add_action( 'admin_enqueue_scripts', array( &$this, 'admin_load_js' ) );
     add_action( 'user_row_actions', array( &$this, 'user_row'), 10, 2 );
-    add_action( 'edit_user_profile', array(&$this, 'edit_user_profile'), 10, 2);
+    add_action( 'edit_user_profile', array(&$this, 'edit_user_profile'), 10, 2 );
     add_filter( 'manage_users_columns', array(&$this, 'user_role_column'), 10, 5 );
     add_filter( 'manage_users_custom_column', array(&$this, 'user_role_row'), 10, 3 );
     add_action( 'profile_update', array(&$this, 'user_profile_update'), 10 );
 
     
     if ($this->lib->multisite) {
-      add_action( 'wpmu_new_blog', array( &$this, 'duplicate_roles_for_new_blog'), 10, 2 );
       add_filter( 'all_plugins', array( &$this, 'exclude_from_plugins_list' ) );    
       $allow_edit_users_to_not_super_admin = $this->lib->get_option('allow_edit_users_to_not_super_admin', 0);
       if ($allow_edit_users_to_not_super_admin) {
@@ -322,18 +327,18 @@ class User_Role_Editor {
    * @param int $user_id
    *
    */
-  public function duplicate_roles_for_new_blog($blog_id, $user_id) 
+  public function duplicate_roles_for_new_blog($blog_id) 
   {
   
     global $wpdb, $wp_roles;
     
     // get Id of 1st (main) blog
-    $blogIds = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs order by blog_id asc");
-    if (!isset($blogIds[0])) {
+    $main_blog_id = $this->lib->get_main_blog_id();
+    if ( empty($main_blog_id) ) {
       return;
     }
     $current_blog = $wpdb->blogid;
-    switch_to_blog($blogIds[0]);
+    switch_to_blog( $main_blog_id );
     $main_roles = new WP_Roles();  // get roles from primary blog
     $default_role = get_option('default_role');  // get default role from primary blog
     switch_to_blog($blog_id);  // switch to the new created blog

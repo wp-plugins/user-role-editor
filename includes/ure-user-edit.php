@@ -27,7 +27,11 @@ if (!defined('URE_PLUGIN_URL')) {
     $user_info .= ' ('.$this->user_to_edit->display_name.')';
   }
   $user_info .= $anchor_end.'</span>';
-	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:810px;');
+ if (is_multisite() && is_super_admin($this->user_to_edit->ID)) {
+   $user_info .= '  <span style="font-weight: bold; color:red;">'. esc_html__('Network Super Admin', 'ure') .'</span>';
+ }
+  
+	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:830px;');
  
 ?>
 <table cellpadding="0" cellspacing="0">
@@ -86,7 +90,7 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
 	$you_are_admin = ((defined('URE_SHOW_ADMIN_ROLE') && URE_SHOW_ADMIN_ROLE==1) || $show_admin_role==1) && $this->user_is_admin();
 	foreach ($this->roles as $role_id => $role) {
 		if ( ($you_are_admin || $role_id!='administrator') && ($role_id!==$primary_role) ) {			
-			if ( user_can( $this->user_to_edit->ID, $role_id ) ) {
+			if ( $this->user_can( $role_id ) ) {
 				$checked = 'checked="checked"';
 			} else {
 				$checked = '';
@@ -96,7 +100,7 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
         __($role['name'], 'ure') . '</label><br />';
 		}		
 	}
-?>
+ ?>
 		</td>
 		<td style="padding-left: 5px; padding-top: 5px; border-top: 1px solid #ccc;">  
 	<span style="font-weight: bold;"><?php _e('Core capabilities:', 'ure'); ?></span>		

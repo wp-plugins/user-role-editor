@@ -14,7 +14,7 @@ if (!defined('URE_PLUGIN_URL')) {
 
 <div class="has-sidebar-content">
 <?php
-						$this->display_box_start(__('Select Role and change its capabilities list', 'ure'), 'min-width:700px;');
+						$this->display_box_start(__('Select Role and change its capabilities list', 'ure'), 'min-width:800px;');
 ?>
     <div style="float: left;"><?php echo __('Select Role:', 'ure').' '.$this->role_select_html; ?></div>
 <?php
@@ -41,7 +41,7 @@ if (!defined('URE_PLUGIN_URL')) {
               </div>
 	              
 <?php
-if (is_multisite() && is_main_site( get_current_blog_id() ) && is_super_admin()) {
+if (is_multisite() && !is_network_admin() && is_main_site( get_current_blog_id() ) && is_super_admin()) {
   $hint = __('If checked, then apply action to ALL sites of this Network');
   if ($this->apply_to_all) {
     $checked = 'checked="checked"';

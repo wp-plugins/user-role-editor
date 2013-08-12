@@ -16,5 +16,5 @@ define('URE_ERROR', 'Error is encountered');
 define('URE_PRO_VERSION', 0);
 
 define('URE_SPACE_REPLACER', '_URE-SR_');
-define('URE_PARENT', 'users.php');
+define('URE_PARENT', is_network_admin() ? 'network/users.php':'users.php');
 define('URE_KEY_CAPABILITY', 'administrator');
