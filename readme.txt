@@ -22,10 +22,12 @@ Multi-site support is provided.
 Do you need more functionality with quality support in real time? Do you not like advertisement at User Role Editor pages? 
 Buy [Pro version](htpp://role-editor.com). 
 Pro version is advertisement free. Pro version includes extra modules:
-* "Export/Import" module. You can export user roles to the local file and import them then 
+<ul>
+<li>"Export/Import" module. You can export user roles to the local file and import them then</li>
 to any WordPress site or other sites of the multi-site WordPress network. 
-* Roles management via Network Admin  for multisite configuration.
-* Per form users access management for Gravity Forms plugin.
+<li>Roles management via Network Admin  for multisite configuration.</li>
+<li>Per form users access management for Gravity Forms plugin.</li>
+</ul>
 Premium support is included. Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
