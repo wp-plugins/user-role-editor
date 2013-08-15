@@ -10,12 +10,12 @@
  * 
 */
 
-// Support for Gravity Form capabilities
+if (class_exists('GFForms') ) {    // if Gravity Forms is installed
+// Support for Gravity Forms capabilities
 // As Gravity Form has integrated support for the Members plugin - let's imitate its presense,
 // so GF code, like
 // self::has_members_plugin())
-// considers that is has members_plugin()
-if (class_exists('GFForms') ) {    // if Gravity Forms is installed
+// considers that it is has_members_plugin()   
     if (!function_exists('members_get_capabilities')) { 
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
         if (!is_plugin_active('members/members.php')) {            

@@ -719,6 +719,7 @@ class User_Role_Editor {
                 }
             }
         }
+                
     }
     // update_user_profile()
 

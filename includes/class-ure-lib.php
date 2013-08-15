@@ -744,8 +744,12 @@ class Ure_Lib extends Garvs_WP_Lib {
             return false;
         }
         if (!$option_id) {
-            // create user roles record backup
-            $serialized_roles = mysql_real_escape_string(serialize($this->lib->roles));
+            $roles_option_name = $wpdb->prefix.'user_roles';
+            $query = "select option_value 
+                        from $wpdb->options 
+                        where option_name like '$roles_option_name' limit 0,1";
+            $serialized_roles = $wpdb->get_var($query);
+            // create user roles record backup            
             $query = "insert into $wpdb->options
                 (option_name, option_value, autoload)
                 values ('$backup_option_name', '$serialized_roles', 'no')";

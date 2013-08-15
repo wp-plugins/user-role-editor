@@ -16,7 +16,7 @@
   <hr/>
   
   <form method="post" action="<?php echo $link; ?>?page=settings-<?php echo URE_PLUGIN_FILE;?>" >   
-    <table>
+    <table id="ure_settings">
       <tr>
         <td><label for="show_admin_role"><?php esc_html_e('Show Administrator role at User Role Editor:', 'ure'); ?></label></td>
         <td><input type="checkbox" name="show_admin_role" id="show_admin_role" value="1" 

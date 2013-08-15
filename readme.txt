@@ -21,8 +21,11 @@ Multi-site support is provided.
 
 Do you need more functionality with quality support in real time? Do you not like advertisement at User Role Editor pages? 
 Buy [Pro version](htpp://role-editor.com). 
-Pro version is advertisement free. Pro version includes the "Export/Import" module. You can export user roles to the local file and import them then 
-to any WordPress site or other sites of the multi-site WordPress network. More functionality modules will follow for Pro version.
+Pro version is advertisement free. Pro version includes extra modules:
+* "Export/Import" module. You can export user roles to the local file and import them then 
+to any WordPress site or other sites of the multi-site WordPress network. 
+* Roles management via Network Admin  for multisite configuration.
+* Per form users access management for Gravity Forms plugin.
 Premium support is included. Premium support is provided by User Role Editor plugin author Vladimir Garagulya. You will get an answer on your question not once a week or never, but in 24 hours.
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
@@ -43,6 +46,7 @@ Installation procedure:
 - Does it work with WordPress in multi-site environment?
 Yes, it works with WordPress multi-site. By default plugin works for every blog from your multi-site network as for locally installed blog.
 To update selected role globally for the Network you should turn on the "Apply to All Sites" checkbox. You should have superadmin privileges to use User Role Editor under WordPress multi-site.
+Pro version allows to manage roles of the whole network from the Netwok Admin.
 
 To read full FAQ section visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/#faq) at [shinephp.com](shinephp.com).
 
@@ -67,6 +71,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.4 =
+* 15.08.2013 *
+* [Pro version](http://role-editor.com) only: Users of "Gravity Forms" plugin may restrict users access to the Forms on per form basis. Activate this option at URE Settings page and input at user's profile the list of Gravity Forms IDs, to which you allow access for this user. User should have at least 'gravityforms_edit_forms' capability in order you see GF access control option at his profile.
+* Pro version: User Role Editor license key is not shown now on the Setting page. User sees just word "Installed" after he saved it.
+* Bug fixed which prevented creation of current roles backup record during User Role Editor plugin installation and produced unexpected output (PHP notices).
 
 = 4.3 =
 * 12.08.2013
