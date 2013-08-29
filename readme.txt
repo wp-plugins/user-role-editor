@@ -75,6 +75,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 == Changelog ==
 
+= 4.5.1 =
+* 29.08.2013
+* Bug with multi-site super-admin access to the User Role Editor is fixed. Version 4.5. showed message "Insufficient permissions to work with User Role Editor" until add "manage_network_users" capability to the "Administrator" role. It is enough now to be the "Superadmin" at multi-site network.
+
 = 4.5 =
 * 29.08.2013
 * Direct checking of the "administrator" role is removed from the code to support ability to change User Role Editor access key capability. 

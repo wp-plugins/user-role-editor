@@ -2097,6 +2097,10 @@ class Ure_Lib extends Garvs_WP_Lib {
         
         global $wp_roles;
         
+		if (is_multisite() && is_super_admin()) {
+			return true;
+		}
+		
         if (isset($user->caps[$cap])) {
             return true;
         }
@@ -2111,7 +2115,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                 
         return false;        
     }
-    // end of user_have_capability()           
+    // end of user_has_capability()           
 
 }
 // end of URE_Lib class
