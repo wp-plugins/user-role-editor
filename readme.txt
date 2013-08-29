@@ -62,8 +62,9 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 
 = Translations =
-* Catalan: [Efraim Bayarri](http://replicantsfactory.com/)
-* Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im)
+* Catalan: [Efraim Bayarri](http://replicantsfactory.com/);
+* Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im);
+* Hebrew: [atar4u](http://atar4u.com)
 
 
 Dear plugin User!
@@ -74,9 +75,23 @@ Share with me new ideas about plugin further development and link to your site w
 
 == Changelog ==
 
+= 4.5 =
+* 29.08.2013
+* Direct checking of the "administrator" role is removed from the code to support ability to change User Role Editor access key capability. 
+URE uses by default the "administrator" role for single site as the key capability to permit access to the User Role Editor. 
+You may change this capability manually by replacing value of URE_KEY_CAPABILITY constant at includes/define_constants.php file. Pro version
+starting from 4.5 allows to change this key capability name (input your own, custom one) via User Role Editor settings page.
+* The Hebrew translation is added. Thanks to [atar4u](http://atar4u.com).
+* [Pro version](http://role-editor.com) only: Ability to restrict access of different administrators to plugins activation/deactivation on the per plugin base is realized.
+Go to the user profile (user should have 'activate_plugins' capability) and select plugins to which you allow access for this user.
+* Pro version: Gravity forms access restriction was re-factored and does not use JavaScript - it works on the SQL queries level now. 
+In order apply form access restriction to the user it is enough that the user has any capability from the Gravity Forms capabilities list.
+
 = 4.4 =
-* 15.08.2013 *
-* [Pro version](http://role-editor.com) only: Users of "Gravity Forms" plugin may restrict users access to the Forms on per form basis. Activate this option at URE Settings page and input at user's profile the list of Gravity Forms IDs, to which you allow access for this user. User should have at least 'gravityforms_edit_forms' capability in order you see GF access control option at his profile.
+* 15.08.2013
+* [Pro version](http://role-editor.com) only: Users of "Gravity Forms" plugin may restrict users access to the Forms on per form basis.
+Activate this option at URE Settings page and input at user's profile the list of Gravity Forms IDs, to which you allow access for this user. 
+User should have at least 'gravityforms_edit_forms' capability in order you see GF access control option at his profile.
 * Pro version: User Role Editor license key is not shown now on the Setting page. User sees just word "Installed" after he saved it.
 * Bug fixed which prevented creation of current roles backup record during User Role Editor plugin installation and produced unexpected output (PHP notices).
 
