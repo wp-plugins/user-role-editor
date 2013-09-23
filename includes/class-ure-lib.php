@@ -1297,22 +1297,22 @@ class Ure_Lib extends Garvs_WP_Lib {
 
         
     protected function add_capability_to_full_caps_list($cap_id) {
-        $cap = array();
-        $cap['inner'] = $cap_id;
-        $cap['human'] = __($this->convert_caps_to_readable($cap_id), 'ure');
-        if (isset($this->built_in_wp_caps[$cap_id])) {
-            $cap['wp_core'] = true;
-        } else {
-            $cap['wp_core'] = false;
-        }
         if (!isset($this->full_capabilities[$cap_id])) {
+            $cap = array();
+            $cap['inner'] = $cap_id;
+            $cap['human'] = __($this->convert_caps_to_readable($cap_id), 'ure');
+            if (isset($this->built_in_wp_caps[$cap_id])) {
+                $cap['wp_core'] = true;
+            } else {
+                $cap['wp_core'] = false;
+            }
+
             $this->full_capabilities[$cap_id] = $cap;
         }
-        
     }
-    // end of build_capability()
-    
-            
+    // end of add_capability_to_full_caps_list()
+
+
     protected function init_full_capabilities() {
         $this->built_in_wp_caps = $this->get_built_in_wp_caps();
         $this->full_capabilities = array();
@@ -1329,6 +1329,14 @@ class Ure_Lib extends Garvs_WP_Lib {
             $gf_caps = GFCommon::all_caps();
             foreach ($gf_caps as $gf_cap) {
                 $this->add_capability_to_full_caps_list($gf_cap);
+            }
+        }
+        
+        if ($this->ure_object=='user') {
+            foreach($this->user_to_edit->caps as $key=>$value)  {
+                if (!isset($this->roles[$key])) {   // it is the user capability, not role
+                    $this->add_capability_to_full_caps_list($key);
+                }
             }
         }
         
@@ -1807,7 +1815,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         // add individual capabilities to user
         if (count($this->capabilities_to_save) > 0) {
             foreach ($this->capabilities_to_save as $key => $value) {
-				$user->add_cap($key);
+                $user->add_cap($key);
             }
         }
         $user->update_user_level_from_caps();

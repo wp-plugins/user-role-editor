@@ -120,7 +120,7 @@ if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is 
     </tr>
   </table>
 <?php 
-	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() );
+	$quant = count( $this->full_capabilities ) - count( $this->get_built_in_wp_caps() ) + $this->hidden_built_in_wp_caps_quant;
 	if ($quant>0) {		
      echo '<hr />';
 ?> 

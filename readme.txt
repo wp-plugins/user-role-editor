@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.6
+Tested up to: 3.6.1
 Stable tag: trunk
 
 User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any standard WordPress user role.
@@ -63,6 +63,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 
 = Translations =
 * Catalan: [Efraim Bayarri](http://replicantsfactory.com/);
+* Spanish: [Dario Ferrer](http://darioferrer.com/);
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im);
 * Hebrew: [atar4u](http://atar4u.com)
 
@@ -74,6 +75,12 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.5.2 = 
+* 23.09.2013
+* User capabilities editor updated to support capabilities beyond the user roles - capabilities added by other plugins directly to the users, or deleted from the user roles.
+* Bug fixed - custom capabilities was not shown in User capabilities editor in some cases.
+* Spanish translation was added. Thanks to [Dario Ferrer](http://darioferrer.com/).
 
 = 4.5.1 =
 * 29.08.2013
