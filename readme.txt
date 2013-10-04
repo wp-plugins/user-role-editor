@@ -200,7 +200,7 @@ Read [this post](http://role-editor.com/user-role-editor-version-4-1-is-availabl
 * Compatibility with bbPress 2.2 new user roles model is provided. More details about the reason of such update at http://shinephp.com/bbpress-user-role-editor-conflict-fix/
 * "Reset" button works differently now. It restores WordPress roles data to its 1st, default state, exactly that, what WordPress has just after fresh install/latest version update. Be careful with it, make database backup copy before fulfill this operation. Some plugin could require reactivation to function properly after roles reset. 
 * Arabic translation is added. Thanks to [Yaser](http://www.englize.com/)
-* Slovak translation is added. Thanks to [Branco](http://webhostinggeeks.com/blog/)
+* Slovak translation is added. Thanks to Branco.
 
 = 3.8.3 =
 * 14.12.2012
