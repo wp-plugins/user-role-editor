@@ -79,7 +79,7 @@ Share with me new ideas about plugin further development and link to your site w
 = 4.6 =
 * 21.10.2013
 * Multi-site: 'unfiltered_html' capability marked as deprecated one. Read this post for more information (http://shinephp.com/is-unfiltered_html-capability-deprecated/).
-* Multi-site: 'manage_network%' capabilities were are included into WordPress core capabilities list.
+* Multi-site: 'manage_network%' capabilities were included into WordPress core capabilities list.
 * On screen help was added to the "User Role Editor Options" page - click "Help" at the top right corner to read it.
 * Bug fix: turning off capability at the Administrator role fully removed that capability from capabilities list.
 * Various internal code enhancements.
