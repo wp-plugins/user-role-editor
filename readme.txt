@@ -84,10 +84,9 @@ Share with me new ideas about plugin further development and link to your site w
 * Bug fix: turning off capability at the Administrator role fully removed that capability from capabilities list.
 * Various internal code enhancements.
 * Information about GPLv2 license was added to show apparently - "User Role Editor" is licensed under GPLv2 or later.
-Pro version only:
-* Multi-site: Assign roles and capabilities to the users from one point at the Network Admin. Add user with his permissions together to all sites of your network with one click.
-* 'wp-content/uploads' folder is used now instead of plugin's own one to process file with importing roles data.
-* Bug fix: Nonexistent method was called to notify user about folder write permission error during roles import.
+* Pro version only: Multi-site: Assign roles and capabilities to the users from one point at the Network Admin. Add user with his permissions together to all sites of your network with one click.
+* Pro version only: 'wp-content/uploads' folder is used now instead of plugin's own one to process file with importing roles data.
+* Pro version only: Bug fix: Nonexistent method was called to notify user about folder write permission error during roles import.
 
 
 = 4.5.2 = 
