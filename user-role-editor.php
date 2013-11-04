@@ -3,7 +3,7 @@
 Plugin Name: User Role Editor
 Plugin URI: http://role-editor.com
 Description: Change/add/delete WordPress user roles and capabilities.
-Version: 4.6
+Version: 4.7
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: ure

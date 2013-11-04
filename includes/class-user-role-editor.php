@@ -635,7 +635,11 @@ class User_Role_Editor {
         'add_capability' => __('Add Capability', 'ure'),
         'delete_capability' => __('Delete Capability', 'ure'),
         'reset' => __('Reset', 'ure'),  
-        'reset_warning' => __('Reset Roles to WordPress defaults. Be careful, all changes made by you or plugins will be lost. Some plugins, e.g. S2Member, WooCommerce reactivation could be needed. Continue?', 'ure'),  
+        'reset_warning' => __('DANGER! Resetting will restore default settings from WordPress Core.','ure')."\n\n".
+                           __('If any plugins have changed capabilities in any way upon installation (such as S2Member, WooCommerce, and many more), those capabilities will be DELETED!', 'ure')."\n\n" .
+                           __('For more information on how to undo changes and restore plugin capabilities go to', 'ure')."\n".
+                           'http://role-editor.com/how-to-restore-deleted-wordpress-user-roles/'."\n\n".
+                           __('Continue?', 'ure'),  
         'default_role' => __('Default Role', 'ure'),    
         'set_new_default_role' => __('Set New Default Role', 'ure'),
         'delete_capability' => __('Delete Capability', 'ure'),

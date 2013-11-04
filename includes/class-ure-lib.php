@@ -619,7 +619,7 @@ class Ure_Lib extends Garvs_WP_Lib {
      */
     public function get_user_roles() {
 
-        global $wp_roles, $wpdb;
+        global $wp_roles;
 
         if (!isset($wp_roles)) {
             $wp_roles = new WP_Roles();
@@ -895,7 +895,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             $caps['manage_network_plugins'] = 1;
             $caps['manage_network_options'] = 1;
         }
-        
+                
         return $caps;
     }
     // end of get_built_in_wp_caps()
@@ -1247,7 +1247,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     /**
      *  Go through all users and if user has non-existing role lower him to Subscriber role
      * 
-     */
+     */   
     protected function validate_user_roles() {
 
         global $wp_roles;
@@ -1347,15 +1347,14 @@ class Ure_Lib extends Garvs_WP_Lib {
     }
     // end of init_full_capabilities()
 
-    
+
     /**
-     * reset user roles to WordPress default roles
+     * return WordPress user roles to its initial state, just like after installation
+     * @global WP_Roles $wp_roles
      */
-    protected function reset_user_roles() {
+    protected function wp_roles_reinit() {
         global $wp_roles;
-
-        //$active_plugins = ure_deactivate_plugins();  // deactivate all plugins
-
+        
         $wp_roles->roles = array();
         $wp_roles->role_objects = array();
         $wp_roles->role_names = array();
@@ -1364,25 +1363,26 @@ class Ure_Lib extends Garvs_WP_Lib {
         require_once(ABSPATH . '/wp-admin/includes/schema.php');
         populate_roles();
         $wp_roles->reinit();
-
-        /*
-          // return recently deactivated plugins to its original state
-          if ( is_array( $active_plugins ) && count( $active_plugins ) > 0 ) {
-          activate_plugins( $active_plugins,  $reload_link);
-          }
-          //$this->validate_user_roles();  // if user has non-existing role lower him to Subscriber role
-         */
         
+        $this->roles = $this->get_user_roles();
+        
+    }
+    // end of wp_roles_reinit()
+    
+    /**
+     * reset user roles to WordPress default roles
+     */
+    protected function reset_user_roles() {
+              
+        $this->wp_roles_reinit();
         if ($this->is_full_network_synch() || $this->apply_to_all) {
             $this->current_role = '';
-            // Get all blog ids
-            $blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs where blog_id!={$this->main_blog_id}");
-            $this->direct_network_roles_update($blog_ids);
+            $this->direct_network_roles_update();
         }
+        //$this->validate_user_roles();  // if user has non-existing role lower him to Subscriber role
         
         $reload_link = wp_get_referer();
-        $reload_link = remove_query_arg('action', $reload_link);
-        
+        $reload_link = remove_query_arg('action', $reload_link);        
         ?>    
         	<script type="text/javascript" >
              jQuery.ure_postGo('<?php echo $reload_link; ?>', 
@@ -1636,30 +1636,69 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
         return $mess;
     }
-    // end of newRoleCreate()            
+    // end of new_role_create()            
 
     
-    protected function delete_role() {
+    /**
+     * Deletes user role from the WP database
+     */
+    protected function delete_wp_roles($roles_to_del) {
         global $wp_roles;
 
-        $mess = '';
-        if (isset($_POST['user_role_id']) && $_POST['user_role_id']) {
-            $role = $_POST['user_role_id'];
-            //$result = remove_role($_POST['user_role']);
-            // use this modified code from remove_role() directly as remove_role() returns nothing to check
-            if (!isset($wp_roles)) {
-                $wp_roles = new WP_Roles();
-            }
-            if (isset($wp_roles->roles[$role])) {
-                unset($wp_roles->role_objects[$role]);
-                unset($wp_roles->role_names[$role]);
-                unset($wp_roles->roles[$role]);
-                $result = update_option($wp_roles->role_key, $wp_roles->roles);
+        if (!isset($wp_roles)) {
+            $wp_roles = new WP_Roles();
+        }
+        $result = true;
+        foreach($roles_to_del as $role_id) {
+            if (isset($wp_roles->roles[$role_id])) {
+                unset($wp_roles->role_objects[$role_id]);
+                unset($wp_roles->role_names[$role_id]);
+                unset($wp_roles->roles[$role_id]);                
             } else {
                 $result = false;
+                break;
+            }            
+        }   // foreach()
+        if ($result) {
+            update_option($wp_roles->role_key, $wp_roles->roles);
+        }
+        
+        return $result;
+    }
+    // end of delete_wp_roles()
+    
+    
+    protected function delete_all_unused_roles() {        
+        
+        $this->roles = $this->get_user_roles();
+        $roles_to_del = array_keys($this->get_roles_can_delete());        
+        $result = $this->delete_wp_roles($roles_to_del);
+        $this->roles = null;    // to force roles refresh
+        
+        return $result;        
+    }
+    // end of delete_all_unused_roles()
+    
+    
+    /**
+     * process user request for user role deletion
+     * @global WP_Roles $wp_roles
+     * @return type
+     */
+    protected function delete_role() {        
+
+        $mess = '';        
+        if (isset($_POST['user_role_id']) && $_POST['user_role_id']) {
+            $role = $_POST['user_role_id'];
+            if ($role==-1) { // delete all unused roles
+                $result = $this->delete_all_unused_roles();
+            } else {
+                $result = $this->delete_wp_roles(array($role));
             }
             if (empty($result)) {
                 $mess = 'Error! ' . __('Error encountered during role delete operation', 'ure');
+            } elseif ($role==-1) {
+                $mess = sprintf(__('Unused roles are deleted successfully', 'ure'), $role);
             } else {
                 $mess = sprintf(__('Role %s is deleted successfully', 'ure'), $role);
             }
@@ -2115,6 +2154,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             foreach ($roles_can_delete as $key => $value) {
                 $this->role_delete_html .= '<option value="' . $key . '">' . __($value, 'ure') . '</option>';
             }
+            $this->role_delete_html .= '<option value="-1" style="color: red;">' . __('Delete All Unused Roles', 'ure') . '</option>';
             $this->role_delete_html .= '</select>';
         } else {
             $this->role_delete_html = '';
