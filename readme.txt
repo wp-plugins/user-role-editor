@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,19 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+
+= 4.8 =
+* 10.12.2013
+* Role ID validation rule was added to prohibit numeric role ID - WordPress does not support them.
+* Plugin "Options" page was divided into sections (tabs): General, Multisite, About. Section with information about plugin author, his site, etc. was moved from User Role Editor main page to its "Options" page - "About" tab.
+* HTML markup was updated to provide compatibility with upcoming WordPress 3.8 new administrator backend theme "MP6".
+* Restore previous blog 'switch_to_blog($old_blog_id)' call was replaced to 'restore_current_blog()' where it is possible to provide better compatibility with WordPress API.
+After use 'switch_to_blog()' in cycle, URE clears '_wp_switched_stack' global variable directly instead of call 'restore_current_blog()' inside the cycle to work faster.
+* Pro version: It is possible to restrict access of single sites administrators to the selected user capabilities and Add/Delete role operations inside User Role Editor.
+* Pro version:  Shortcode [user_role_editor roles="none"]text for not logged in users[/user_role_editor] is available. Recursive processing of other shortcodes inside enclosed text is available now.
+* Pro version: Gravity Forms available at "Export Entries", "Export Forms" pages is under URE access restriction now, if such one was set for the user.
+* Pro version: Gravity Forms import was set under "gravityforms_import" user capability control.
+* Pro version: Option was added to show/hide help links (question signs) near the capabilities from single site administrators.
 
 = 4.7 =
 * 04.11.2013
