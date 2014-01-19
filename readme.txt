@@ -1,5 +1,5 @@
 === User Role Editor Pro ===
-Contributors: Vladimir Garagulya (shinephp)
+Contributors: shinephp
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
 Tested up to: 3.8
