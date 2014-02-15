@@ -80,7 +80,7 @@ Share with me new ideas about plugin further development and link to your site w
 == Changelog ==
 = 4.10 =
 * 15.02.2014
-* Security enhancement: __() and _e() WordPress text translation functions were replaced with more secure esc_html__() and esc_html_e().
+* Security enhancement: WordPress text translation functions were replaced with more secure esc_html__() and esc_html_e() variants.
 * Pro version: It is possible to restrict access to the post or page content view for selected roles. Activate the option at plugin "Settings" page and use new "Content View Restrictions" metabox at post/page editor to setup content view access restrictions.
 * Pro version: Gravity Forms access management module was updated for compatibility with Gravity Forms version 1.8.3. If you need compatibility with earlier Gravity Forms versions, e.g. 1.7.9, use User Role Editor version 4.9.
 
