@@ -2340,7 +2340,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of user_primary_role_dropdown_list()
     
     
-    // returns true if $user has $capability assigned through the roles or directly
+    // returns true if user opened to edit has $capability assigned through the roles or directly
     // returns true if user has role with name equal $capability
     protected function user_can($capability) {
         
@@ -2361,12 +2361,16 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of user_can()           
     
     
-    // returns true if current user has $capability assigned through the roles or directly
-    // returns true if current user has role with name equal $capability
+    // returns true if user $user has $capability assigned through the roles or directly
+    // returns true if user $user has role with name equal $capability
     public function user_has_capability($user, $cap) {
 
         global $wp_roles;
 
+        if (empty($user) || !is_object($user)) {
+            return false;
+        }
+                
         if (is_multisite() && is_super_admin($user->ID)) {
             return true;
         }
@@ -2443,5 +2447,14 @@ class Ure_Lib extends Garvs_WP_Lib {
         
     }
     // end of get_users_without_role()
+    
+    
+    public function get_current_role() {
+        
+        return $this->current_role;
+        
+    }
+    // end of get_current_role()
+    
 }
 // end of URE_Lib class
