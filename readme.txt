@@ -83,6 +83,10 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.15 =
+* 08.09.2014
+* Rename role button was added to the URE toolbar. It allows to change user role display name (role ID is always the same). Be careful and double think before rename some built-in WordPress role.
+
 = 4.14.4 =
 * 08.08.2014
 * Missed "manage_sites" user capability was added to the list of built-in WordPress capabilities managed by User Role Editor.
