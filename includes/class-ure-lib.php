@@ -898,6 +898,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         if ($this->multisite) {
             $caps['manage_network'] = 1;
             $caps['manage_sites'] = 1;
+            $caps['create_sites'] = 1;
             $caps['manage_network_users'] = 1;
             $caps['manage_network_themes'] = 1;
             $caps['manage_network_plugins'] = 1;
@@ -2478,7 +2479,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         $query = "select ID from {$wpdb->users} users
                     where not exists (select user_id from {$wpdb->usermeta}
                                           where user_id=users.ID and meta_key='{$blog_prefix}capabilities') or
-                          exists (select user_id from wp_usermeta 
+                          exists (select user_id from {$wpdb->usermeta}
                                     where user_id=users.ID and meta_key='{$blog_prefix}capabilities' and meta_value='a:0:{}')                ;";
         $users = $wpdb->get_col($query);
         

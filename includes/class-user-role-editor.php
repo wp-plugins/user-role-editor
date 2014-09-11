@@ -149,7 +149,7 @@ class User_Role_Editor {
       $query = "select count(ID) from {$wpdb->users} users
                     where not exists (select user_id from {$wpdb->usermeta}
                                           where user_id=users.ID and meta_key='{$blog_prefix}capabilities') or
-                          exists (select user_id from wp_usermeta 
+                          exists (select user_id from {$wpdb->usermeta}
                                     where user_id=users.ID and meta_key='{$blog_prefix}capabilities' and meta_value='a:0:{}')                ;";
       $users_count = $wpdb->get_var($query);
       if ($users_count>0) {
