@@ -68,7 +68,10 @@ class Ure_Lib extends Garvs_WP_Lib {
         
         global $wpdb;
 
-        if ($this->multisite) {
+        if ($this->multisite) { 
+            if ( ! function_exists( 'is_plugin_active_for_network' ) ) {    // Be sure the function is defined before trying to use it
+                require_once( ABSPATH . '/wp-admin/includes/plugin.php' );                
+            }
             $this->active_for_network = is_plugin_active_for_network(URE_PLUGIN_BASE_NAME);
         }
         $current_blog = $wpdb->blogid;

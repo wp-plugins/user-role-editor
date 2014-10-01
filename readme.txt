@@ -84,6 +84,10 @@ Some translations may be outdated. If you have better translation for some phras
 
 
 == Changelog ==
+= 4.17.1 =
+* 01.10.2014
+* Bug fix for the PHP Fatal error: Call to undefined function is_plugin_active_for_network(). 
+
 = 4.17 =
 * 01.10.2014
 * Multisite (update for cases when URE was not network activated): It is possible to use own settings for single site activated instances of User Role Editor. 
