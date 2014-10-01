@@ -86,7 +86,8 @@ Some translations may be outdated. If you have better translation for some phras
 == Changelog ==
 = 4.17.1 =
 * 01.10.2014
-* Bug fix for the PHP Fatal error: Call to undefined function is_plugin_active_for_network(). 
+* Bug fix for the PHP Fatal error: Call to undefined function is_plugin_active_for_network(). It may take place under multisite only, 
+in case no one of the other active plugins load file with this function already before User Role Editor v. 4.17 tries to call it.
 
 = 4.17 =
 * 01.10.2014
