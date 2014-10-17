@@ -25,7 +25,7 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 Русская версия этой статьи доступна по адресу [ru.shinephp.com](http://ru.shinephp.com/user-role-editor-wordpress-plugin-rus/)
 
 Do you need more functionality with quality support in real time? Do you wish remove advertisements from User Role Editor pages? 
-Buy [Pro version](htpp://role-editor.com). 
+Buy [Pro version](https://www.role-editor.com). 
 Pro version includes extra modules:
 <ul>
 <li>Block selected admin menu items for role.</li>
