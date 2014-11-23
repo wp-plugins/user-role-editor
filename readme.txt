@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any WordPress user role.
+User Role Editor WordPress plugin makes user roles and capabilities changing easy. Edit/add/delete WordPress user roles and capabilities.
 
 == Description ==
 
@@ -85,13 +85,17 @@ Some translations may be outdated. If you have better translation for some phras
 
 
 == Changelog ==
+= 4.17.3 =
+* 23.11.2014
+* French and Turkish translation were updated. Thanks to [Transifex](https://www.transifex.com) translation team.
+
 = 4.17.2 =
 * 21.10.2014
 * Notice: "Undefined property: Ure_Lib::$pro in .../class-user-role-editor.php on line 550" was fixed.
 * Settings help screen text was updated.
 * Russian translation was updated.
 * Hungarian translation was updated. Thanks to Németh Balázs.
-* French and Turkish translation are updated. Thanks to [Transifex](https://www.transifex.com) translation team.
+* French and Turkish translation were updated. Thanks to [Transifex](https://www.transifex.com) translation team.
 
 
 = 4.17.1 =
