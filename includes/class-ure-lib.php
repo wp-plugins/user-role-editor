@@ -43,11 +43,25 @@ class Ure_Lib extends Garvs_WP_Lib {
      */
     public function __construct($options_id) {
                                            
-        parent::__construct($options_id);                        
+        parent::__construct($options_id); 
         
+        $this->upgrade();
     }
     // end of __construct()
 
+    
+    protected function upgrade() {
+        
+        $ure_version = $this->get_option('ure_version', '0');
+        if (version_compare( $ure_version, URE_VERSION, '<' ) ) {
+            // for upgrade to 4.18 and higher from older versions
+            $this->init_ure_caps();
+            $this->put_option('ure_version', URE_VERSION, true);
+        }
+        
+    }
+    // end of upgrade()
+    
     
     /**
      * Is this the Pro version?
@@ -85,6 +99,10 @@ class Ure_Lib extends Garvs_WP_Lib {
     
     protected function _init_ure_caps() {
         global $wp_roles;
+        
+        if (!isset($wp_roles)) {
+            $wp_roles = new WP_Roles();
+        }
         
         if (!isset($wp_roles->roles['administrator'])) {
             return;
@@ -140,7 +158,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     protected function init_options($options_id) {
         
         global $wpdb;
-
+        
         if ($this->multisite) { 
             if ( ! function_exists( 'is_plugin_active_for_network' ) ) {    // Be sure the function is defined before trying to use it
                 require_once( ABSPATH . '/wp-admin/includes/plugin.php' );                

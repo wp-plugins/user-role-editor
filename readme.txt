@@ -87,6 +87,10 @@ Some translations may be outdated. If you have better translation for some phras
 
 == Changelog ==
 
+= 4.18.1 =
+* 14.12.2014
+* As activation hook does not fire during bulk plugins update, automatic plugin version check and upgrade execution were added.
+
 = 4.18 =
 * 14.12.2014
 * Own custom user capabilities, e.g. 'ure_edit_roles' are used to restrict access to User Role Editor functionality ([read more](https://www.role-editor.com/user-role-editor-4-18-new-permissions/)).
