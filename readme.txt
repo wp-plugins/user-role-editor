@@ -86,6 +86,11 @@ Some translations may be outdated. If you have better translation for some phras
 
 == Changelog ==
 
+= 4.18.4 =
+* 30.04.2015
+* Calls to the functions add_query_arg(), remove_query_arg() are escaped with esc_url_raw() to exclude potential XSS vulnerabilities. Nothing critical: both calls of add_query_arg() are placed at the currently unused sections of the code.
+* Italian translation was updated. Thanks to Leo.
+
 = 4.18.3 =
 * 24.02.2015
 * Fixed PHP fatal error for roles reset operation.
