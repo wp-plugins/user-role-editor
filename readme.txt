@@ -3,8 +3,8 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: trunk
+Tested up to: 4.3.1
+Stable tag: 4.19.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ Some translations may be outdated. If you have better translation for some phras
 
 
 == Changelog ==
+
+= [4.19.2] 22.09.2015 =
+* Fix: multiple default roles assignment did not work under the multisite environment, when user was created from front-end by WooCommerce, etc.
+* Update: the translation text domain was changed to the plugin slug (user-role-editor) for the compatibility with translations.wordpress.org
 
 = [4.19.1] 20.08.2015 =
 * Default role value has not been refreshed automatically after change at the "Default Role" dialog - fixed.
