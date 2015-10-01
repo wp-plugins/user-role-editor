@@ -1177,6 +1177,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
         $quant_in_column = (int) $quant / 3;
         $printed_quant = 0;
+        $printed_total = 0;
         foreach ($this->full_capabilities as $capability) {            
             if ($core) {
                 if (!$capability['wp_core']) { // show WP built-in capabilities 1st
@@ -1241,10 +1242,13 @@ class Ure_Lib extends Garvs_WP_Lib {
                 echo '<label for="' . $cap_id . '" title="' . $capability[$cap_ind_alt] . '" ' . $label_style . ' > ' . 
                      $capability[$cap_ind] . '</label> ' . $help_link . '</div>';
                 $printed_quant++;
-                if ($printed_quant >= $quant_in_column) {
+                $printed_total++;
+                if ($printed_quant>=$quant_in_column) {
                     $printed_quant = 0;
-                    echo '</td>
-                          <td style="vertical-align:top;">';
+                    echo '</td>';
+                    if ($printed_total<$quant) {
+                        echo '<td style="vertical-align:top;">';
+                    }
                 }
             }  else {   // if (empty($hidden_class
                 echo '</div>';

@@ -87,7 +87,7 @@ if ($this->multisite && $this->active_for_network && !is_network_admin() && is_m
             <td style="vertical-align:top;">
 <?php $this->show_capabilities( false, true );	?>
             </td>
-						<td></td>
+            <td></td>
           </tr>
       </table>
 <?php
