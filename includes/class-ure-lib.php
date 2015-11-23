@@ -16,7 +16,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	public $roles = null;     
 	public $notification = '';   // notification message to show on page
 	public $apply_to_all = 0; 
-	public $user_to_check = array();  // cached list of user IDs, who has Administrator role     	 
+
    
 	protected $capabilities_to_save = null; 
 	protected $current_role = '';
@@ -34,6 +34,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	protected $role_delete_html = '';
 	protected $capability_remove_html = '';
 	protected $advert = null;
+ protected $role_additional_options = null;
  
  // when allow_edit_users_to_not_super_admin option is turned ON, we set this property to true 
  // when we raise single site admin permissions up to the superadmin for the 'Add new user' new-user.php page
@@ -309,13 +310,17 @@ class Ure_Lib extends Garvs_WP_Lib {
   </div>
 </div>
 
-
+<?php
+if ($this->multisite && !is_network_admin()) {
+?>
 <div id="ure_default_role_dialog" class="ure-modal-dialog">
   <div style="padding:10px;">
     <?php echo $this->role_default_html; ?>
   </div>  
 </div>
-
+<?php
+}
+?>
 
 <div id="ure_delete_capability_dialog" class="ure-modal-dialog">
   <div style="padding:10px;">
@@ -330,6 +335,11 @@ class Ure_Lib extends Garvs_WP_Lib {
     <div class="ure-input"><input type="text" name="capability_id" id="capability_id" size="25"/></div>
   </div>  
 </div>     
+
+<div id="ure_confirmation_dialog" class="ure-modal-dialog">
+  <div id="ure_cd_html" style="padding:10px;">    
+  </div>
+</div>
 
 <?php        
     do_action('ure_dialogs_html');
@@ -571,7 +581,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                     $this->notification = $this->init_current_role_name();                    
                 }
                 $this->prepare_capabilities_to_save();
-                $this->notification = $this->permissions_object_update($this->notification);
+                $this->notification = $this->permissions_object_update($this->notification);                                  
             } else {
                 do_action('ure_process_user_request');
             } // if ($action
@@ -637,7 +647,10 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
 
         $this->init_full_capabilities();
-
+        if (empty($this->role_additional_options)) {
+            $this->role_additional_options = URE_Role_Additional_Options::get_instance($this);
+        }
+        
         if (!$this->is_pro()) {
             require_once(URE_PLUGIN_DIR . 'includes/class-advertisement.php');
         }
@@ -1172,7 +1185,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         $onclick_for_admin = '';
         if (!( $this->multisite && is_super_admin() )) {  // do not limit SuperAdmin for multi-site
             if ($core && 'administrator' == $this->current_role) {
-                $onclick_for_admin = 'onclick="turn_it_back(this)"';
+                $onclick_for_admin = 'onclick="ure_turn_it_back(this)"';
             }
         }
 
@@ -1337,10 +1350,14 @@ class Ure_Lib extends Garvs_WP_Lib {
                    <button id="ure_delete_capability" class="ure_toolbar_button">Delete Capability</button>
 <?php
                 }
+                if ($this->multisite && !is_network_admin()) {  // Show for single site for WP multisite only
 ?>
                <hr />
                <button id="ure_default_role" class="ure_toolbar_button">Default Role</button>
                <hr />
+<?php
+                }
+?>
                <div id="ure_service_tools">
 <?php
                 do_action('ure_role_edit_toolbar_service');
@@ -1622,7 +1639,14 @@ class Ure_Lib extends Garvs_WP_Lib {
             'delete_published_posts',
             'delete_others_posts'
         );
+        
         $post_types = get_post_types(array('_builtin'=>false), 'objects');
+        // do not forget attachment post type as it may use the own capabilities set
+        $attachment_post_type = get_post_type_object('attachment');
+        if ($attachment_post_type->cap->edit_posts!=='edit_posts') {
+            $post_types['attachment'] = $attachment_post_type;
+        }
+        
         foreach($post_types as $post_type) {            
             if (!isset($post_type->cap)) {
                 continue;
@@ -1786,6 +1810,12 @@ class Ure_Lib extends Garvs_WP_Lib {
 
         update_option($option_name, $this->roles);
 
+        // save additional options for the current role
+        if (empty($this->role_additional_options)) {
+            $this->role_additional_options = URE_Role_Additional_Options::get_instance($this);
+        }
+        $this->role_additional_options->save($this->current_role);
+        
         return true;
     }
     // end of save_roles()
@@ -2170,6 +2200,9 @@ class Ure_Lib extends Garvs_WP_Lib {
     protected function change_default_role() {
         global $wp_roles;
 
+        if (!$this->multisite || is_network_admin()) {
+            return 'Try to misuse the plugin functionality';
+        }
         $mess = '';
         if (!isset($wp_roles)) {
             $wp_roles = new WP_Roles();
@@ -2567,7 +2600,12 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of show_admin_role()
     
     
-    private function role_default_prepare_html($select_width=200) {
+    public function role_default_prepare_html($select_width=200) {
+                        
+        if (!isset($this->roles) || !$this->roles) {
+            // get roles data from database
+            $this->roles = $this->get_user_roles();
+        }
         
         $caps_access_restrict_for_simple_admin = $this->get_option('caps_access_restrict_for_simple_admin', 0);
         $show_admin_role = $this->show_admin_role_allowed();
@@ -2639,7 +2677,9 @@ class Ure_Lib extends Garvs_WP_Lib {
     public function role_edit_prepare_html($select_width=200) {
         
         $this->role_select_copy_prepare_html($select_width);
-        $this->role_default_prepare_html($select_width);
+        if ($this->multisite && !is_network_admin()) {
+            $this->role_default_prepare_html($select_width);
+        }        
         $this->role_delete_prepare_html();                
         $this->caps_to_remove_prepare_html();
     }
